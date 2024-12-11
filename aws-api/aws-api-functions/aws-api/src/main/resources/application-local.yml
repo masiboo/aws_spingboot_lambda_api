@@ -1,0 +1,4 @@
+zpapez:
+  aws:
+    dynamodb:
+      endpoint: "http://dynamodb:8000"

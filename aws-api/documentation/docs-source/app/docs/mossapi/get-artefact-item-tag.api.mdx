@@ -1,0 +1,40 @@
+---
+id: get-artefact-item-tag
+title: "getArtefactItemTag"
+description: "getArtefactItemTag"
+sidebar_label: "getArtefactItemTag"
+hide_title: true
+hide_table_of_contents: true
+api: eJyNVMFu2zAM/RVD6GErEjsrih18C9ptKIqhRZNih6IHxmIcdbbkSXLS1PC/j7SV1GkyYJdYkd6jKL5HNsJUaMEro2+kSEWOfmo9LiHzNx7LOeRiJCqwUKJH60T61AhNfwiqJB0pTasK/IrWFv/UyiKF8bbGkXDZCksQaSP8tuoY2mOOlqBLY0vw/dbXS9G2z0x3ldEOHTMuJhP+SHSZVRWnR+C7W6JmhqJoz6fnyTl/ju4xixfMPCdu+XVe9TEp4f/JZSTWUNQ4wDpvlc755DduT+4rypvKJq/BnyAO7pAMIEIPOIrEJ8oXvPVBhuv5HR23HQJyFmKPcHTBnPeoiIcFO6kmKbkyQetOXBIvFQlUKoEAHitCj/mepFGyJRQ9b73Tv7YFEVbeVy5NEpCl0nFpnItLkFbJWOI63uDiS7xRlYmpqoLldZjVVvntjNXqBZnWlIlVb539rkyulTdDGYHOL7h6hdkwgd7+OoYS3oweU7o51XID2zGEMKTmO/llw4+j3yujlyqve493NnCu7qHfdZrO6sXgMVmfxFjJKj5rpr9mafqAORHbuL8XNi7OTJmcNSHfR6rMvTFFy6pCLRXqDLsyvUc/Al8VBPNEeWbvSFpzYUxtmSrOuJHQ+XiFINHGB2XqPOJUvr4cPJaKcUvOHO1a85ARurSPJv5dw12wjZt18dvO2MtekuDKn53E0V3XYdHMGws5RrOtI8NE0/sb8dGCgXASWagMqXE4fki8smodOoTt1oeYxF/jCW9VxvkS9ABPFo52Do/Y4lHv8YMc9mXy+OqTqgAqB0XrbNwE/z9xDYl43AG0mdLkIAev6HpGNs0CHD7aom15m7SyNBWennlwWAWLotdfKsdr6rQlFA6PktoPMvHpIUzOz5EYnU52p41mlcN8EiIMJJ5snZWCxHx7fzDNMqz8gMIjk7txPwR+fJuT0H8B+Z0OuQ==
+sidebar_class_name: "get api-method"
+info_path: docs/Awsapi/madrid-object-storage-system-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>getArtefactItemTag</h1>
+
+<MethodEndpoint method={"get"} path={"/api/artefact-item-tags/{id}"}></MethodEndpoint>
+
+
+
+getArtefactItemTag
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}}></ParamsItem></ul></div></details><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"*/*"} value={"*/*"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"id"} required={false} schemaName={"int64"} qualifierMessage={undefined} schema={{"type":"integer","format":"int64"}}></SchemaItem><SchemaItem collapsible={false} name={"value"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"key"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"insertedDate"} required={false} schemaName={"date"} qualifierMessage={undefined} schema={{"type":"string","format":"date"}}></SchemaItem><SchemaItem collapsible={false} name={"type"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"id\": 0,\n  \"value\": \"string\",\n  \"key\": \"string\",\n  \"insertedDate\": \"2024-11-11\",\n  \"type\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

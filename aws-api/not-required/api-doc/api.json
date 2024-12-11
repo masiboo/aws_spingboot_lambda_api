@@ -1,0 +1,330 @@
+{
+	"info": {
+		"_postman_id": "ad4b9c21-0f5f-4614-af62-572b77095388",
+		"name": "wipo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": " https://1gy7ozw0ca.execute-api.eu-central-1.amazonaws.com/api/healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/healthcheck",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload-minimal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"artefactName\": \"stringNamw\",\n  \"artefactClassType\": \"CERTIFICATE\",\n  \"artefactItemTags\": [\n    {\n      \"value\": \"string\",\n      \"key\": \"string\",\n      \"type\": \"string\"\n    }\n  ],\n  \"items\": [\n    {\n      \"storage\": \"string\",\n      \"path\": \"string\",\n      \"filename\": \"imagery\",\n      \"contentType\": \"pdf\"\n    }\n  ],\n  \"mirisDocId\": \"string-ID\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/artefacts/upload",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"artefacts",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "S3-Put-Upload",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Content-Length",
+						"value": "48883",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"90\", \"Google Chrome\";v=\"90\""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0",
+						"disabled": true
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-yaml"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "cross-site"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "Referer",
+						"value": "http://localhost:4300/"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en;q=0.9"
+					},
+					{
+						"key": "x-amz-meta-artefact-id-key",
+						"value": "0c90ca76-91b2-4c32-8a95-d494ad23cf52",
+						"type": "default"
+					},
+					{
+						"key": "x-amz-meta-job-id-key",
+						"value": "0688ab82-dda9-41b4-a581-6a55d6b68fca",
+						"type": "default"
+					},
+					{
+						"key": "",
+						"value": "xxx",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/home/onwunumah/Downloads/openapi(5).yaml"
+					}
+				},
+				"url": {
+					"raw": "https://Aws-api-dev-registry-s3bucket-madriddon-5567.s3.eu-central-1.amazonaws.com/Aws-2022-11-09/0c90ca76-91b2-4c32-8a95-d494ad23cf52/software-2.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEGUaDGV1LWNlbnRyYWwtMSJHMEUCIQC7MCAFJKPyD9aIMPURh9%2FGhNyLe3U9O23k6BXV2DHuvwIgW8dKlONIDzhaaiIvlTDhSSPJoCB7%2BY2zieDwED%2FK%2BKoqtgMIXhADGgw1NTE0OTM3NzExNjMiDPCi0ARgeYPm2nkjOSqTA4VO7X%2BDab9oxCGu634sd1nUl3lkcrNkbjNewgekEFRn%2BohRwFIDiceJqfcy6ca2gR1803X9iK%2Fu02HJXqBhHfsk8%2BTqq%2FOmiibUEKH8ePZSlBSmM%2FdPiYxKI8%2Btfp%2BnguMgumcQeqZCr0OrmN0PJqMN3QDsumNtkcfaHm7qynkfmh8mW8pYzzSOpD%2FsGE9ZHfgn5Q3G2xpph9PbzxmM9yMWU4SZ3d6tCBy4sOL8wpUowgY6jEBn9qwSXcp9vy91RzmzJdfi6IWFEYlDXUM4R6qk14nncaQlylpPfWsuo8XdbXdAgRsEBlZhS%2F1p2wPptHvxqunIhwBtMqAfcJJq%2F43IROQ0d6mCGNncgfTed9sLzKCeUwfagjNhPkfqxYjZ21Hcgj%2FJE4obxJXR3P1F5RH%2BVfXz%2BPviWapsDUUJ%2FJK2Tg9u%2Fnkh0H%2BHlA9bCJ4XAcdz16vho%2B02SQcX5H%2BLdq5tnVf8F0srQcXS6TmTCuELGZmHyV1fXoUUCxFXcVR4wUw3k1NxEETZ%2F9bElWNHh22w61Mw4buumwY6ngHzpe4OeVd%2FWS3mE8AIxO3mM1t%2BxEG1W7qsNNZWNsPEZPFKzGWSiPLPzPP7F9mnUezsRPQO7y05%2BTRwMFQgb2U8R4qfoW8Lq4OINXp52JeHFE9d2V8XoXmvcEm7u1Q3iz09uLti4AUtpZd85NP%2BBr3oTx%2FmWXgBVsREu6XxcNkrLcD06yEiNkUCXDjNh%2FcrD0uOlIzwU44c%2BbA80LJiyA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20221109T123238Z&X-Amz-SignedHeaders=host%3Bx-amz-meta-artefact-id-key%3Bx-amz-meta-job-id-key&X-Amz-Expires=172800&X-Amz-Credential=ASIAYAZ4XD6N77QU3C2T%2F20221109%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Signature=b3118cc91c2032337f4af47035ee6d7c6f83fa5464facc3e113af84880c7538f",
+					"protocol": "https",
+					"host": [
+						"Aws-api-dev-registry-s3bucket-madriddon-5567",
+						"s3",
+						"eu-central-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Aws-2022-11-09",
+						"0c90ca76-91b2-4c32-8a95-d494ad23cf52",
+						"software-2.pdf"
+					],
+					"query": [
+						{
+							"key": "X-Amz-Security-Token",
+							"value": "IQoJb3JpZ2luX2VjEGUaDGV1LWNlbnRyYWwtMSJHMEUCIQC7MCAFJKPyD9aIMPURh9%2FGhNyLe3U9O23k6BXV2DHuvwIgW8dKlONIDzhaaiIvlTDhSSPJoCB7%2BY2zieDwED%2FK%2BKoqtgMIXhADGgw1NTE0OTM3NzExNjMiDPCi0ARgeYPm2nkjOSqTA4VO7X%2BDab9oxCGu634sd1nUl3lkcrNkbjNewgekEFRn%2BohRwFIDiceJqfcy6ca2gR1803X9iK%2Fu02HJXqBhHfsk8%2BTqq%2FOmiibUEKH8ePZSlBSmM%2FdPiYxKI8%2Btfp%2BnguMgumcQeqZCr0OrmN0PJqMN3QDsumNtkcfaHm7qynkfmh8mW8pYzzSOpD%2FsGE9ZHfgn5Q3G2xpph9PbzxmM9yMWU4SZ3d6tCBy4sOL8wpUowgY6jEBn9qwSXcp9vy91RzmzJdfi6IWFEYlDXUM4R6qk14nncaQlylpPfWsuo8XdbXdAgRsEBlZhS%2F1p2wPptHvxqunIhwBtMqAfcJJq%2F43IROQ0d6mCGNncgfTed9sLzKCeUwfagjNhPkfqxYjZ21Hcgj%2FJE4obxJXR3P1F5RH%2BVfXz%2BPviWapsDUUJ%2FJK2Tg9u%2Fnkh0H%2BHlA9bCJ4XAcdz16vho%2B02SQcX5H%2BLdq5tnVf8F0srQcXS6TmTCuELGZmHyV1fXoUUCxFXcVR4wUw3k1NxEETZ%2F9bElWNHh22w61Mw4buumwY6ngHzpe4OeVd%2FWS3mE8AIxO3mM1t%2BxEG1W7qsNNZWNsPEZPFKzGWSiPLPzPP7F9mnUezsRPQO7y05%2BTRwMFQgb2U8R4qfoW8Lq4OINXp52JeHFE9d2V8XoXmvcEm7u1Q3iz09uLti4AUtpZd85NP%2BBr3oTx%2FmWXgBVsREu6XxcNkrLcD06yEiNkUCXDjNh%2FcrD0uOlIzwU44c%2BbA80LJiyA%3D%3D"
+						},
+						{
+							"key": "X-Amz-Algorithm",
+							"value": "AWS4-HMAC-SHA256"
+						},
+						{
+							"key": "X-Amz-Date",
+							"value": "20221109T123238Z"
+						},
+						{
+							"key": "X-Amz-SignedHeaders",
+							"value": "host%3Bx-amz-meta-artefact-id-key%3Bx-amz-meta-job-id-key"
+						},
+						{
+							"key": "X-Amz-Expires",
+							"value": "172800"
+						},
+						{
+							"key": "X-Amz-Credential",
+							"value": "ASIAYAZ4XD6N77QU3C2T%2F20221109%2Feu-central-1%2Fs3%2Faws4_request"
+						},
+						{
+							"key": "X-Amz-Signature",
+							"value": "b3118cc91c2032337f4af47035ee6d7c6f83fa5464facc3e113af84880c7538f"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Job Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/job/9b5811f4-343b-4d09-9554-4631fc43c880/status",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"job",
+						"9b5811f4-343b-4d09-9554-4631fc43c880",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload-minimal-test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 0,\n    \"artefactName\": \"string\",\n    \"artefactClassType\": \"CERTIFICATE\",\n    \"indexationDate\": \"2022-03-21\",\n    \"archiveDate\": \"2022-03-21\",\n    \"gets3Bucket\": \"string\",\n    \"mirisDocId\": \"123\",\n    \"artefactItemTags\": [\n        {\n            \"id\": 0,\n            \"value\": \"string\",\n            \"key\": \"string\",\n            \"insertedDate\": \"2019-08-24\",\n            \"type\": \"string\"\n        }\n    ],\n    \"items\": {\n        \"id\": 0,\n        \"storage\": \"string\",\n        \"path\": \"string\",\n        \"filename\": \"myfile.pdf\",\n        \"artefactType\": \"CERTIFICATE\",\n        \"contentType\": \"PDF\",\n        \"totalPages\": 0\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/artefacts/upload",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"artefacts",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload-minimal-orig",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"artefactName\": \"string\",\n  \"artefactClassType\": \"CERTIFICATE\",\n  \"artefactItemTags\": [\n    {\n      \"value\": \"string\",\n      \"key\": \"string\",\n      \"insertedDate\": \"2022-09-28\",\n      \"type\": \"string\"\n    }\n  ],\n  \"items\": [\n    {\n      \"storage\": \"string\",\n      \"path\": \"string\",\n      \"filename\": \"software.png\",\n      \"contentType\": \"png\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/artefacts/upload",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"artefacts",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Artefacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/artefacts",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"artefacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Artefacts URL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/artefacts/{{artefactid}}/url",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"artefacts",
+						"{{artefactid}}",
+						"url"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

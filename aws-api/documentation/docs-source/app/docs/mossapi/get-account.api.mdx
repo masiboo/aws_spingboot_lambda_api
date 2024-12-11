@@ -1,0 +1,40 @@
+---
+id: get-account
+title: "getAccount"
+description: "Get details of currently Logged-in User"
+sidebar_label: "getAccount"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVU1P4zAQ/SuRxQm1aUHAIbcu7CIELGgL2kPFwY2n6bCJHWynpVT97zsTp21KQSv2kqb2e/Px5iNL4WXmRDISMk1NpX3XgjOVTUE8dYQpwUqPRl8pkYgM/CCAREcQrDTaAXGX4rjf5x8FLrVYMoHgd9cES432QAS6Pewd8o9Lp1BIfrPwUqEFxd5zk6Fml35RApHN+BlS9lNaDsJjcISKnw0GyXQGlkATYwvpw9HZiVjRCVrnf8oCGF/I1xvQmZ+K5LTfEQXq9d/+xqHzFnXG1Fz+L5Pywvwd7fj0ZId3+gEPC5nBo92nnv3TpUw9zqSHti5jY3KQOuSis2tYvDN8tJvK8Qd2Uwts9duiZXfv9oIe+/etcigCdD2Slo2ut0bhBD+124Z8zbis/NRYXPdJpfGlgisPBf31toJNitJauSAzGO72gliRMY8+57OBIpUeHdiLhzu+4bvdHr8EHynwVHYXmUmUVtZSt+eL6MZkGagu6oj55K8ACrCZIm5rycqLniyxJzdDRdAZWB5HSoH7QUy9L13S60kOJS6Mc3EhlUUVK5jFcxgfxXMsTUyNL1ZPbIFiQL8Y8pQFLQZBmrd6kM9NptGbVuKGpTtmYXMzZwIl+dqVhXwzukvhZSTzXC66jcJvlM2W/DznsOl5bvQEsypsi3pSnasC9IdOkmE1biWThiC6qMr4YDn4PUySX5ARcRUHv3Lu4tQUvYNlEy+LeE9tvQq1VgiaNhTLtLW+Bz7PCeaJ8sQzpuidhQnLjeC8fsD5eApSgY13ZBJcaofZ7KSVLInBs9QRut4Ou8JyS3FHBGvicw3XxuZuWNtnT6gnoSRN493WJY7u6iUYDb2xtCCi4cJR00aD+yvxvg8bwofIHFOgRc32m8BLW+8M1pLbLZjox2dxn49K43whdQtPLRttN/+O5+V2w39hGBoNPLz6XplLrHdVFRZgmIwRqy06668SfxmmFBdfLJdj6XhdrlZ8TEW0tE1G9DqTFuWYFRxxyZtScJf84R0oKAcoOYWZzCsOgD9JPDWb4bz8/kAF+Qt1RWx8
+sidebar_class_name: "get api-method"
+info_path: docs/Awsapi/madrid-object-storage-system-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>getAccount</h1>
+
+<MethodEndpoint method={"get"} path={"/api/account"}></MethodEndpoint>
+
+
+
+Get details of currently Logged-in User
+
+## Request
+
+<div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"*/*"} value={"*/*"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"id"} required={false} schemaName={"int64"} qualifierMessage={undefined} schema={{"type":"integer","format":"int64"}}></SchemaItem><SchemaItem collapsible={false} name={"firstName"} required={false} schemaName={"string"} qualifierMessage={"**Possible values:** `<= 50 characters`"} schema={{"maxLength":50,"minLength":0,"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"lastName"} required={false} schemaName={"string"} qualifierMessage={"**Possible values:** `<= 50 characters`"} schema={{"maxLength":50,"minLength":0,"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"email"} required={false} schemaName={"string"} qualifierMessage={"**Possible values:** `>= 5 characters` and `<= 254 characters`"} schema={{"maxLength":254,"minLength":5,"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"imageUrl"} required={false} schemaName={"string"} qualifierMessage={"**Possible values:** `<= 256 characters`"} schema={{"maxLength":256,"minLength":0,"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"activated"} required={false} schemaName={"boolean"} qualifierMessage={undefined} schema={{"type":"boolean"}}></SchemaItem><SchemaItem collapsible={false} name={"langKey"} required={false} schemaName={"string"} qualifierMessage={"**Possible values:** `>= 2 characters` and `<= 10 characters`"} schema={{"maxLength":10,"minLength":2,"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"createdBy"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"createdDate"} required={false} schemaName={"date-time"} qualifierMessage={undefined} schema={{"type":"string","format":"date-time"}}></SchemaItem><SchemaItem collapsible={false} name={"lastModifiedBy"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"lastModifiedDate"} required={false} schemaName={"date-time"} qualifierMessage={undefined} schema={{"type":"string","format":"date-time"}}></SchemaItem><SchemaItem collapsible={false} name={"authorities"} required={false} schemaName={"string[]"} qualifierMessage={undefined} schema={{"uniqueItems":true,"type":"array","items":{"type":"string"}}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"id\": 0,\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"email\": \"string\",\n  \"imageUrl\": \"string\",\n  \"activated\": true,\n  \"langKey\": \"string\",\n  \"createdBy\": \"string\",\n  \"createdDate\": \"2024-11-11T09:24:40.073Z\",\n  \"lastModifiedBy\": \"string\",\n  \"lastModifiedDate\": \"2024-11-11T09:24:40.073Z\",\n  \"authorities\": [\n    \"string\"\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

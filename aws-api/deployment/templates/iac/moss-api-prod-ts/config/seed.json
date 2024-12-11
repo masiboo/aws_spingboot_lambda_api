@@ -1,0 +1,351 @@
+{
+  "Project": {
+    "Name": "{{Aws_PROJECT_NAME}}",
+    "Stage": "{{Aws_STAGE}}",
+    "Account": "{{Aws_ACCOUNT}}",
+    "Region": "{{Aws_REGION}}",
+    "BusinessUnit": "{{Aws_BUSINESS_UNIT}}",
+    "Profile": "{{Aws_PROFILE}}"
+  },
+
+  "Stack": {
+
+    "AwsInfrastructrePipeline": {
+      "Name": "AwsInfrastructrePipelineStack",
+      "TemplatePath": "../../pipeline/Aws-pipeline.yml",
+      "Parameters": [
+        {
+          "Key": "EnableDeploymentToDev",
+          "Value": "{{Aws_DEPLOY_TO_DEV}}"
+        },
+        {
+          "Key": "EnableDeploymentToAcc",
+          "Value": "{{Aws_DEPLOY_TO_ACC}}"
+        },
+        {
+          "Key": "EnableDeploymentToPrd",
+          "Value": "{{Aws_DEPLOY_TO_PRD}}"
+        }
+      ]
+    },
+
+    "AwsAPIInfrastructrePipeline": {
+      "Name": "AwsAPIInfrastructrePipelineStack"
+    },
+
+    "AwsApiPipeline": {
+      "Name": "AwsApiPipelineStack",
+      "suffix": "{{Aws_API_PIPELINE_SUFFIX}}",
+      "PipelineName": "AwsAPiPipeline",
+      "ActionFlow": [
+        {
+          "Name": "S3SourceClone",
+          "Stage": "SourceStage",
+          "Kind": "SourceS3Bucket",
+          "Enable": true,
+          "Detail": {
+            "BucketName": "{{Aws_CICD_BUCKET}}",
+            "BucketKey": "package.zip"
+          }
+        },
+        {
+          "Name": "DeployAllStacks",
+          "Stage": "AwsApiDev-DeployStage",
+          "Kind": "BuildCodeBuild",
+          "Enable": true,
+          "Detail": {
+            "AppConfigFile": "config/app-config-infra-pipeline-{{Aws_STAGE}}.json",
+            "BuildDeployStacks": {
+              "PreCommands": ["ls -al"],
+              "StackNameList": ["AwsApiStack"]
+            }
+          }
+        }
+      ]
+    },
+
+    "AwsInfraCfnVpcDnsWaf": {
+      "Name": "AwsCfnInfraVpcStack",
+      "TemplatePath": "../template/master.yml",
+      "InitTemplatePath": "../template/init.yml",
+      "InfrastructureTemplatePath": "../template/infra.yml",
+      "DnsTemplatePath": "../template/dns.yml",
+      "CertTemplatePath": "../template/certificates-us-east-1.yml",
+      "VPCName": "{{Aws_VPC_NAME}}",
+      "Parameters": [
+        {
+          "Key": "Environment",
+          "Value": "{{Aws_STAGE}}"
+        }
+      ]
+    },
+
+    "AwsInfraCfnBucketsECR": {
+      "Name": "AwsInfraCfnBucketsECRStack",
+      "TemplatePath": "../template/buckets.yml",
+      "Parameters": [
+        {
+          "Key": "CicdAccount",
+          "Value": "{{Aws_CICD_ACCOUNT}}"
+        },
+        {
+          "Key": "LogRetentionDays",
+          "Value": "{{Aws_LOG_RETENTION_DAYS}}"
+        }
+      ],
+      "EcrRepository": [
+        {
+          "ServiceName": "db-access"
+        },
+        {
+          "ServiceName": "miris-proxy"
+        },
+        {
+          "ServiceName": "media-process"
+        },
+        {
+          "ServiceName": "email-service"
+        }
+      ]
+    },
+
+    "AwsInfraRegistryInfra": {
+      "Name": "AwsInfraRegistryStack",
+      "S3RegistryName": "registry-bucket",
+      "DynamoDBTableName": "registry-table",
+      "ObjectQueueName": "registry-queue",
+      "ApiGateWayName": "registry-api",
+      "AuditEventsDDBTableName": "audit-events-table"
+    },
+
+    "AwsInfraRds": {
+      "Name": "AwsInfraRdsStack",
+      "ECSClusterName": "AwsInfraCluster",
+      "ClusterIdentifier": "AwsRDSDatabase",
+      "DatabaseName": "Awscoredb",
+      "VPCName": "{{Aws_VPC_NAME}}"
+    },
+
+    "AwsCoreAlbService": {
+      "Name": "AwsCoreAlbServiceStack",
+      "suffix": "build123",
+      "InternetFacing": true,
+      "VPCName" : "{{Aws_VPC_NAME}}"
+    },
+
+    "AwsInfraECSCluster": {
+      "Name": "AwsInfraECSClusterStack",
+      "ECSClusterName": "AwsInfraCluster",
+      "ClusterIdentifier": "AwsRDSDatabase",
+      "DatabaseName": "Awscoredb",
+      "VPCName": "{{Aws_VPC_NAME}}"
+    },
+
+    "AwsInfraECSPGWeb": {
+      "Name": "AwsInfraECSPGWebStack",
+      "ECSClusterName": "AwsInfraCluster",
+      "ClusterIdentifier": "AwsRDSDatabase",
+      "DatabaseName": "Awscoredb",
+      "VPCName": "{{Aws_VPC_NAME}}"
+    },
+
+    "AwsVpcDnsSSMImport": {
+      "Name": "AwsVpcDnsSSMImportStack"
+    },
+
+    "AwsCfnCertificate": {
+      "Name": "AwsCfnCertificateStack",
+      "TemplatePath": "../template/certificates-us-east-1.yml",
+      "Parameters": [
+        {
+          "Key": "VpcName",
+          "Value": "{{Aws_VPC_NAME}}"
+        }
+      ]
+    },
+
+    "AwsCfnWafCdn": {
+      "Name": "AwsCfnWafCdnStack",
+      "TemplatePath": "../template/waf.yml",
+      "Parameters": [
+        {
+          "Key": "LogRetentionDays",
+          "Value": "{{Aws_LOG_RETENTION_DAYS}}"
+        }
+      ]
+    },
+
+    "AwsCfnCloudfrontCdn": {
+      "Name": "AwsCfnCloudfrontCdnStack",
+      "TemplatePath": "../template/cloudfront.yml",
+      "Parameters": [
+        {
+          "Key": "LogRetentionDays",
+          "Value": "{{Aws_LOG_RETENTION_DAYS}}"
+        }
+      ]
+    },
+
+    "AwsFrontEnd": {
+      "Name": "AwsFrontEndStack",
+      "suffix": "{{Aws_FRONTEND_SUFFIX}}",
+      "BucketName": "Awsfrontend"
+    },
+
+    "AwsApiCert": {
+      "Name": "AwsApiCertStack"
+    },
+
+    "AwsFrontEndCertificate": {
+      "Name": "AwsUsEastCertificateStack",
+      "UpdateRegionName": "us-east-1"
+    },
+
+    "AwsWafCloudFront": {
+      "Name": "AwsWafCloudFrontStack",
+      "UpdateRegionName": "us-east-1"
+    },
+
+    "AwsApiDocs": {
+      "Name": "AwsApiDocsStack",
+      "suffix": "{{Aws_API_DOCS_SUFFIX}}",
+      "BucketName": "Awsapidocs"
+    },
+
+    "AwsCoreDBAccess": {
+      "Name": "AwsCoreDBAccessStack",
+      "InfraVersion": "'1.0.0'",
+      "DockerImageType": "ECR",
+      "DockerImageType-Desc": "HUB or ECR or LOCAL",
+      "PortNumber": 8080,
+      "InternetFacing": true,
+      "ServiceName": "db-access",
+      "EcrRepoName": "Aws/db-access",
+      "EcrAccount": "{{Aws_ECR_ACCOUNT}}",
+      "DesiredTasks": "{{Aws_DB_ACCESS_DESIRED_TASKS}}",
+      "Cpu": "{{Aws_DB_ACCESS_CPU}}",
+      "Memory": "{{Aws_DB_ACCESS_MEMORY}}",
+      "AutoScalingEnable": "{{Aws_DB_ACCESS_AUTO_SCALING_ENABLE}}",
+      "AutoScalingMinCapacity": "{{Aws_DB_ACCESS_AUTO_SCALING_MIN_CAPACITY}}",
+      "AutoScalingMaxCapacity": "{{Aws_DB_ACCESS_AUTO_SCALING_MAX_CAPACITY}}",
+      "AutoScalingTargetInvocation": "{{Aws_DB_ACCESS_AUTO_SCALING_TARGET_INVOCATION}}",
+      "AlarmThreshold": "{{Aws_DB_ACCESS_ALARM_THRESHOLD}}",
+      "SubscriptionEmails": ["{{Aws_SUBSCRIPTION_EMAIL}}"],
+      "HealthCheckPath": "/actuator/health",
+      "ServicePath": "dbaccess",
+      "Priority": 1,
+      "EnableMigrationWithLiquibase": "{{Aws_ENABLE_LIQUIBASE}}"
+    },
+
+    "AwsCoreMediaProcess": {
+      "Name": "AwsCoreMediaProcessStack",
+      "InfraVersion": "'1.0.0'",
+      "DockerImageType": "ECR",
+      "DockerImageType-Desc": "HUB or ECR or LOCAL",
+      "PortNumber": 8080,
+      "InternetFacing": true,
+      "ServiceName": "media-process",
+      "EcrRepoName": "Aws/media-process",
+      "EcrAccount": "{{Aws_ECR_ACCOUNT}}",
+      "DesiredTasks": "{{Aws_MEDIA_SERVICE_DESIRED_TASKS}}",
+      "Cpu": "{{Aws_MEDIA_SERVICE_CPU}}",
+      "Memory": "{{Aws_MEDIA_SERVICE_MEMORY}}",
+      "AutoScalingEnable": "{{Aws_MEDIA_SERVICE_AUTO_SCALING_ENABLE}}",
+      "AutoScalingMinCapacity": "{{Aws_MEDIA_SERVICE_AUTO_SCALING_MIN_CAPACITY}}",
+      "AutoScalingMaxCapacity": "{{Aws_MEDIA_SERVICE_AUTO_SCALING_MAX_CAPACITY}}",
+      "AutoScalingTargetInvocation": "{{Aws_MEDIA_SERVICE_AUTO_SCALING_TARGET_INVOCATION}}",
+      "TableName": "AwsCoreMediaLogTable",
+      "AlarmThreshold": "{{Aws_MEDIA_SERVICE_ALARM_THRESHOLD}}",
+      "SubscriptionEmails": ["{{Aws_SUBSCRIPTION_EMAIL}}"],
+      "HealthCheckPath": "/actuator/health",
+      "ServicePath": "mediaprocess",
+      "Priority": 2
+    },
+
+    "AwsCoreMirisProxy": {
+      "Name": "AwsCoreMirisProxyStack",
+      "InfraVersion": "'1.0.0'",
+      "DockerImageType": "ECR",
+      "DockerImageType-Desc": "HUB or ECR or LOCAL",
+      "PortNumber": 8081,
+      "InternetFacing": false,
+      "ServiceName": "miris-proxy",
+      "EcrRepoName": "Aws/miris-proxy",
+      "EcrAccount": "{{Aws_ECR_ACCOUNT}}",
+      "DesiredTasks": "{{Aws_MIRIS_PROXY_DESIRED_TASKS}}",
+      "Cpu": "{{Aws_MIRIS_PROXY_CPU}}",
+      "Memory": "{{Aws_MIRIS_PROXY_MEMORY}}",
+      "AutoScalingEnable": "{{Aws_MIRIS_PROXY_AUTO_SCALING_ENABLE}}",
+      "AutoScalingMinCapacity": "{{Aws_MIRIS_PROXY_AUTO_SCALING_MIN_CAPACITY}}",
+      "AutoScalingMaxCapacity": "{{Aws_MIRIS_PROXY_AUTO_SCALING_MAX_CAPACITY}}",
+      "AutoScalingTargetInvocation": "{{Aws_MIRIS_PROXY_AUTO_SCALING_TARGET_INVOCATION}}",
+      "TableName": "AwsCoreMediaLogTable",
+      "AlarmThreshold": "{{Aws_MIRIS_PROXY_ALARM_THRESHOLD}}",
+      "SubscriptionEmails": ["{{Aws_SUBSCRIPTION_EMAIL}}"],
+      "HealthCheckPath": "/actuator/health",
+      "ServicePath": "mirisproxy",
+      "Priority": 3
+    },
+
+    "AwsCoreEmailSvcProcess": {
+      "Name": "AwsCoreEmailSvctack",
+      "InfraVersion": "'1.0.0'",
+      "DockerImageType": "ECR",
+      "DockerImageType-Desc": "HUB or ECR or LOCAL",
+      "PortNumber": 8080,
+      "InternetFacing": false,
+      "ServiceName": "email-service",
+      "EcrRepoName": "Aws/email-service",
+      "EcrAccount": "{{Aws_ECR_ACCOUNT}}",
+      "DesiredTasks": "{{Aws_EMAIL_SVC_DESIRED_TASKS}}",
+      "Cpu": "{{Aws_EMAIL_SVC_CPU}}",
+      "Memory": "{{Aws_EMAIL_SVC_MEMORY}}",
+      "AutoScalingEnable": "{{Aws_EMAIL_SVC_AUTO_SCALING_ENABLE}}",
+      "AutoScalingMinCapacity": "{{Aws_EMAIL_SVC_AUTO_SCALING_MIN_CAPACITY}}",
+      "AutoScalingMaxCapacity": "{{Aws_EMAIL_SVC_AUTO_SCALING_MAX_CAPACITY}}",
+      "AutoScalingTargetInvocation": "{{Aws_EMAIL_SVC_AUTO_SCALING_TARGET_INVOCATION}}",
+      "TableName": "AwsCoreMediaLogTable",
+      "AlarmThreshold": "{{Aws_EMAIL_SVC_ALARM_THRESHOLD}}",
+      "SubscriptionEmails": ["{{Aws_SUBSCRIPTION_EMAIL}}"],
+      "HealthCheckPath": "/actuator/health",
+      "ServicePath": "emailsvc",
+      "Priority": 4
+    },
+
+    "AwsCoreLoadTester": {
+      "Name": "AwsCoreLoadTesterStack",
+      "TargetStack": "AwsCoreDBAccessStack",
+      "EcrRepo": "{{Aws_ACCOUNT}}.dkr.ecr.{{Aws_REGION}}.amazonaws.com/Awscicd/media-process-cicd",
+      "DesiredTasks": 1,
+      "Environment": {
+        "RequestCount": 10,
+        "SleepPeriodInSec": 1
+      }
+    },
+
+    "AwsApiV1": {
+      "Name": "AwsApiV1Stack",
+      "suffix": "{{Aws_API_V1_SUFFIX}}"
+    },
+
+    "AwsApiV2": {
+      "Name": "AwsApiV2Stack",
+      "suffix": "{{Aws_API_V2_SUFFIX}}"
+    },
+
+    "AwsAuth": {
+      "Name": "AwsAuthStack",
+      "suffix": "{{Aws_AUTH_SUFFIX}}"
+    },
+
+    "AwsEvents": {
+      "Name": "AwsEventsStack",
+      "suffix": "{{Aws_EVENTS_SUFFIX}}"
+    },
+
+    "AwsAuthTrigger": {
+      "Name": "AwsAuthTriggerStack",
+      "suffix": "{{Aws_AUTH_TRIGGER_SUFFIX}}"
+    }
+  }
+}

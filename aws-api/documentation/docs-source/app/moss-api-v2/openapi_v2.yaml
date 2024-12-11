@@ -1,0 +1,804 @@
+openapi: 3.0.0
+info:
+  title: Madrid Object Storage System API
+  description: Madrid Storage System API
+  license:
+    name: private
+  version: 0.2.0
+servers:
+  - url: ''
+    description: Generated server url
+paths:
+ /api/artefacts:
+    get:
+      tags:
+        - Artefacts
+      description: PUT
+      parameters:
+        - $ref: '#/components/parameters/mirisDocIdParam'
+        - $ref: '#/components/parameters/docTypeParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ArtefactSummaryDTO'
+        '404':
+          description: Artefact not found
+          content:
+           application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Failure message
+                  example: "Artefacts Not found"
+        '400':
+          description: Invalid document type
+          content:
+           application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Failure message
+                  example: "Invalid 'docType' provided :'log'  and allowed values are [DOCUMENT, LOGO, MEDIA]"
+
+  
+
+
+components:
+  headers:
+    AccessControlAllowOrigin:
+      schema:
+        type: string
+    AccessControlAllowMethods:
+      schema:
+        type: string
+    AccessControlAllowHeaders:
+      schema:
+        type: string
+    Location:
+      schema:
+        type: string
+  responses:
+    200Cors:
+      description: Options Response.
+      headers:
+        Access-Control-Allow-Origin:
+          schema:
+            type: string
+        Access-Control-Allow-Methods:
+          schema:
+            type: string
+        Access-Control-Allow-Headers:
+          schema:
+            type: string
+      content: {}
+  parameters:
+    versionIdParam:
+      name: versionId
+      in: query
+      description: Version Identifier
+      required: false
+      schema:
+        type: string
+    webhooksParam:
+      name: webhooks+
+      in: path
+      required: true
+      description: Web Hook Param
+      schema:
+        type: string
+    webhookIdParam:
+      name: webhookId
+      in: path
+      required: true
+      description: Web Hook Param
+      schema:
+        type: string
+    siteIdParam:
+      name: siteId
+      in: query
+      description: Site Identifier.
+      required: false
+      schema:
+        type: string
+    limitParam:
+      name: limit
+      in: query
+      description: Limit Results
+      required: false
+      schema:
+        type: string
+    artefactIdParam:
+      name: artefactId
+      in: path
+      description: Artefact Query Identifier.
+      required: true
+      schema:
+        type: string
+    mirisDocIdParam:
+      name: mirisDocId
+      in: query
+      description: miris document Id Query Identifier.
+      required: true
+      schema:
+        type: string
+    docTypeParam:
+      name: DocumentType
+      in: query
+      description: Type of the document to filter the artefact.
+      required: false
+      schema:
+        type: string
+        enum:
+          - DOCUMENT
+          - LOGO
+          - MEDIA
+    tagkeyParam:
+      name: tagKey
+      in: path
+      description: Tag Key.
+      required: true
+      schema:
+        type: string
+    contentLengthParam:
+      name: contentLength
+      in: query
+      description: Indicates the size of the entity-body.
+      required: false
+      schema:
+        type: integer
+    artefactIdQueryParam:
+      name: artefactId
+      in: query
+      description: Artefact Identifier.
+      schema:
+        type: string
+        format: uuid
+    durationParam:
+      name: duration
+      in: query
+      description: Indicates the number of hours request is valid for.
+      required: true
+      schema:
+        type: integer
+    batchIdPathParam:
+      name: batchIdPathParam
+      in: path
+      required: true
+      schema:
+        type: string
+    batchSeqPathParam:
+      name: batchSequence
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    WipoUserDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        wipoId:
+          type: string
+        username:
+          type: string
+        cognitoId:
+          type: string
+    ArtefactSummaryDTO:
+      type: object
+      x-examples: {}
+      properties:
+        id:
+          type: integer
+          format: int64
+        artefactName:
+          type: string
+        artefactClassType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - MULTIMEDIA
+            - SOUND
+            - DOCUMENT
+        status:
+          type: string
+          enum:
+            - INIT
+            - INSERTED
+            - INDEXED
+            - DELETED
+        s3Bucket:
+          type: string
+        s3Key:
+          type: string            
+        mirisDocId:
+          type: string
+        contentLength:
+          type: string          
+        sizeWarning:
+          type: boolean
+        
+    ArtefactDTO:
+      type: object
+      x-examples: {}
+      properties:
+        id:
+          type: integer
+          format: int64
+        artefactName:
+          type: string
+        artefactClassType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - MULTIMEDIA
+            - SOUND
+            - DOCUMENT
+        status:
+          type: string
+          enum:
+            - INIT
+            - INSERTED
+            - INDEXED
+            - DELETED
+        error:
+          type: string
+        indexationDate:
+          type: string
+          format: date
+        archiveDate:
+          type: string
+          format: date
+        mirisDocId:
+          type: string
+        sizeWarning:
+          type: boolean
+        contentLength:
+          type: string
+        artefactItemTags:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactItemTagDTO'
+        items:
+          $ref: '#/components/schemas/ArtefactItemDTO'
+    ArtefactInput:
+      type: object
+      description: Uploading a New Artefact with exis MIRIS Doc ID
+      x-examples:
+        example-1:
+          artefactName: string
+          artefactClassType: CERTIFICATE
+          artefactItemTags:
+            - id: 0
+              value: string
+              key: string
+              insertedDate: '2019-08-24'
+              type: string
+          items:
+            - storage: string
+              path: string
+              filename: string
+              contentType: string
+          mirisDocId: string
+      title: ArtefactInput
+      properties:
+        artefactName:
+          type: string
+        artefactClassType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - MULTIMEDIA
+            - SOUND
+            - DOCUMENT
+        artefactItemTags:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactItemTagNewInput'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactNewRequestItem'
+        mirisDocId:
+          type: string
+        contentType:
+          type: string
+          enum:
+            - "application/pdf"
+            - "image/gif"
+            - "image/png"
+            - "image/tiff"
+            - "image/x-tiff"
+            - "image/jpeg"  
+            - "image/pjpeg"
+            - "audio/mpeg"
+            - "audio/wav"
+      required:
+        - artefactName
+        - artefactClassType
+        - artefactItemTags
+        - items
+        - contentType
+    ArtefactBatchInput:
+      type: object
+      description: Uploading a New Artefact
+      x-examples: {}
+      title: ArtefactBatchInput
+      properties:
+        artefactName:
+          type: string
+        artefactClassType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - MULTIMEDIA
+            - SOUND
+            - DOCUMENT
+        artefactItemTags:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactItemTagNewInput'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactNewRequestItem'
+        batch:
+          $ref: '#/components/schemas/BatchNewRequest'
+        mirisDocId:
+          type: string
+      required:
+        - artefactName
+        - artefactClassType
+        - items
+    ArtefactItemDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        storage:
+          type: string
+        path:
+          type: string
+        filename:
+          type: string
+        contentType:
+          type: string
+        totalPages:
+          type: integer
+          format: int32
+      x-examples:
+        example-1:
+          id: -9223372036854776000
+          storage: string
+          path: string
+          filename: string
+          contentType: string
+          totalPages: -2147483648
+    ArtefactBatchItemDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        storage:
+          type: string
+        path:
+          type: string
+        filename:
+          type: string
+        artefactType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - MULTIMEDIA
+            - SOUND
+            - DOCUMENT
+        contentType:
+          type: string
+        totalPages:
+          type: integer
+          format: int32
+        jobId:
+          type: string
+        jobStatus:
+          type: string
+      required:
+        - id
+        - path
+        - filename
+        - artefactType
+    ArtefactNewRequestItem:
+      type: object
+      properties:
+        storage:
+          type: string
+        path:
+          type: string
+        filename:
+          type: string
+        contentType:
+          type: string
+      required:
+        - filename
+      x-examples:
+        example-1:
+          storage: string
+          path: string
+          filename: string
+          contentType: string
+    ArtefactItemTagDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        value:
+          type: string
+        key:
+          type: string
+        insertedDate:
+          type: string
+          format: date
+        type:
+          type: string
+    ArtefactItemTagNewInput:
+      type: object
+      properties:
+        value:
+          type: string
+        key:
+          type: string
+        type:
+          type: string
+      x-examples:
+        example-1:
+          value: string
+          key: string
+          type: string
+    BatchDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        batch_sequence:
+          type: string
+        lockedDate:
+          type: string
+          format: date
+        creatioDate:
+          type: string
+          format: date
+        lastModificationDate:
+          type: string
+          format: date
+        status:
+          type: string
+          enum:
+            - INIT
+            - INSERTED
+            - COMPLETED
+            - DELETED
+        operator:
+          $ref: '#/components/schemas/WipoUserDTO'
+        lockedBy:
+          $ref: '#/components/schemas/WipoUserDTO'
+        lastModUser:
+          $ref: '#/components/schemas/WipoUserDTO'
+        artefacts:
+          $ref: '#/components/schemas/ArtefactDTO'
+    BatchNewRequest:
+      type: object
+      title: ''
+      x-examples: {}
+      properties:
+        batchSequence:
+          type: string
+        creationDate:
+          type: string
+          format: date
+    AdminUserDTO:
+      required:
+        - login
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        firstName:
+          maxLength: 50
+          minLength: 0
+          type: string
+        lastName:
+          maxLength: 50
+          minLength: 0
+          type: string
+        email:
+          maxLength: 254
+          minLength: 5
+          type: string
+        imageUrl:
+          maxLength: 256
+          minLength: 0
+          type: string
+        activated:
+          type: boolean
+        langKey:
+          maxLength: 10
+          minLength: 2
+          type: string
+        createdBy:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        lastModifiedDate:
+          type: string
+          format: date-time
+        authorities:
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+    artefactItemUrl:
+      type: object
+      properties:
+        artefactId:
+          type: string
+        signedS3Url:
+          type: string
+        jobId:
+          type: string
+        collectionId:
+          type: string
+      x-examples:
+        example-1:
+          artefactId: string
+          signedS3Url: string
+          jobId: string
+          collectionId: string
+    ArtefactItemsResults:
+      type: object
+      properties:
+        next:
+          type: string
+        previous:
+          type: string
+        documents:
+          $ref: '#/components/schemas/ArtefactItemDTO'
+    ArtefactItemsVersions:
+      type: object
+      properties:
+        next:
+          type: string
+        versions:
+          $ref: '#/components/schemas/ArtefactItemVersions'
+    ArtefactItemVersions:
+      type: array
+      items:
+        $ref: '#/components/schemas/ArtefactItemVersion'
+    ArtefactItemVersion:
+      required:
+        - versionId
+      type: object
+      properties:
+        versionId:
+          type: string
+        lastModifiedDate:
+          type: string
+    ArtefactContent:
+      type: object
+      properties:
+        content:
+          type: string
+        contentUrl:
+          type: string
+        contentType:
+          type: string
+        isBase64:
+          type: boolean
+    ArtefactItemsTags:
+      type: object
+      properties:
+        next:
+          type: string
+        previous:
+          type: string
+        tags:
+          $ref: '#/components/schemas/ArtefactItemTags'
+    ArtefactItemTags:
+      type: array
+      items:
+        $ref: '#/components/schemas/ArtefactItemTag'
+    ArtefactItemTag:
+      type: object
+      properties:
+        insertedDate:
+          type: string
+        artefactItemId:
+          type: string
+        type:
+          type: string
+        userId:
+          type: string
+        value:
+          type: string
+        key:
+          type: string
+      required:
+        - value
+        - key
+    ArtefactItemTagValueBody:
+      required:
+        - value
+      type: object
+      properties:
+        value:
+          type: string
+      x-examples: {}
+    ArtefactUrl:
+      type: object
+      x-examples:
+        example-1:
+          artefactId: string
+          url: string
+      properties:
+        artefactId:
+          type: string
+        url:
+          type: string
+
+    ArtefactJob:
+      type: object
+      x-examples:
+        example-1:
+          id: string
+          path: string
+          filename: string
+          jobStatus: string
+          artefactId: string
+          creationDate: string
+          lastModDate: string
+      properties:
+        id:
+          type: string
+          format: int64
+        path:
+          type: string
+        filename:
+          type: string
+        jobStatus:
+          type: string
+          enum:
+              - INIT
+              - UPLOADED
+              - ERROR
+        artefactId:
+          type: string
+        creationDate:
+          type: string
+        lastModDate:
+          type: string
+      required:
+        - id
+        - jobStatus
+        - artefactId
+    ArtefactBatchUploadDTO:
+      type: object
+      properties:
+        type:
+          type: string  
+        artefactName:
+          type: string
+        artefactClassType:
+          type: string
+        batchSequence:
+          type: string
+        creationDate:
+          type: string
+        requestType:
+         type: string
+        filename:
+         type: string
+        path:
+         type: string
+        contentType:
+         type: string
+         enum:
+          - PDF
+          - PNG
+          - JPG
+          - JPEG
+          - TIFF
+          - WAV
+          - MP3
+          - MP4
+        user:
+          type: string        
+  securitySchemes:
+    AuthorizationCognito:
+      type: oauth2
+      flows: {}
+      x-amazon-apigateway-authorizer:
+        type: jwt
+        jwtConfiguration:
+          issuer:
+            'Fn::Sub': 'https://cognito-idp.${AWS::Region}.amazonaws.com/${CognitoUserPool}'
+          audience:
+            - 'Fn::Sub': '${CognitoUserPoolClient}'
+        identitySource: $request.header.Authorization
+    sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      x-amazon-apigateway-authtype: awsSigv4
+  x-amazon-apigateway-integrations:
+    lambdaApi200:
+      uri:
+        'Fn::Sub': 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ArtefactsApiRequests.Arn}/invocations'
+      responses:
+        default:
+          statusCode: '200'
+          responseParameters:
+            method.response.header.Access-Control-Allow-Methods: '''*'''
+            method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key'''
+            method.response.header.Access-Control-Allow-Origin: '''*'''
+      passthroughBehavior: when_no_templates
+      httpMethod: POST
+      type: aws_proxy
+      payloadFormatVersion: '1.0'
+    lambdaApi201:
+      uri:
+        'Fn::Sub': 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ArtefactsApiRequests.Arn}/invocations'
+      responses:
+        default:
+          statusCode: '201'
+          responseParameters:
+            method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key'''
+            method.response.header.Access-Control-Allow-Methods: '''*'''
+            method.response.header.Access-Control-Allow-Origin: '''*'''
+      passthroughBehavior: WHEN_NO_TEMPLATES
+      httpMethod: POST
+      type: aws_proxy
+      payloadFormatVersion: '1.0'
+x-amazon-apigateway-gateway-responses:
+  UNAUTHORIZED:
+    statusCode: 401
+    responseParameters:
+      gatewayresponse.header.Access-Control-Allow-Methods: '''*'''
+      gatewayresponse.header.Access-Control-Allow-Origin: '''*'''
+      gatewayresponse.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key'''
+x-amazon-apigateway-cors:
+  allowOrigins:
+    - '*'
+  maxAge: 3600
+  allowMethods:
+    - '*'
+  allowHeaders:
+    - '*'

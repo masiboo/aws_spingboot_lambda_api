@@ -1,0 +1,48 @@
+---
+id: soft-delete-artefact
+title: "SoftDelete Artefact"
+description: "PUT"
+sidebar_label: "SoftDelete Artefact"
+hide_title: true
+hide_table_of_contents: true
+api: eJzFVctu2zoQ/RWCyKIFbDkNgrvQzkhSIGiLpnWCLoouxuLIYiqRLB92XMH/fmck2ZHjtNt6YdPUzJkzR/NoZYRVkPl3OfcRSyhikD8mUmEovHZRWyNzefdwLyfSgYcGI3o2b6WhP/QMBrdbRSaarR3ESr6E2KOLLwn9VtwqNFGXGn1Gph5/Je1RyTz6hBMZigobkHkr49ZxkBC9Niu52xE169ADo1LEXC5sGa+xJlpiH6IDDM6agIExLs7P+eeYz+cPZFZYE4kHPwXnal10uLPHwCbtKQ27fMQO33lmEXUfoMEQYIWnfE9EECEVBVmLvctE4hM0rsaxRH0+am9cprreUu78mcjL17K5NWuotRIKIvyDvG68t/6QU0dzSKvDGc7Td/yHiCY8Qn9OXAcBtUdQW6GNuL75eHN/cy1HcNOLP0DcVyhgBJOMNgqfSEQwShRghLFRLFE04H/ybRBqUDkFSknEirzmd7cjnS9PdT4wZbTSJqP+udrjCnqpwoGl2OhYCSqQ9rldd0OqlCt1dWW5m1zqeHED53IGTs/29mHW6zU7QqBWRb/eT4Tka3KrYnQhn81ANdpkjQ0ha0B5rTKF62yDy3fZRjubaZKM+zlgkbyO2wXr1EsxT8TH69+dkFd2ZXS0YwGBnl9Q8LK2G3agFJ6m0MBva6ZEegURN7CdwgCDfuT8uOEU6fvKmlKvUj9L2ECHkHrT9ybPF2k5SqboSUy1ctlZO/+2yPOvuCLHXdbHhU3ICtvMztqB7wMpc2dtTTJPJCSl0RTYyfSMfmJ8VZNZJJcf5KS7GUnC2OTZVZ7xnMQQs4pahCbnkUxdmwS9Wl+OkiUxPuCW8h2G9bHHMK97NPlnDfdgm7Do8DmSNmX/SnTsSu9T94rF5662xSJaT8UpFtsQsen66mUVDw6vWlIPIU1vxh+IO6/XxIi15HLrIc6z/7JzvnI2xAbMyJ7XgjjdC0cU2ufOHTbckGjEpzhzNZA6BN5VdTs0xXeWlCwPbdGBchg65KNdSIVdESv2aNslBHzw9W7H1794AdI9HdfgNSzrviyUDnymNiyhDvgXsm++DvvyrfjrWn01nf3LNFwWwySVdPxJdXK0zbsaHGqD+fUGc1pJLo5cT0Ye9/RhoLCuu93/BDPqUA==
+sidebar_class_name: "put api-method"
+info_path: docs/Awsapi/madrid-object-storage-system-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>SoftDelete Artefact</h1>
+
+<MethodEndpoint method={"put"} path={"/api/artefacts/delete/{artefactId}"}></MethodEndpoint>
+
+
+
+PUT
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"artefactId","in":"path","description":"Artefact Query Identifier.","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"A success message","example":"Artefact Deleted successfully"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"Artefact Deleted successfully\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Invalid data
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"Error message"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"example-1"} value={"example-1"}><ResponseSamples responseExample={"{\n  \"message\": \"Artefact is already in DELETED\"\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"example-2"} value={"example-2"}><ResponseSamples responseExample={"{\n  \"message\": \"The artefact is unindexed and can not be marked as deleted using this API\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Artefact not found
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"Error message","example":"The artefact is not found with id {artefactId}"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"The artefact is not found with id {artefactId}\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

@@ -1,0 +1,74 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+#      - python -m venv venv
+#      - source venv/bin/activate
+      - pip install --upgrade pip
+      - pip install awscli
+  pre_build:
+    commands:
+      - echo Retrieving information from artifacts...
+      - DATE=$(date '+%y-%m-%d')
+      - ls -al $CODEBUILD_SRC_DIR
+      - COMMIT="0"
+      - PREFIX=$PROJECT_PREFIX
+      - ARTIFACTS_ACCOUNT=$xxxxxx
+      - if [ -f "cicd-package.json" ]; then COMMIT=$(jq -r '.build.number' cicd-package.json | sed 's/null/0/g' | sed 's/BUILD_NUMBER/0/g'); fi
+      - echo commit $COMMIT
+      - SHORT_SOURCE_VERSION=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)
+      - echo $SHORT_SOURCE_VERSION
+      - BUILD_ID=$DATE.$COMMIT.$SHORT_SOURCE_VERSION
+#      - echo Building repository URLs
+#      - echo $CODEBUILD_SRC_DIR_EcrArtifactMOABackend
+#      - MOA_BACK_URI=${ARTIFACTS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/${MOABACK_REPO}
+#      - MOA_BACK_TAG=$(cat $CODEBUILD_SRC_DIR_EcrArtifactMOABackend/imageDetail.json | jq -r '.ImageTags[] | select(startswith("latest") | not)')
+  build:
+    commands:
+      - echo Building the parameters file...
+      - ARTIFACTS_BUCKET=${PREFIX}-artifacts-${AWS_REGION}-${ARTIFACTS_ACCOUNT}
+      # AWS CloudFormation Artifacts (Template Configuration File)
+      # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/continuous-delivery-codepipeline-cfn-artifacts.html
+      - printf '{"Parameters":{' > templates/iac/master-parameters.json
+      - printf '"BuildId":"%s",' $BUILD_ID >> templates/iac/master-parameters.json
+      - printf '"BusinessUnitCodeName":"%s",' "${BUDGET_UNIT_CODE}" >> templates/iac/master-parameters.json
+      - printf '"AppId":"%s",' "${APP_ID}" >> templates/iac/master-parameters.json
+      - printf '"BusinessImpactLevelName":"%s",' "${BUSINESS_IMPACT_LEVEL}" >> templates/iac/master-parameters.json
+      - printf '"BusinessOwnerName":"%s",' "${BUSINESS_OWNER}" >> templates/iac/master-parameters.json
+      - printf '"BusinessUnitNameName":"%s",' "${BUSINESS_UNIT_NAME}" >> templates/iac/master-parameters.json
+      - printf '"DataClassificationName":"%s",' "${DATA_CLASSIFICATION}" >> templates/iac/master-parameters.json
+      - printf '"TechnicalOwnerName":"%s"' "${TECHNICAL_OWNER}" >> templates/iac/master-parameters.json
+      - printf '},' >> templates/iac/master-parameters.json
+      - printf '"Tags":{' >> templates/iac/master-parameters.json
+      - printf '"budget-unit-code":"%s",' "${BUDGET_UNIT_CODE}" >> templates/iac/master-parameters.json
+      - printf '"business-impact-level":"%s",' "${BUSINESS_IMPACT_LEVEL}" >> templates/iac/master-parameters.json
+      - printf '"business-owner":"%s",' "${BUSINESS_OWNER}" >> templates/iac/master-parameters.json
+      - printf '"business-unit-name":"%s",' "${BUSINESS_UNIT_NAME}" >> templates/iac/master-parameters.json
+      - printf '"data-classification":"%s",' "${DATA_CLASSIFICATION}" >> templates/iac/master-parameters.json
+      - printf '"service":"%s",' "${PREFIX}" >> templates/iac/master-parameters.json
+      - printf '"technical-owner":"%s"}}' "${TECHNICAL_OWNER}" >> templates/iac/master-parameters.json
+      - cat templates/iac/master-parameters.json
+  post_build:
+    commands:
+      - echo Copying application, database and cloudFormation templates to S3
+      - zip templates/iac/master.zip templates/iac/master.yml templates/iac/master-parameters.json
+      - aws s3 cp --recursive artifacts s3://$ARTIFACTS_BUCKET/builds/$BUILD_ID/artifacts/
+      - aws s3 cp --recursive templates s3://$ARTIFACTS_BUCKET/builds/$BUILD_ID/templates/
+
+artifacts:
+  files:
+    - '**/*'
+  secondary-artifacts:
+    BuildArtifact:
+      files:
+        - templates/iac/master.yml
+        - templates/iac/master-parameters.json
+        - templates/iac/master*.yml
+
+#artifacts:
+#  files:
+#    - templates/iac/master.yml
+#    - templates/iac/master-parameters.json
+#  name: BuildArtifact

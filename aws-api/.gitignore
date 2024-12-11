@@ -1,0 +1,22 @@
+
+.classpath.txt
+target
+.classpath
+.project
+.idea
+.settings
+.vscode
+*.iml
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+iac/runtime.zip
+iac/Aws-api-java/.DS_Store
+.DS_Store
+iac/Aws-api-java/src/main/java/org/wipo/CdkApp.java
+notes.md
+notes.org
+
+deployment/package.zip
+notes/

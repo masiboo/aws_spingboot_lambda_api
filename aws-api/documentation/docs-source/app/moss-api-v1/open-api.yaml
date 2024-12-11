@@ -1,0 +1,540 @@
+openapi: "3.0.1"
+info:
+  title: "Aws-registry-api-dev-eu-central-1-551493771163"
+  version: "2024-01-18 13:05:20UTC"
+servers:
+- url: "https://i69z03dlxg.execute-api.eu-central-1.amazonaws.com/{basePath}"
+  variables:
+    basePath:
+      default: ""
+tags:
+- name: "aws:cloudformation:stack-id"
+  x-amazon-apigateway-tag-value: "arn:aws:cloudformation:eu-central-1:551493771163:stack/Aws-AwsInfraRegistryStack/91eef320-9a63-11ee-abd2-021ae61b0a9b"
+- name: "aws:cloudformation:stack-name"
+  x-amazon-apigateway-tag-value: "Aws-AwsInfraRegistryStack"
+- name: "aws:cloudformation:logical-id"
+  x-amazon-apigateway-tag-value: "RegistryConstructAwsAdminApi575CCD14"
+paths:
+  /api/v1/artefact-notes/{id}:
+    delete:
+      responses:
+        default:
+          description: "Default response for DELETE /api/v1/artefact-notes/{id}"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-artefact-note-delete-by-id-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+    - name: "id"
+      in: "path"
+      description: "Generated path parameter for id"
+      required: true
+      schema:
+        type: "string"
+  /api/artefacts:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/artefacts"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-all-artefacts-function-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/artefacts/by-doc-id/{mirisDocId}:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/artefacts/by-doc-id/{mirisDocId}"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-artefact-by-doc-id-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+    - name: "mirisDocId"
+      in: "path"
+      description: "Generated path parameter for mirisDocId"
+      required: true
+      schema:
+        type: "string"
+  /api/artefacts/{artefactId}:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/artefacts/{artefactId}"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-artefact-by-id-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+    - name: "artefactId"
+      in: "path"
+      description: "Generated path parameter for artefactId"
+      required: true
+      schema:
+        type: "string"
+  /api/artefacts/{artefactId}/info:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/artefacts/{artefactId}/info"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-artefact-info-function-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+    - name: "artefactId"
+      in: "path"
+      description: "Generated path parameter for artefactId"
+      required: true
+      schema:
+        type: "string"
+  /api/artefacts/{artefactId}/url:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/artefacts/{artefactId}/url"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-artefact-byartefactid-function-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+    - name: "artefactId"
+      in: "path"
+      description: "Generated path parameter for artefactId"
+      required: true
+      schema:
+        type: "string"
+  /api/batch/{batchIdPathParam}:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/batch/{batchIdPathParam}"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-batch-detail-by-id-function-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+    - name: "batchIdPathParam"
+      in: "path"
+      description: "Generated path parameter for batchIdPathParam"
+      required: true
+      schema:
+        type: "string"
+  /api/batches:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/batches"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-all-batch-function-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/healthcheck:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/healthcheck"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-healthcheck-function-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/job/status/{requestId}:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/job/status/{requestId}"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-all-job-status-by-requestid-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+    - name: "requestId"
+      in: "path"
+      description: "Generated path parameter for requestId"
+      required: true
+      schema:
+        type: "string"
+  /api/job/{jobid}/status:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/job/{jobid}/status"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-job-status-by-id-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+    - name: "jobid"
+      in: "path"
+      description: "Generated path parameter for jobid"
+      required: true
+      schema:
+        type: "string"
+  /api/jobs:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/jobs"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-all-jobs-status-and-date-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/v1/validate/documents/{mirisDocId}:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/v1/validate/documents/{mirisDocId}"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-validate-miris-doc-id-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+    - name: "mirisDocId"
+      in: "path"
+      description: "Generated path parameter for mirisDocId"
+      required: true
+      schema:
+        type: "string"
+  /api/v2/artefacts/by-doc-id:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/v2/artefacts/by-doc-id"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-artefact-by-doc-id-v2-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/v2/healthcheck:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/v2/healthcheck"
+      security:
+      - AwsAuthorizer: []
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-healthcheck-function-v2-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/v2/job/{jobid}/status:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/v2/job/{jobid}/status"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-job-status-by-id-v2-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+    - name: "jobid"
+      in: "path"
+      description: "Generated path parameter for jobid"
+      required: true
+      schema:
+        type: "string"
+  /api/v2/jobs:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/v2/jobs"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-all-jobs-by-status-and-date-v2-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/v2/version:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/v2/version"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-versioncheck-function-v2-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/version:
+    get:
+      responses:
+        default:
+          description: "Default response for GET /api/version"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-versioncheck-function-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/artefacts/upload:
+    post:
+      responses:
+        default:
+          description: "Default response for POST /api/artefacts/upload"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-signed-url-function-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/artefacts/validate:
+    post:
+      responses:
+        default:
+          description: "Default response for POST /api/artefacts/validate"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-artefact-input-validate-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/batches/upload/{scannedApp}:
+    post:
+      responses:
+        default:
+          description: "Default response for POST /api/batches/upload/{scannedApp}"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-signed-url-batch-function-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+    - name: "scannedApp"
+      in: "path"
+      description: "Generated path parameter for scannedApp"
+      required: true
+      schema:
+        type: "string"
+  /api/v1/artefact-notes:
+    post:
+      responses:
+        default:
+          description: "Default response for POST /api/v1/artefact-notes"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-artefact-note-creation-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/v2/artefact-notes:
+    post:
+      responses:
+        default:
+          description: "Default response for POST /api/v2/artefact-notes"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-artefact-notes-by-filter-criteria-v2-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/v2/artefacts:
+    post:
+      responses:
+        default:
+          description: "Default response for POST /api/v2/artefacts"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-artefacts-by-filter-criteria-v2-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/v2/artefacts/convert/gif-to-jpg:
+    post:
+      responses:
+        default:
+          description: "Default response for POST /api/v2/artefacts/convert/gif-to-jpg"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-image-converter-gif-to-jpg-v2-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/v2/artefacts/upload:
+    post:
+      responses:
+        default:
+          description: "Default response for POST /api/v2/artefacts/upload"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-signed-url-function-v2-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/v2/email:
+    post:
+      responses:
+        default:
+          description: "Default response for POST /api/v2/email"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-send-email-v2-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/artefacts/delete/{artefactId}:
+    put:
+      responses:
+        default:
+          description: "Default response for PUT /api/artefacts/delete/{artefactId}"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-delete-artefact-by-id-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+    - name: "artefactId"
+      in: "path"
+      description: "Generated path parameter for artefactId"
+      required: true
+      schema:
+        type: "string"
+  /api/artefacts/index/{artefactId}:
+    put:
+      responses:
+        default:
+          description: "Default response for PUT /api/artefacts/index/{artefactId}"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-index-artefact-by-id-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+    - name: "artefactId"
+      in: "path"
+      description: "Generated path parameter for artefactId"
+      required: true
+      schema:
+        type: "string"
+  /api/batches/delete/{batchSeq}:
+    put:
+      responses:
+        default:
+          description: "Default response for PUT /api/batches/delete/{batchSeq}"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-delete-artefact-by-batch-seq-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+    - name: "batchSeq"
+      in: "path"
+      description: "Generated path parameter for batchSeq"
+      required: true
+      schema:
+        type: "string"
+  /api/batches/lock/{batchSeq}:
+    put:
+      responses:
+        default:
+          description: "Default response for PUT /api/batches/lock/{batchSeq}"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-lock-artefact-by-batch-seq-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+    - name: "batchSeq"
+      in: "path"
+      description: "Generated path parameter for batchSeq"
+      required: true
+      schema:
+        type: "string"
+  /api/batches/unlock/{batchSeq}:
+    put:
+      responses:
+        default:
+          description: "Default response for PUT /api/batches/unlock/{batchSeq}"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-unlock-artefact-by-batch-seq-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+    - name: "batchSeq"
+      in: "path"
+      description: "Generated path parameter for batchSeq"
+      required: true
+      schema:
+        type: "string"
+  /api/v2/batches/delete/{batchSeq}:
+    put:
+      responses:
+        default:
+          description: "Default response for PUT /api/v2/batches/delete/{batchSeq}"
+      security:
+      - AwsAuthorizer: []
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-delete-artefact-by-batch-seq-v2-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+    - name: "batchSeq"
+      in: "path"
+      description: "Generated path parameter for batchSeq"
+      required: true
+      schema:
+        type: "string"
+components:
+  securitySchemes:
+    AwsAuthorizer:
+      type: "oauth2"
+      flows: {}
+      x-amazon-apigateway-authorizer:
+        identitySource: "$request.header.Authorization"
+        jwtConfiguration:
+          audience:
+          - "6gbrm3d6et5vrmcbsqkif48von"
+          issuer: "https://cognito-idp.eu-central-1.amazonaws.com/eu-central-1_ECH0G3AlU"
+        type: "jwt"
+x-amazon-apigateway-cors:
+  allowMethods:
+  - "GET"
+  - "HEAD"
+  - "OPTIONS"
+  - "POST"
+  allowHeaders:
+  - "*"
+  - "authorization"
+  maxAge: 864000
+  allowCredentials: false
+  allowOrigins:
+  - "*"
+x-amazon-apigateway-importexport-version: "1.0"

@@ -1,0 +1,96 @@
+FROM goodforgod/amazonlinux-graalvm:23.0.0-java17 AS build-aot
+# we need libraries from AL2 for custom runtime..
+ENV JAVA_HOME /usr/lib/graalvm
+
+# install WIPO items
+
+RUN echo "#Added , the client\'s certificate" >> /etc/pki/tls/certs/ca-bundle.crt
+COPY certs/host-bundle.crt .
+RUN cat host-bundle.crt >> /etc/pki/tls/certs/ca-bundle.crt
+
+#RUN microdnf install -y unzip zip
+
+RUN mkdir $HOME/.m2
+RUN touch $HOME/.m2/settings.xml
+
+RUN echo \
+ " <settings \
+	xmlns='http://maven.apache.org/SETTINGS/1.0.0' \
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' \
+	xsi:schemaLocation='http://maven.apache.org/SETTINGS/1.0.0 \
+						http://maven.apache.org/xsd/settings-1.0.0.xsd'> \
+	<profiles> \
+		<profile> \
+			<id>wipo</id> \
+			<repositories> \
+				<repository> \
+          			<id>wipo-public</id> \
+          			<name>wipo public repo</name> \
+          			<url>https://intranet.wipo.int/nexus/repository/wipo-public</url> \
+          			<releases><enabled>true</enabled></releases> \
+          			<snapshots><enabled>true</enabled></snapshots> \
+                </repository> \
+		    </repositories> \
+			<pluginRepositories> \
+				<pluginRepository> \
+					<id>wipo-plugins</id> \
+					<name>wipo repo plugins</name> \
+					<url>https://intranet.wipo.int/nexus/repository/wipo-public</url> \
+					<releases> \
+						<enabled>true</enabled> \
+					</releases> \
+					<snapshots> \
+						<enabled>true</enabled> \
+					</snapshots> \
+				</pluginRepository> \
+			</pluginRepositories> \
+		</profile> \
+	</profiles> \
+	<activeProfiles> \
+		<!--make the profile active all the time --> \
+		<activeProfile>wipo</activeProfile> \
+	</activeProfiles> \
+</settings>" \
+    >> $HOME/.m2/settings.xml;
+
+COPY certs/wipo.cer $JAVA_HOME/lib/security
+COPY certs/fw2.cer $JAVA_HOME/lib/security
+RUN cd $JAVA_HOME/lib/security \
+    && keytool -keystore cacerts -storepass changeit -noprompt -trustcacerts -importcert -alias wipocert -file wipo.cer
+RUN \
+    cd $JAVA_HOME/lib/security \
+    && keytool -keystore cacerts -storepass changeit -noprompt -trustcacerts -importcert -alias fw2cert -file fw2.cer
+
+# install Graal
+#RUN /usr/lib/graalvm/bin/gu install native-image
+#RUN ln -s /usr/lib/graalvm/bin/native-image /usr/bin/native-image
+
+COPY ./Aws-api/pom.xml ./pom.xml
+COPY ./Aws-api/src ./src/
+COPY ./Aws-api/.mvn ./.mvn/
+COPY ./Aws-api/mvnw ./mvnw
+
+ENV MAVEN_OPTS='-Xmx8g'
+
+RUN ./mvnw spring-javaformat:apply
+RUN ./mvnw --no-transfer-progress native:compile -Pnative -Dmaven.test.skip=true -X
+RUN #native-image --no-fallback -classpath build/libs/application.jar
+
+FROM public.ecr.aws/lts/ubuntu:22.04
+
+RUN apt-get update -y && apt-get install zip unzip
+WORKDIR /
+
+#FROM goodforgod/amazonlinux-graalvm:latest
+
+#RUN addgroup --system spring && adduser --system spring --ingroup spring
+#USER spring:spring
+COPY --from=build-aot /home/application/target/Aws-api  /
+
+COPY ./Aws-api/nativeBootstrap bootstrap
+#UN #cp nativeBootstrap bootstrap
+USER root
+RUN chmod 755 bootstrap
+RUN zip -r runtime.zip \
+   bootstrap \
+   Aws-api

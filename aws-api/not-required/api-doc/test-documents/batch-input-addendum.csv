@@ -1,0 +1,2 @@
+type,artefactName, artefactClassType, mirisDocId, filename, path, contentType, batchSequence, creationDate
+ADDENDUM,cert, DOCUMENT, 123456789, cert.pdf, folderName, pdf, 20221128.001, 20221128

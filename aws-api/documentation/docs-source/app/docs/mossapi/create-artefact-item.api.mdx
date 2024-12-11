@@ -1,0 +1,40 @@
+---
+id: create-artefact-item
+title: "createArtefactItem"
+description: "createArtefactItem"
+sidebar_label: "createArtefactItem"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVt9v4jgQ/leQ1aeKhBQ42ssbpXSFtt1UDWgfun0wiQnuJnHOdqBsxP9+M3ZoAsvpVqt7OZASx/PDM998M0lFRMEk1Vzks5j4JJKMajaWmq1opGeaZaRLJPurZErfinhH/IpEItcs17ikRZHyyJj33pTIcU9Fa5ZRXOldwcCnWL6xSIOfQuJhmjOFUh63dDi4TJgEpZWQGdV2azQk+y5RWkiasJa20pLnCcoKqtdnBSuespxm561ond/cCE4VuoTlZUb8FzKZPs9n97PJeD6F3duvD8GnABaT4CFYPNcPj4uH+exxejcbw0MYLL7cwf0umCwep1/m5BVOq/E6fxjItdA0fYIM1b8CMuijwZtYzuKzrkASaqpLdUa6t4XkksWYG8Bfw9cC6wSaVwiO6xS9HChxS3W0Rl7czQPweeRUy5KZDVWIXNl0+p6Ht5ipSPICiQLOgs+k26bRZe/yf8Kc/7iWYPHusHeaFam1qNfO1SFP589+fzC47nuD0c0fw+vrked5rcQaztp8mucmjWbvKPpmux20078aXg9vBqPhDUZ3Wv5W5Y2YJgrJdBArpMxxrc9OlIzptcB5Uwilm+B7tOC9AwMdDroKhIrJDZN4TkVKmYLeWutC+b0ejTOeu5lQys1oLHnsxmzjbtnyyt3yQriAMtm/ooeolFzvQiSYBXpcQgSS/zCzayKSnGvRZh4FeR9hTMUWDUylaEZ/iNyBKBPIaUt3Dq3dQHUb47ct5gTXichXPCntfDUVVaq0qve574flspVMZINweFy4F9X4a+j7zywBw71rz6Vb5UYi611UdbwLQOZJiHRvZloZc5ZHzMDUeP9JeZKCmgYTHE08hjUCI0qJpuSinvXumtGYSfcIJsNXxZPNsJUsgPGZ7SDfmmzHFnAEksB6I/+M4cHZVoXGP56EL5Tn5tUzta1xaIzf74Lj6X8y5H+hRbyPCdzIW4O3NQ14vrKkqrvo0ZC0E5ix1glt+J1wp4DpnfHTjJw2T21wVhNevAymLPqvMywk3wCmeDI2jHXhuSPXMwMPWi2jeUvftmbn0JudujmPQvios2bvulekFOoJzkwfVjXcL0iCFrB150LjrbG9QV5VS6rYQqb7PW5DTSV8SrzAckMlp0tE5wUJWRMFOfwdWAXVsfVwTEFQPS0t604+PPbdg8U4ilihW7r4dsEp8DF0noJwDvJl/T2TiRjVJN3itw5cffIN/vAgDAhmXpj9iqQ0T0rLOXss/v4G+eIjPA==
+sidebar_class_name: "post api-method"
+info_path: docs/Awsapi/madrid-object-storage-system-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>createArtefactItem</h1>
+
+<MethodEndpoint method={"post"} path={"/api/artefact-items"}></MethodEndpoint>
+
+
+
+createArtefactItem
+
+## Request
+
+<MimeTabs className={"openapi-tabs__mime"}><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} className={"openapi-markdown__details mime"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-mime"}><h3 className={"openapi-markdown__details-summary-header-body"}>Body</h3><strong className={"openapi-schema__required"}>required</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"id"} required={true} schemaName={"int64"} qualifierMessage={undefined} schema={{"type":"integer","format":"int64"}}></SchemaItem><SchemaItem collapsible={false} name={"storage"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"path"} required={true} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"filename"} required={true} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"artefactType"} required={true} schemaName={"string"} qualifierMessage={"**Possible values:** [`CERTIFICATE`, `BWLOGO`, `COLOURLOGO`, `MULTIMEDIA`, `SOUND`, `DOCUMENT`]"} schema={{"type":"string","enum":["CERTIFICATE","BWLOGO","COLOURLOGO","MULTIMEDIA","SOUND","DOCUMENT"]}}></SchemaItem><SchemaItem collapsible={false} name={"contentType"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"totalPages"} required={false} schemaName={"int32"} qualifierMessage={undefined} schema={{"type":"integer","format":"int32"}}></SchemaItem><SchemaItem collapsible={false} name={"jobId"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"jobStatus"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem></MimeTabs><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"*/*"} value={"*/*"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"id"} required={false} schemaName={"int64"} qualifierMessage={undefined} schema={{"type":"integer","format":"int64"}}></SchemaItem><SchemaItem collapsible={false} name={"storage"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"path"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"filename"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"contentType"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"totalPages"} required={false} schemaName={"int32"} qualifierMessage={undefined} schema={{"type":"integer","format":"int32"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"id\": 0,\n  \"storage\": \"string\",\n  \"path\": \"string\",\n  \"filename\": \"string\",\n  \"contentType\": \"string\",\n  \"totalPages\": 0\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

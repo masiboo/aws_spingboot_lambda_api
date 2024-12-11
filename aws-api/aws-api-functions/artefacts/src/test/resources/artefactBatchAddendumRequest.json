@@ -1,0 +1,18 @@
+[
+  {
+    "type": "Addendum",
+    "filename": "00000000.TIF",
+    "batchSequence": "77889924.051",
+    "artefactName": "77889924.051-0000D",
+    "artefactClassType": "DOCUMENT",
+
+    "creationDate": "20221123",
+    "requestType": "BC1.1",
+
+    "path": "77889924.051",
+    "contentType": "TIFF",
+    "user": "GregOr",
+    "mirisDocId": "16532350",
+    "page": 1
+  }
+]

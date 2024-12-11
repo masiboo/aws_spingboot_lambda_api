@@ -1,0 +1,288 @@
+{
+  "requestItems": {
+    "Aws-table": [
+      {
+        "putRequest": {
+          "item": {
+            "s3_signed_url": {
+              "s": "http://registry-bucket.localhost:4566/Aws-2023-07-07/4b917a69-c1e5-420e-8eb8-78195bdfa174/mov_bbb.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230707T130922Z&X-Amz-SignedHeaders=host%3Bx-amz-meta-artefact-id-key%3Bx-amz-meta-job-id-key%3Bx-amz-meta-miris-doc-id&X-Amz-Expires=172800&X-Amz-Credential=localstack%2F20230707%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=3bb02671ff3679cc4b77f6550f82ca84db011fef39879c742d0b30a3287c59f9"
+            },
+            "jobId": {
+              "s": "4d37ad36-883b-4c64-b17f-d3d099bc8824"
+            },
+            "requestId": {
+              "s": "8bdf287c-5bac-4d92-bb07-e12a14a864df"
+            },
+            "batchSequence": {
+              "s": "0221123.053"
+            },
+            "jobStatus": {
+              "s": "UPLOADED"
+            },
+            "artefactId": {
+              "s": "4b917a69-c1e5-420e-8eb8-78195bdfa174"
+            },
+            "SK": {
+              "s": "job"
+            },
+            "PK": {
+              "s": "jobs#4d37ad36-883b-4c64-b17f-d3d099bc8824"
+            },
+            "type": {
+              "s": "job"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "type": {
+              "s": "batch"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "batchSequence": {
+              "s": "0221123.053"
+            },
+            "requestType": {
+              "s": "ADDENDUM"
+            },
+            "GSI1PK": {
+              "s": "batch#2023-07-11"
+            },
+            "insertedDate": {
+              "s": "2023-07-11T12:23:39+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-11T12:23:39+0000#null-trademark_picture"
+            },
+            "SK": {
+              "s": "batch"
+            },
+            "PK": {
+              "s": "batch#0221123.053"
+            },
+            "status": {
+              "s": "INSERTED"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "SK": {
+              "s": "artefacts#0221123.053-0000D-00000002.TIF"
+            },
+            "PK": {
+              "s": "batch#0221123.053"
+            },
+            "batchSequence": {
+              "s": "0221123.053"
+            },
+            "artefactId": {
+              "s": "0221123.053-0000D-00000002.TIF"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "SK": {
+              "s": "artefacts#0221123.053-0000D-00000001.TIF"
+            },
+            "PK": {
+              "s": "batch#0221123.053"
+            },
+            "batchSequence": {
+              "s": "0221123.053"
+            },
+            "artefactId": {
+              "s": "0221123.053-0000D-00000001.TIF"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "SK": {
+              "s": "artefacts#0221123.053-0000D-merged"
+            },
+            "PK": {
+              "s": "batch#0221123.053"
+            },
+            "batchSequence": {
+              "s": "0221123.053"
+            },
+            "artefactId": {
+              "s": "0221123.053-0000D-merged"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "fileName": {
+              "s": "00000001.TIF"
+            },
+            "s3Key": {
+              "s": "Aws-2023-07-07/0221123.053-0000D/00000001.TIF"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-07-07"
+            },
+            "insertedDate": {
+              "s": "2023-07-07T13:09:31+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-07T13:09:31+0000#0221123.053-0000D-00000001.TIF"
+            },
+            "artefactId": {
+              "s": "0221123.053-0000D-00000001.TIF"
+            },
+            "BatchSequenceId": {
+              "s": "0221123.053"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "PK": {
+              "s": "artefacts#0221123.053-0000D-00000001.TIF"
+            },
+            "type": {
+              "s": "ARTEFACT#DOCUMENT#PART"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "s3Bucket": {
+              "s": "registry-bucket"
+            },
+            "MERGED_ARTEFACT_ID": {
+              "s": "0221123.053-0000D-merged"
+            },
+            "pageNumber": {
+              "s": "1"
+            },
+            "totalPages": {
+              "s": "2"
+            },
+            "status": {
+              "s": "INSERTED"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "fileName": {
+              "s": "00000002.TIF"
+            },
+            "s3Key": {
+              "s": "Aws-2023-07-07/0221123.053-0000D/00000002.TIF"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-07-07"
+            },
+            "insertedDate": {
+              "s": "2023-07-07T13:09:31+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-07T13:09:31+0000#0221123.053-0000D-00000002.TIF"
+            },
+            "artefactId": {
+              "s": "0221123.053-0000D-00000002.TIF"
+            },
+            "BatchSequenceId": {
+              "s": "0221123.053"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "PK": {
+              "s": "artefacts#0221123.053-0000D-00000002.TIF"
+            },
+            "type": {
+              "s": "ARTEFACT#DOCUMENT#PART"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "s3Bucket": {
+              "s": "registry-bucket"
+            },
+            "MERGED_ARTEFACT_ID": {
+              "s": "0221123.053-0000D-merged"
+            },
+            "pageNumber": {
+              "s": "2"
+            },
+            "totalPages": {
+              "s": "2"
+            },
+            "status": {
+              "s": "INSERTED"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "fileName": {
+              "s": "0221123.053-0000D.pdf"
+            },
+            "s3Key": {
+              "s": "Aws-2023-07-07/0221123.053-0000D/0221123.053-0000D.pdf"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-07-07"
+            },
+            "insertedDate": {
+              "s": "2023-07-07T13:09:31+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-07T13:09:31+0000#0221123.053-0000D-merged"
+            },
+            "artefactId": {
+              "s": "0221123.053-0000D-merged"
+            },
+            "BatchSequenceId": {
+              "s": "0221123.053"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "PK": {
+              "s": "artefacts#0221123.053-0000D-merged"
+            },
+            "type": {
+              "s": "ARTEFACT#DOCUMENT"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "s3Bucket": {
+              "s": "registry-bucket"
+            },
+            "pageNumber": {
+              "s": "2"
+            },
+            "totalPages": {
+              "s": "2"
+            },
+            "status": {
+              "s": "INSERTED"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

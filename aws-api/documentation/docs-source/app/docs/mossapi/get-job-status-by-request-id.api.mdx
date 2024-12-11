@@ -1,0 +1,52 @@
+---
+id: get-job-status-by-request-id
+title: "Get Job Status by Request ID"
+description: "Retrieves the status of artefact jobs using the specified request ID."
+sidebar_label: "Get Job Status by Request ID"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9Vl1v2zYU/SsEEaAb4EhZke1Bb1m6Ft7QrbBb7CEoBkq6kphJJEdSdlxB/333irSsxN7DgKIvNi3dj3PO/aAHXoIrrDReasUzvgFvJezAMd8Ac1743jFdMWE9VKLw7FHnjvVOqjpYGChkJaFkFv7pwXm2fpPwFTfCig48WMezh4Er/IHRo826RAtJ6YzwDZ7pubRQ8szbHlYvMH3EPOs3hIIyHvN4jccAlkBFrBjMFQ10gmcD9wdDWR1aqZqP42fK5IxWDhy9f31zQ1/Ps/06x5rjl8z1RQHOVX3bHjBFoZUH5clZGNPKQpBz+ugownCOQOePUHiSxWoD1suQPxe+aLYB9zncVXxPfFUBlwituJe+hYA6BNpEgviW3t9eovizmMu1Yp10UzXn2rC5dl+PaYfiifoChxWHJ9GZicP7iOTVDOXVCQuTik3dMo5HZreXi6e0Z5XuVYmfdmqZWu5AsWXzfUtahOn3M0wnuYf5OM7kfrxUtjVitkq0zIHdoSJgLQbbN7KFY6uSfM+G4VsSfSsQSUmDWYNfwEBwRlvPhgnwXzHWkSyyxQI3Goefo9+0O7DMGU+FkSlGSUOUdKkTTvmkQdguvW3RvvHeuCxNRdlJlXTauaQTpZVlUsIu2UP+Q7KXRicS5aBV4KDorfSHLWkQaN71CMTKL5NI97pW0uulOALfv8bkVav35IDYn65FJ75odY1oa+FhLw7XIobBCTo5P+6JG37ea1XJurcilHXg2PZ9MH2rsmzb5wsyRQBxLUuTXA13f26zbAM1Oo5JyCv2Lil0l14NEe8nVOaD1u1IG0T0pQzL42EZ/cz4vkUzjy6f0UmWeCZhdG/JlV9F5ZMGRAk2eSbTtIacrHe3C7Ioxm9AmzIu/ucecfmHaPy/NTwG27vtFJ8ySVWFksTF934qMftj6lu29dpib7HtwXno2N2HNX95m0SHi5Y4H0C7M5tvLGPlDhGRltRuIcRN8lNyQ4+Mdr4TamH/DjufBj4sY5Yf2Ga+F19CGU7T+dXu3SiZhyefmlagzghzmo8hztUDFYc6Uec0RsdFkZ3WI85Gg8TIdBhy4eCTbceRHqOFPeBzPO6ElSJvQ2eV0tEZR7gSrXt5gS95freJV/337H9e6xeZHTtEUa/tRNvTLzz+jc23/Lsx9XXsNwIc3t/hpW78wvNsRdKemLfTu18+Ygv+C8wwOoc=
+sidebar_class_name: "get api-method"
+info_path: docs/Awsapi/madrid-object-storage-system-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get Job Status by Request ID</h1>
+
+<MethodEndpoint method={"get"} path={"/api/job/status/{requestId}"}></MethodEndpoint>
+
+
+
+Retrieves the status of artefact jobs using the specified request ID.
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"requestId","in":"path","required":true,"description":"The ID of the request to retrieve job status","schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+Job status retrieved successfully
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"batchStatus"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"batchSequence"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"batchStatus\": \"string\",\n  \"batchSequence\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad request, missing requestId parameter
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"Missing 'requestId' parameter in path"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"Missing 'requestId' parameter in path\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Job not found for the given requestId
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"Job Not found for the requestId {requestId}"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"Job Not found for the requestId {requestId}\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"500"} value={"500"}><div>
+
+Internal server error while retrieving job status
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"Failed to get job status report {error_message}"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"Failed to get job status report {error_message}\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

@@ -1,0 +1,68 @@
+{
+    "Project": {
+        "Name": "Aws",
+        "Stage": "dev",
+        "Account": "551493771163",
+        "Region": "eu-central-1",
+        "BusinessUnit": "madrid",
+        "Profile": "madrid-dev-devops"
+
+    },
+
+    "Stack": {
+
+        "AwsApiPipeline": {
+            "Name": "AwsApiPipelineStack",
+            "suffix": "build0c83a61",
+
+            "PipelineName": "AwsAPiPipeline",
+
+            "ActionFlow": [
+                {
+                    "Name": "S3SourceClone",
+                    "Stage": "SourceStage",
+                    "Kind": "SourceS3Bucket",
+                    "Enable": true,
+                    "Detail": {
+                        "BucketName": "Aws-cicd-dev-bucket",
+                        "BucketKey": "package.zip"
+                    }
+                },
+
+                {
+                    "Name": "DeployAllStacks",
+                    "Stage": "AwsApiDev-DeployStage",
+                    "Kind": "BuildCodeBuild",
+                    "Enable": true,
+                    "Detail": {
+                        "AppConfigFile": "config/app-config-cicd-pipeline-dev.json",
+                        "BuildDeployStacks": {
+                            "PreCommands": ["ls -al"],
+                            "StackNameList": ["AwsApiStack"]
+                        }
+                    }
+                }
+            ]
+        },
+
+        "AwsApi": {
+            "Name": "AwsApiStack",
+            "suffix": "build-015888f",
+            "lambdaFunctions": [
+                {
+                    "functionName": "signed-url-function",
+                    "functionId": "SignedUrlFunction",
+                    "handlerPath": "org.wipo.trademarks.aws.Aws.artefact.entrypoints.ArtefactUploadURLRequestHandler",
+                    "integerationId": "SignedUrlFunctionIntegration",
+                    "path": "/api/artefacts/upload",
+                    "methods": "HttpMethod.POST",
+                    "s3Policy": true
+                }
+            ]
+        },
+        "AwsWsApi": {
+            "Name": "AwsWsApiStack"
+        }
+
+    }
+}

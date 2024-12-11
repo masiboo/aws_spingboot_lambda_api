@@ -1,0 +1,213 @@
+{
+  "requestItems": {
+    "Aws-table": [
+      {
+        "putRequest": {
+          "item": {
+            "s3_signed_url": {
+              "s": "http://registry-bucket.localhost:4566/Aws-2023-07-07/4b917a69-c1e5-420e-8eb8-78195bdfa174/mov_bbb.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230707T130922Z&X-Amz-SignedHeaders=host%3Bx-amz-meta-artefact-id-key%3Bx-amz-meta-job-id-key%3Bx-amz-meta-miris-doc-id&X-Amz-Expires=172800&X-Amz-Credential=localstack%2F20230707%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=3bb02671ff3679cc4b77f6550f82ca84db011fef39879c742d0b30a3287c59f9"
+            },
+            "jobId": {
+              "s": "4d37ad36-883b-4c64-b17f-d3d099bc8824"
+            },
+            "requestId": {
+              "s": "8bdf287c-5bac-4d92-bb07-e12a14a864df"
+            },
+            "batchSequence": {
+              "s": "4354562353"
+            },
+            "jobStatus": {
+              "s": "UPLOADED"
+            },
+            "artefactId": {
+              "s": "4b917a69-c1e5-420e-8eb8-78195bdfa174"
+            },
+            "SK": {
+              "s": "job"
+            },
+            "PK": {
+              "s": "jobs#4d37ad36-883b-4c64-b17f-d3d099bc8824"
+            },
+            "type": {
+              "s": "job"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "type": {
+              "s": "batch"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "batchSequence": {
+              "s": "4354562353"
+            },
+            "requestType": {
+              "s": "ADDENDUM"
+            },
+            "GSI1PK": {
+              "s": "batch#2023-07-11"
+            },
+            "insertedDate": {
+              "s": "2023-07-11T12:23:39+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-11T12:23:39+0000#null-trademark_picture"
+            },
+            "SK": {
+              "s": "batch"
+            },
+            "PK": {
+              "s": "batch#4354562353"
+            },
+            "status": {
+              "s": "INIT"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "s3_signed_url": {
+              "s": "http://registry-bucket.localhost:4566/Aws-2023-07-07/4b917a69-c1e5-420e-8eb8-78195bdfa174/mov_bbb.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230707T130922Z&X-Amz-SignedHeaders=host%3Bx-amz-meta-artefact-id-key%3Bx-amz-meta-job-id-key%3Bx-amz-meta-miris-doc-id&X-Amz-Expires=172800&X-Amz-Credential=localstack%2F20230707%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=3bb02671ff3679cc4b77f6550f82ca84db011fef39879c742d0b30a3287c59f9"
+            },
+            "jobId": {
+              "s": "4d37ad36-883b-4c64-b17f-d3d099bc8825"
+            },
+            "requestId": {
+              "s": "8bdf287c-5bac-4d92-bb07-d3d099bc8825"
+            },
+            "batchSequence": {
+              "s": "4354568825"
+            },
+            "jobStatus": {
+              "s": "UPLOADED"
+            },
+            "artefactId": {
+              "s": "4b917a69-c1e5-420e-8eb8-78195bdfa174"
+            },
+            "SK": {
+              "s": "job"
+            },
+            "PK": {
+              "s": "jobs#4d37ad36-883b-4c64-b17f-d3d099bc8825"
+            },
+            "type": {
+              "s": "job"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "type": {
+              "s": "batch"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "batchSequence": {
+              "s": "4354568825"
+            },
+            "requestType": {
+              "s": "NEW_REQUEST"
+            },
+            "GSI1PK": {
+              "s": "batch#2023-07-11"
+            },
+            "insertedDate": {
+              "s": "2023-07-11T12:23:39+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-11T12:23:39+0000#null-trademark_picture"
+            },
+            "SK": {
+              "s": "batch"
+            },
+            "PK": {
+              "s": "batch#4354568825"
+            },
+            "status": {
+              "s": "INIT"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "s3_signed_url": {
+              "s": "http://registry-bucket.localhost:4566/Aws-2023-07-07/4b917a69-c1e5-420e-8eb8-78195bdfa174/mov_bbb.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230707T130922Z&X-Amz-SignedHeaders=host%3Bx-amz-meta-artefact-id-key%3Bx-amz-meta-job-id-key%3Bx-amz-meta-miris-doc-id&X-Amz-Expires=172800&X-Amz-Credential=localstack%2F20230707%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=3bb02671ff3679cc4b77f6550f82ca84db011fef39879c742d0b30a3287c59f9"
+            },
+            "jobId": {
+              "s": "4d37ad36-883b-4c64-b17f-d3d099bc8826"
+            },
+            "requestId": {
+              "s": "8bdf287c-5bac-4d92-bb07-d3d099bc8826"
+            },
+            "batchSequence": {
+              "s": "4354568826"
+            },
+            "jobStatus": {
+              "s": "INIT"
+            },
+            "artefactId": {
+              "s": "4b917a69-c1e5-420e-8eb8-78195bdfa174"
+            },
+            "SK": {
+              "s": "job"
+            },
+            "PK": {
+              "s": "jobs#4d37ad36-883b-4c64-b17f-d3d099bc8826"
+            },
+            "type": {
+              "s": "job"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "type": {
+              "s": "batch"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "batchSequence": {
+              "s": "4354568826"
+            },
+            "requestType": {
+              "s": "NEW_REQUEST"
+            },
+            "GSI1PK": {
+              "s": "batch#2023-07-11"
+            },
+            "insertedDate": {
+              "s": "2023-07-11T12:23:39+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-11T12:23:39+0000#null-trademark_picture"
+            },
+            "SK": {
+              "s": "batch"
+            },
+            "PK": {
+              "s": "batch#4354568826"
+            },
+            "status": {
+              "s": "INIT"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

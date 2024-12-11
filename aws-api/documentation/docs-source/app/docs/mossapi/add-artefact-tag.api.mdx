@@ -1,0 +1,40 @@
+---
+id: add-artefact-tag
+title: "addArtefactTag"
+description: "Add Tag to artefact."
+sidebar_label: "addArtefactTag"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV11v2zYU/SsCUSDbYElJ2+1Bb2qWosGWJovTdUAWBLREy8wkUSUpO4qg/757ScqSYzlD9lwEcGzxfpDnnnt51JKUqUTySnNRkojEaerd0MzTwqNSsyVNdEBmRFRMUjQ5T8GIpmnsFsEWlisqacE0k4pEty0p4QeaORvwmRGO0SuqV/D9WUpn5v1RM9l45ykrNV9yJjGxZN9qLhlk1bJmM6KSFSsoiVqimwqTKC15mZGum23zKq7ZkPMbRt1LOgebg6mWNFcv5rqz1kzpDyJt0OL5PhNRagiOS7Sqcp4Y9MIHhdnb/dBi8cASjVBKxFpzpnCVlwp+sPRXqtnERmYDxpoVWJsJE/tgYqGG2Ad81jSvp53+Yc0k+iMEbp27NQasNNc5G1UaN4vE6TrrqCoB5zQHfnt8gv92i3Vpvijv2llitVaMpoZvLYmThCnlnwLkUuR+nOdi419KnvFprEebnnS9YHolUvW/fD8N2zrs2435YX4qltSS68a0T1xDfsmfDGVORVZyLWDhDmn36NOCPonSpxXPgBQb2vgcQmW2PTEbBMJ/H8somtcL04dlRDcqGlyiN238dR5F1ywDpy7KabFIaYTtGUIFfvaP3/nvTsJlXSYG+RDsXe1UXPFry30VxLLsQl6uhaW3Is/LmYJPnZs2UJrqWp2KFKHAMg+mV6Px0ZLCwB/0i4GtdPAy3OTo1CLq3wDYs7/8uHjysWtmO2jiQsX931hzBPlfk2lLCnL002t9ey4aV1PviiqlV1LU2eoDW9E1FxKWv346+3z/+fL+5uzi6vf45myOPNe6srnB4OpyfkP6jiZQ03sYF4+NmcBNLmj6UciC6j8BEts5J8GxGQE0w8m8bUCFXckeAS9lyoasM439n/wajYbvPPvOsx2e4Xwq+hCVUOY6wxs/IiFwIuzvKhW2gzToQkNOHIFy3QuIWubghFtSURjStOBlUAilgoKmkqdBytbBhi1Ogg2vRAD8JJi7H6JzHLyWF9OjdLh1Kay/heRLgA8duukJS10YJkfODxs8IHxCEZY8q4cJzJWqrenQHP1hErsJn6dVsNsdgc0LaAeJKKAV3H6/ADJXQuSdue/rlLMyYQamIfqe8WkOZhpc7sCJG50DwIhaoit549TLlk1jmMzlpni2fj86LIABZIbzOo216+Gklo1GDmM4EGpu4mMmlETXg5g6e6RFlbN98dNfn/uaZ1jZvWgHhTM8cdNreGDH3qBveLm0DHGa5cIwzrs0+sybayFpxrx5oyC5F1+d7ylL5zBpCToQRq45nMOxknyNx0PNte2m4+AXO7exiQpajuxBentbwWzF9076dlAWh7S8A0nD/A+rnELlUAtix7WuXW+x3COgsT2jHTVvehZaboVdDvZtu6CKfZF51+Fjq7mRoilXdJGPRPXB3U4o8smduoL1Gr8vqJkAayo5pntl6h+unXb90XvxZWRyPz2ny2a8m36fI9RMK7oWGS7c8XUyCrD30rAzXN18XriXj8JedpJu8LKDz4j8DX/mvc3el/iGgs9bktMyq4GYOMBM3M5MFSz7/lh0X1B7dt2/6KLqXg==
+sidebar_class_name: "post api-method"
+info_path: docs/Awsapi/madrid-object-storage-system-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>addArtefactTag</h1>
+
+<MethodEndpoint method={"post"} path={"/api/artefacts/{artefactId}/tags"}></MethodEndpoint>
+
+
+
+Add Tag to artefact.
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"artefactId","in":"path","description":"Artefact Query Identifier.","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"siteId","in":"query","description":"Site Identifier.","required":false,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><MimeTabs className={"openapi-tabs__mime"}><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} className={"openapi-markdown__details mime"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-mime"}><h3 className={"openapi-markdown__details-summary-header-body"}>Body</h3><strong className={"openapi-schema__required"}>required</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"insertedDate"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"artefactItemId"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"type"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"userId"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"value"} required={true} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"key"} required={true} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem></MimeTabs><div><div><ApiTabs><TabItem label={"201"} value={"201"}><div>
+
+Options Response.
+
+</div><details style={{"textAlign":"left","marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collaposed={true} open={false}><summary style={{}}><strong>Response Headers</strong></summary><ul style={{"marginLeft":"1rem"}}><li className={"schemaItem"}><summary style={{}}><strong>Access-Control-Allow-Origin</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Access-Control-Allow-Methods</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Access-Control-Allow-Headers</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li></ul></details><div></div></TabItem></ApiTabs></div></div>
+      

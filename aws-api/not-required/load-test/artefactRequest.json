@@ -1,0 +1,25 @@
+{
+    "artefactName": "string",
+    "artefactClassType": "CERTIFICATE",
+    "artefactItemTags": [
+        {
+        "id": 0,
+        "value": "string",
+        "key": "string",
+        "insertedDate": "2019-08-24",
+        "type": "string"
+    }
+    ],
+    "items": [
+        {
+        "storage": "string",
+        "path": "string",
+        "filename": "string",
+        "contentType": "string"
+    }
+    ],
+    "batch": {
+        "batchSequence": "string",
+        "creationDate": "2019-08-24"
+    }
+}

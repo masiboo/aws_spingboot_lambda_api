@@ -1,0 +1,2526 @@
+openapi: 3.0.0
+info:
+  title: Madrid Object Storage System API
+  description: Madrid Storage System API
+  license:
+    name: private
+  version: 0.6.0
+servers:
+  - url: "https://admin.Aws.madrid.dev.web1.wipo.int"
+
+paths:
+  /api/v1/validate/documents/{mirisDocId}:
+    get:
+      tags:
+        - Search Resource
+      description: Validate if Miris Doc-ID is valid and correct
+      operationId: validateDocId
+      responses:
+        default:
+          description: "Validate Miris Doc-ID is valid"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-validate-miris-doc-id-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+      - name: "mirisDocId"
+        in: "path"
+        description: "Generated path parameter for mirisDocId"
+        required: true
+        schema:
+          type: "string"
+  /api/v2/artefacts/by-doc-id:
+    get:
+      tags:
+        - Artefact Resource
+      description: Get
+      operationId: getArtefactByDocIdV2
+      responses:
+        default:
+          description: "Default response for GET /api/v2/artefacts/by-doc-id"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-artefact-by-doc-id-v2-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/v2/healthcheck:
+    get:
+      tags:
+        - HealthCheck Resource
+      description: Get
+      operationId: getHealthCheckV2
+      responses:
+        default:
+          description: "Default response for GET /api/v2/healthcheck"
+      security:
+        - AwsAuthorizer: [ ]
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-healthcheck-function-v2-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/v2/job/{jobid}/status:
+    get:
+      tags:
+        - Jobs Resource
+      description: Get
+      operationId: getJobStatusByIdV2
+      responses:
+        default:
+          description: "Default response for GET /api/v2/job/{jobid}/status"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-job-status-by-id-v2-devbuild/invocations"
+        connectionType: "INTERNET"
+    parameters:
+      - name: "jobid"
+        in: "path"
+        description: "Generated path parameter for jobid"
+        required: true
+        schema:
+          type: "string"
+  /api/v2/jobs:
+    get:
+      tags:
+        - Jobs Resource
+      description: Get
+      operationId: getAllJobsV2
+      responses:
+        default:
+          description: "Default response for GET /api/v2/jobs"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-all-jobs-by-status-and-date-v2-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/v2/version:
+    get:
+      tags:
+        - Version Resource
+      description: Get
+      operationId: getVersionV2
+      responses:
+        default:
+          description: "Default response for GET /api/v2/version"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-versioncheck-function-v2-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/version:
+    get:
+      tags:
+        - Version Resource
+      description: Get
+      operationId: getVersion
+      responses:
+        default:
+          description: "Default response for GET /api/version"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-versioncheck-function-devbuild/invocations"
+        connectionType: "INTERNET"
+  /api/healthcheck:
+    get:
+      tags:
+        - HealthCheck Resource
+      description: Get
+      operationId: getHealthCheck
+      responses:
+        default:
+          description: "Default response for GET /api/healthcheck"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-healthcheck-function-devbuild/invocations"
+        connectionType: "INTERNET"
+
+  /api/job/status/{requestId}:
+    get:
+      summary: Get Job Status by Request ID
+      description: Retrieves the status of artefact jobs using the specified request ID.
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          description: The ID of the request to retrieve job status
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Job status retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JobStatusResponse"
+        '400':
+          description: Bad request, missing requestId parameter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Missing 'requestId' parameter in path
+        '404':
+          description: Job not found for the given requestId
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Job Not found for the requestId {requestId}
+        '500':
+          description: Internal server error while retrieving job status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Failed to get job status report {error_message}
+
+  /api/job/{jobid}/status:
+    get:
+      summary: Check Artefact Job Status
+      description: Retrieve the status of an artefact job by its job ID.
+      parameters:
+        - in: path
+          name: jobid
+          required: true
+          description: The ID of the job to check the status for.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Job status retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactJobStatusResponse'
+
+        '400':
+          description: Bad request, typically due to a missing or invalid job ID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Missing 'jobid' parameter in path
+        '404':
+          description: Job not found for the given job ID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Job not found for the given job ID
+        '500':
+          description: Internal server error while processing the request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal server error while processing the request
+  /api/jobs:
+    get:
+      tags:
+        - Jobs Resource
+      description: Get
+      operationId: getAllJobs     
+      responses:
+        default:
+          description: "Default response for GET /api/jobs"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:551493771163:function:Aws-get-all-jobs-status-and-date-devbuild/invocations"
+        connectionType: "INTERNET"
+
+  '/api/batch/{batchIdPathParam}':
+    get:
+      tags:
+        - Batch Resource
+      description: Get
+      operationId: getBatch
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BatchDTO'
+    put:
+      description: Get
+      operationId: updateBatch
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BatchDTO'
+      tags:
+        - Batch Resource
+    delete:
+      description: Delete batch
+      operationId: deleteBatch
+
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Batch Resource
+    patch:
+      description: Partial Update Batch
+      operationId: partialUpdateBatch
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchDTO'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/BatchDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BatchDTO'
+      tags:
+        - Batch Resource
+    parameters:
+      - $ref: '#/components/parameters/batchIdPathParam'
+
+  '/api/artefacts/by-doc-id/{mirisDocId}':
+    get:
+      summary: Get Artefacts by Miris document ID
+      description: Retrieve artefacts using their Miris document ID. Optionally, filter by document type.
+      parameters:
+        - in: path
+          name: mirisDocId
+          required: true
+          description: The Miris document ID to search for artefacts.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/mirisDocIdParam'
+        - in: query
+          name: docType
+          required: false
+          description: Comma separated list of document types to filter the artefacts.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/docTypeParam'
+      responses:
+        '200':
+          description: Artefacts retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactDTO'
+        '404':
+          description: Artefact not found
+          content:
+           application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Failure message
+                  example: "Artefacts Not found"
+        '400':
+          description: Invalid document type
+          content:
+           application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Failure message
+                  example: "Invalid 'docType' provided :'log'  and allowed values are [CERTIFICATE, DOCUMENT, BWLOGO, COLOURLOGO, SOUND, MULTIMEDIA, PART]"
+
+        '500':
+          description: Internal server error while processing the request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Error: {error message}"
+
+  '/api/batches/upload/{scannedApp}':
+    post:
+      description: Create Batch Scanned Uploads for Validation
+      operationId: createAndUploadScannedBatch
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ArtefactBatchUploadDTO'
+              example:
+              - type: "String"
+                artefactName: "String"
+                artefactClassType: "String"
+                batchSequence: "String"
+                creationDate: "String"
+                requestType: "String"
+                filename: "String"
+                path: "String"
+                contentType: "PDF | PNG | JPG | JPEG | TIFF | WAV | MP3 | MP4"
+                user: "String"
+        required: true
+      parameters:
+      - name: "scannedApp"
+        in: "path"
+        description: "Generated path parameter for scannedApp"
+        required: true
+        schema:
+          type: "string"
+          enum:
+            - new_request
+            - addendum
+          example:
+            - new_request
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ArtefactBatchUploadDTO'
+              example:
+              - type: "String"
+                artefactName: "String"
+                artefactClassType: "String"
+                batchSequence: "String"
+                creationDate: "String"
+                requestType: "String"
+                filename: "String"
+                path: "String"
+                contentType: "String"
+                user: "String"
+      tags:
+        - Batch Resource
+
+  /api/artefacts/{artefactId}/info:
+    get:
+      summary: Get Artefact Information
+      description: Retrieve information about an artefact using its artefact ID.
+      parameters:
+        - in: path
+          name: artefactId
+          required: true
+          description: The ID of the artefact.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Artefact information retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactInfoResponse'
+        '400':
+          description: Bad request, typically due to a missing or invalid parameter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Missing 'artefactId' parameter in path
+        '404':
+          description: Artefact not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: The artefact is not found with id {artefactId}
+        '500':
+          description: Internal server error while processing the request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Error updated the artefact status {error_message}
+
+  '/api/artefacts/index/{artefactId}':
+    put:
+      description: PUT
+      operationId: updateArtefact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                mirisDocId: "String"
+        required: true
+      tags:
+        - Artefacts
+
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+
+      responses:
+        '200':
+          description: OK
+          content:
+           application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: A success message
+                  example: "Successfully indexed the Artefact"
+        '404' :
+          description: Artefact not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+                    example: "The artefact is not found with id {artefactId}"
+        '400' :
+          description: Invalid data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+              examples:
+                example-1:
+                  value:
+                    message: "The given Artefact is already in INDEXED"
+                example-2:
+                  value:
+                    message: "The Artefact status is DELETED and can not be INDEXED"
+  '/api/artefacts/delete/{artefactId}':
+    put:
+      tags:
+        - Artefacts
+      description: PUT
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+
+      operationId: SoftDelete Artefact
+      responses:
+        '200':
+          description: OK
+          content:
+           application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: A success message
+                  example: "Artefact Deleted successfully"
+        '400' :
+          description: Invalid data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+              examples:
+                example-1:
+                  value:
+                    message: "Artefact is already in DELETED"
+                example-2:
+                  value:
+                    message: "The artefact is unindexed and can not be marked as deleted using this API"
+        '404' :
+          description: Artefact not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+                    example: "The artefact is not found with id {artefactId}"
+  '/api/artefacts/{artefactId}':
+    get:
+      tags:
+        - Artefacts
+      description: Get
+      operationId: getArtefact
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactDTO'
+    put:
+      operationId: putUpdateArtefact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactDTO'
+      tags:
+        - Artefacts
+    delete:
+      operationId: deleteArtefact
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Artefacts
+    patch:
+      operationId: partialUpdateArtefact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactDTO'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/ArtefactDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactDTO'
+      tags:
+        - Artefacts
+    parameters:
+      - $ref: '#/components/parameters/artefactIdParam'
+  '/api/artefact-items/{id}':
+    get:
+      operationId: getArtefactItem
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactItemDTO'
+      tags:
+        - Artefacts
+    put:
+      operationId: updateArtefactItem
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactItemDTO'
+      tags:
+        - Artefacts
+    delete:
+      operationId: deleteArtefactItem
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Artefacts
+    patch:
+      operationId: partialUpdateArtefactItem
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemDTO'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactItemDTO'
+      tags:
+        - Artefacts
+  '/api/artefact-item-tags/{id}':
+    get:
+      operationId: getArtefactItemTag
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactItemTagDTO'
+      tags:
+        - Artefacts
+        - Tags
+    put:
+      operationId: updateArtefactItemTag
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemTagDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactItemTagDTO'
+      tags:
+        - Artefacts
+        - Tags
+#    delete:
+#      description: Delete Artefact by Tag
+#      operationId: deleteArtefactItemTagById
+#      parameters:
+#        - name: id
+#          in: path
+#          required: true
+#          schema:
+#            type: integer
+#            format: int64
+#      responses:
+#        '200':
+#          description: OK
+#      tags:
+#        - Artefacts
+#        - Tags
+    patch:
+      operationId: partialUpdateArtefactItemTag
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemTagDTO'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemTagDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactItemTagDTO'
+      tags:
+        - Artefacts
+  '/api/batches/unlock/{batchSequence}':
+    put:
+      summary: Unlock Batch
+      description: Unlocks a batch by its sequence number if it is currently locked.
+      parameters:
+        - in: path
+          name: batchSequence
+          required: true
+          description: The sequence number of the batch to unlock.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/batchSeqPathParam'
+      operationId: UnlockBatch
+      responses:
+        '200':
+          description: Successfully unlocked the batch.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Batch unlocked successfully
+        '400':
+          description: Bad request, missing or invalid 'batchSequence' parameter or batch already unlocked.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Missing 'batchSeq' parameter in path or Batch is already in UnLocked
+
+        '404':
+          description: Batch not found with the provided sequence number.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: The Batch is not found with batchSequence {batchSequence}
+        '500':
+          description: Internal server error while updating the batch status.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Error updating the batch status
+
+  '/api/batches/lock/{batchSequence}':
+    put:
+      summary: Lock Batch
+      tags:
+        - Batch Resource
+      description: Locks a batch by its sequence number if it is not already locked.
+      parameters:
+        - in: path
+          name: batchSequence
+          required: true
+          description: The sequence number of the batch to lock.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/batchSeqPathParam'
+      operationId: lockBatch
+      responses:
+        '200':
+          description: Successfully locked the batch.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Batch locked successfully
+        '400' :
+          description: Bad request, missing or invalid 'batchSequence' parameter or batch already locked.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Missing 'batchSeq' parameter in path or Batch is already in Locked
+        '404':
+          description: Batch not found with the provided sequence number.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: The Batch is not found with batchSequence {batchSequence}
+        '500':
+          description: Internal server error while updating the batch status.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Error updating the batch status
+
+  '/api/batches/delete/{batchSequence}':
+    put:
+      tags:
+        - Batch Resource
+      description: PUT
+      parameters:
+        - $ref: '#/components/parameters/batchSeqPathParam'
+
+      operationId: SoftDelete Batch
+      responses:
+        '200':
+          description: OK
+          content:
+           application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: A success message
+                  example: "Batch Deleted successfully"
+        '400' :
+          description: Invalid data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+              examples:
+                example-1:
+                  value:
+                    message: "Batch is already in DELETED"
+        '404' :
+          description: Batch not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+                    example: "The Batch is not found with id {batchSeq}"
+  '/api/batches':
+    get:
+      tags:
+        - Batch Resource
+      operationId: getAllBatches
+      parameters:
+        - name: page
+          in: query
+          description: Zero-based page index (0..N)
+          required: false
+          schema:
+            minimum: 0
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: The size of the page to be returned
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            default: 20
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BatchDTO'
+    post:
+      operationId: createBatch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchNewRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BatchDTO'
+      tags:
+        - Batch Resource
+  '/api/authenticate':
+    get:
+      tags:
+        - account-resource
+      operationId: isAuthenticated
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  '/api/artefact-items':
+    get:
+      operationId: getAllArtefactItems
+      parameters:
+        - name: page
+          in: query
+          description: Zero-based page index (0..N)
+          required: false
+          schema:
+            minimum: 0
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: The size of the page to be returned
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            default: 20
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ArtefactItemDTO'
+      tags:
+        - Artefacts
+    post:
+      operationId: createArtefactItem
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactBatchItemDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactItemDTO'
+      tags:
+        - Artefacts
+  '/api/artefact-item-tags':
+    get:
+      operationId: getAllArtefactItemTags
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ArtefactItemTagDTO'
+      tags:
+        - Artefacts
+    post:
+      operationId: createArtefactItemTag
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemTagDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactItemTagDTO'
+      tags:
+        - Artefacts
+  '/api/account':
+    get:
+      tags:
+        - account-resource
+      operationId: getAccount
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AdminUserDTO'
+      description: Get details of currently Logged-in User
+  /api/authorities:
+    get:
+      description: Get Authorities for Logged in User
+      operationId: getAuthorities
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+
+      tags:
+        - Account
+  '/api/artefacts/{artefactId}/versions':
+    get:
+      operationId: getArtefactVersions
+      description: Get artefact versions.
+      tags:
+        - Artefacts
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+        - $ref: '#/components/parameters/siteIdParam'
+        - name: tz
+          in: query
+          schema:
+            type: string
+        - name: next
+          in: query
+          description: Next Page Token.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactItemsVersions'
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+    parameters:
+      - schema:
+          type: string
+        name: artefactId
+        in: path
+        required: true
+  '/api/artefacts/{artefactId}/content':
+    get:
+      description: Get artefact content.
+      operationId: getArtefactContent
+      tags:
+        - Artefacts
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+        - $ref: '#/components/parameters/siteIdParam'
+        - $ref: '#/components/parameters/versionIdParam'
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+            Location:
+              $ref: '#/components/headers/Location'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactContent'
+              examples:
+                example-1:
+                  value:
+                    content: string
+                    contentUrl: string
+                    contentType: string
+                    isBase64: true
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+    parameters:
+      - schema:
+          type: string
+        name: artefactId
+        in: path
+        required: true
+  '/api/artefacts/{artefactId}/tags':
+    get:
+      description: Get artefact tags.
+      operationId: getArtefactTags
+      tags:
+        - Artefacts
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+        - $ref: '#/components/parameters/siteIdParam'
+        - $ref: '#/components/parameters/limitParam'
+        - name: next
+          in: query
+          description: Next Page Token.
+          schema:
+            type: string
+        - name: previous
+          in: query
+          description: Previous Page Token.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactItemsTags'
+              examples:
+                example-1:
+                  value:
+                    next: string
+                    previous: string
+                    tags:
+                      - insertedDate: string
+                        artefactID: string
+                        type: string
+                        userId: string
+                        value: string
+                        key: string
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+    post:
+      description: Add Tag to artefact.
+      operationId: addArtefactTag
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+        - $ref: '#/components/parameters/siteIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemTag'
+      responses:
+        '201':
+          $ref: '#/components/responses/200Cors'
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi201'
+      tags:
+        - Artefacts
+    parameters:
+      - schema:
+          type: string
+        name: artefactId
+        in: path
+        required: true
+  '/api/artefacts/{artefactId}/tags/{tagKey}':
+    get:
+      description: Get artefact tags.
+      operationId: getArtefactTagsKey
+      tags:
+        - Artefacts
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+        - $ref: '#/components/parameters/tagkeyParam'
+        - $ref: '#/components/parameters/siteIdParam'
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactItemTag'
+              examples:
+                example-1:
+                  value:
+                    insertedDate: string
+                    artefactID: string
+                    type: string
+                    userId: string
+                    value: string
+                    key: string
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+    put:
+      description: Replace Tag value.
+      operationId: replaceTagValue
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+        - $ref: '#/components/parameters/tagkeyParam'
+        - $ref: '#/components/parameters/siteIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemTagValueBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Cors'
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+      tags:
+        - Artefacts
+    delete:
+      description: Delete artefact tags.
+      operationId: DeleteArtefactTags
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+        - $ref: '#/components/parameters/tagkeyParam'
+        - $ref: '#/components/parameters/siteIdParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Cors'
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+      tags:
+        - Artefacts
+    parameters:
+      - schema:
+          type: string
+        name: artefactId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: tagKey
+        in: path
+        required: true
+  '/api/artefacts/{artefactId}/url':
+    get:
+      summary: Get Pre-signed URL for Artefact
+      description: Retrieve a pre-signed URL for downloading an artefact using its artefact ID.
+      operationId: getArtefactURLbyId
+      tags:
+        - Artefacts
+      parameters:
+        - in: path
+          name: artefactId
+          required: true
+          description: The ID of the artefact.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/artefactIdParam'
+        - in: query
+          name: duration
+          required: false
+          description: Duration (in hours) for which the pre-signed URL will be valid. Defaults to 1 hour.
+          schema:
+            type: integer
+            default: 1
+        - $ref: '#/components/parameters/durationParam'
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactUrl'
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+        '400':
+          description: Bad request, typically due to a missing or invalid parameter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Missing 'id' parameter in path
+          '404':
+            description: Artefact not found
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: Artefact Not found
+          '500':
+            description: Internal server error while processing the request
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: "Error: {error_message}"
+
+  /api/artefacts:
+    get:
+      tags:
+        - Artefacts
+      operationId: getAllArtefacts
+      description: Get All artefacts
+      parameters:
+        - name: page
+          in: query
+          description: Zero-based page index (0..N)
+          required: false
+          schema:
+            minimum: 0
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: The size of the page to be returned
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            default: 20
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: eagerload
+          in: query
+          required: false
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ArtefactDTO'
+              examples:
+                example-1:
+                  value:
+                    - id: 0
+                      artefactName: string
+                      artefactClassType: CERTIFICATE
+                      status: INSERTED
+                      error: string
+                      indexationDate: '2019-08-24'
+                      archiveDate: '2019-08-24'
+                      gets3Bucket: string
+                      mirisDocId: string
+                      ArtefactItemTags:
+                        - id: 0
+                          value: string
+                          key: string
+                          insertedDate: '2019-08-24'
+                          type: string
+                      items:
+                        id: 0
+                        storage: string
+                        path: string
+                        filename: string
+                        artefactType: CERTIFICATE
+                        contentType: string
+                        totalPages: 0
+
+  /api/artefacts/upload:
+    get:
+      description: Returns URL that can accept uploads.
+      operationId: uploadUrl
+      tags:
+        - Artefacts
+      parameters:
+        - name: path
+          in: query
+          description: The upload file's path.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/contentLengthParam'
+        - $ref: '#/components/parameters/durationParam'
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactUrl'
+              examples: {}
+        '201':
+          description: Created
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+    parameters: []
+    post:
+      description: Upload and save artefact
+      operationId: Upload and create Artefact record
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactInput'
+            examples:
+              example-1:
+                value:
+                  artefactName: string
+                  artefactClassType: CERTIFICATE
+                  artefactItemTags:
+                    - value: string
+                      key: string
+                      type: string
+                  items:
+                    - storage: string
+                      path: string
+                      filename: string
+                      contentType: string
+                  mirisDocId: string
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/artefactItemUrl'
+      tags:
+        - Artefacts
+  '/api/artefacts/{artefactId}/upload':
+    get:
+      description: Returns URL to upload content larger than 5 MB.
+      operationId: uploadUrlByArtefactId
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+        - $ref: '#/components/parameters/contentLengthParam'
+        - $ref: '#/components/parameters/durationParam'
+      tags:
+        - Artefacts
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactUrl'
+              examples:
+                example-1:
+                  value:
+                    artefactId: string
+                    url: string
+                    jobId: string
+                    collectionId: string
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+    parameters:
+      - schema:
+          type: string
+        name: artefactId
+        in: path
+        required: true
+  /api/validate/{mirisDocId}:
+    get:
+      description: Validate if Miris Doc-ID is valid and correct
+      operationId: checkDocId
+      tags:
+        -  Search Resource
+      parameters:
+        - $ref: '#/components/parameters/mirisDocIdParam'
+#        - schema:
+#            type: string
+#          in: path
+#          name: mirisDocId
+#          description: Miris DocId
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateMirisDocIdDTO'
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+    parameters: []
+
+  /api/search:
+    get:
+      description: Search for artefacts.
+      operationId: searchArtefact
+      tags:
+        - Search Resource
+      parameters:
+        - $ref: '#/components/parameters/limitParam'
+        - schema:
+            type: array
+            items: {}
+          in: query
+          name: tag
+          description: Tags
+        - $ref: '#/components/parameters/artefactIdQueryParam'
+        - schema:
+            type: string
+          in: query
+          name: docId
+          description: Miris DocId
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactItemsResults'
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+    parameters: []
+
+
+components:
+  headers:
+    AccessControlAllowOrigin:
+      schema:
+        type: string
+    AccessControlAllowMethods:
+      schema:
+        type: string
+    AccessControlAllowHeaders:
+      schema:
+        type: string
+    Location:
+      schema:
+        type: string
+  responses:
+    200Cors:
+      description: Options Response.
+      headers:
+        Access-Control-Allow-Origin:
+          schema:
+            type: string
+        Access-Control-Allow-Methods:
+          schema:
+            type: string
+        Access-Control-Allow-Headers:
+          schema:
+            type: string
+      content: {}
+  parameters:
+    versionIdParam:
+      name: versionId
+      in: query
+      description: Version Identifier
+      required: false
+      schema:
+        type: string
+    webhooksParam:
+      name: webhooks+
+      in: path
+      required: true
+      description: Web Hook Param
+      schema:
+        type: string
+    webhookIdParam:
+      name: webhookId
+      in: path
+      required: true
+      description: Web Hook Param
+      schema:
+        type: string
+    siteIdParam:
+      name: siteId
+      in: query
+      description: Site Identifier.
+      required: false
+      schema:
+        type: string
+    limitParam:
+      name: limit
+      in: query
+      description: Limit Results
+      required: false
+      schema:
+        type: string
+    artefactIdParam:
+      name: artefactId
+      in: path
+      description: Artefact Query Identifier.
+      required: true
+      schema:
+        type: string
+    mirisDocIdParam:
+      name: mirisDocId
+      in: path
+      description: miris document Id Query Identifier.
+      required: true
+      schema:
+        type: string
+    docTypeParam:
+      name: DocumentType
+      in: query
+      description: Type of the document to filter the artefact.
+      required: false
+      schema:
+        type: string
+        enum:
+          - DOCUMENT
+          - LOGO
+          - MEDIA
+    tagkeyParam:
+      name: tagKey
+      in: path
+      description: Tag Key.
+      required: true
+      schema:
+        type: string
+    contentLengthParam:
+      name: contentLength
+      in: query
+      description: Indicates the size of the entity-body.
+      required: false
+      schema:
+        type: integer
+    artefactIdQueryParam:
+      name: artefactId
+      in: query
+      description: Artefact Identifier.
+      schema:
+        type: string
+        format: uuid
+    durationParam:
+      name: duration
+      in: query
+      description: Indicates the number of hours request is valid for.
+      required: true
+      schema:
+        type: integer
+    batchIdPathParam:
+      name: batchIdPathParam
+      in: path
+      required: true
+      schema:
+        type: string
+    batchSeqPathParam:
+      name: batchSequence
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    ArtefactInfoResponse:
+      type: object
+      properties:
+        artefactInfo:
+          type: object
+          properties:
+            artefactId:
+              type: string
+              example: 12345
+            mediaType:
+              type: string
+              example: image/png
+            fileType:
+              type: string
+              example: PNG
+            bitDepth:
+              type: string
+              example: 24
+            samplingFrequency:
+              type: string
+              example: 44.1kHz
+            resolutionInDpi:
+              type: string
+              example: 300
+            sizeWarning:
+              type: boolean
+              example: false
+            contentLength:
+              type: string
+              example: 2048000
+    ArtefactJobStatusResponse:
+      type: object
+      properties:
+        jobStatus:
+          type: string
+          example: INIT
+        id:
+          type: string
+          example: 12345
+        artefactId:
+          type: string
+          example: 67890
+    JobStatusResponse:
+      type: object
+      properties:
+        batchStatus:
+          type: string
+        batchSequence:
+          type: string
+    ValidateMirisDocIdDTO:
+      type: object
+      properties:
+        mirisDocId:
+          type: string
+        valid:
+          type: boolean
+
+    WipoUserDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        wipoId:
+          type: string
+        username:
+          type: string
+        cognitoId:
+          type: string
+    ArtefactDTO:
+      type: object
+      x-examples: {}
+      properties:
+        id:
+          type: integer
+          format: int64
+        artefactName:
+          type: string
+        artefactClassType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - MULTIMEDIA
+            - SOUND
+            - DOCUMENT
+        status:
+          type: string
+          enum:
+            - INIT
+            - INSERTED
+            - INDEXED
+            - DELETED
+        error:
+          type: string
+        indexationDate:
+          type: string
+          format: date
+        archiveDate:
+          type: string
+          format: date
+        mirisDocId:
+          type: string
+        sizeWarning:
+          type: boolean
+        contentLength:
+          type: string
+        artefactItemTags:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactItemTagDTO'
+        items:
+          $ref: '#/components/schemas/ArtefactItemDTO'
+    ArtefactInput:
+      type: object
+      description: Uploading a New Artefact with exis MIRIS Doc ID
+      x-examples:
+        example-1:
+          artefactName: string
+          artefactClassType: CERTIFICATE
+          artefactItemTags:
+            - id: 0
+              value: string
+              key: string
+              insertedDate: '2019-08-24'
+              type: string
+          items:
+            - storage: string
+              path: string
+              filename: string
+              contentType: string
+          mirisDocId: string
+      title: ArtefactInput
+      properties:
+        artefactName:
+          type: string
+        artefactClassType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - MULTIMEDIA
+            - SOUND
+            - DOCUMENT
+        artefactItemTags:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactItemTagNewInput'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactNewRequestItem'
+        mirisDocId:
+          type: string
+          minLength: 5
+          maxLength: 8
+        contentType:
+          type: string
+          enum:
+            - "application/pdf"
+            - "image/gif"
+            - "image/png"
+            - "image/tiff"
+            - "image/x-tiff"
+            - "image/jpeg"  
+            - "image/pjpeg"
+            - "audio/mpeg"
+            - "audio/wav"
+      required:
+        - artefactName
+        - artefactClassType
+        - artefactItemTags
+        - items
+        - contentType
+    ArtefactBatchInput:
+      type: object
+      description: Uploading a New Artefact
+      x-examples: {}
+      title: ArtefactBatchInput
+      properties:
+        artefactName:
+          type: string
+        artefactClassType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - MULTIMEDIA
+            - SOUND
+            - DOCUMENT
+        artefactItemTags:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactItemTagNewInput'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactNewRequestItem'
+        batch:
+          $ref: '#/components/schemas/BatchNewRequest'
+        mirisDocId:
+          type: string
+      required:
+        - artefactName
+        - artefactClassType
+        - items
+    ArtefactItemDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        storage:
+          type: string
+        path:
+          type: string
+        filename:
+          type: string
+        contentType:
+          type: string
+        totalPages:
+          type: integer
+          format: int32
+      x-examples:
+        example-1:
+          id: -9223372036854776000
+          storage: string
+          path: string
+          filename: string
+          contentType: string
+          totalPages: -2147483648
+    ArtefactBatchItemDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        storage:
+          type: string
+        path:
+          type: string
+        filename:
+          type: string
+        artefactType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - MULTIMEDIA
+            - SOUND
+            - DOCUMENT
+        contentType:
+          type: string
+        totalPages:
+          type: integer
+          format: int32
+        jobId:
+          type: string
+        jobStatus:
+          type: string
+      required:
+        - id
+        - path
+        - filename
+        - artefactType
+    ArtefactNewRequestItem:
+      type: object
+      properties:
+        storage:
+          type: string
+        path:
+          type: string
+        filename:
+          type: string
+        contentType:
+          type: string
+      required:
+        - filename
+      x-examples:
+        example-1:
+          storage: string
+          path: string
+          filename: string
+          contentType: string
+    ArtefactItemTagDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        value:
+          type: string
+        key:
+          type: string
+        insertedDate:
+          type: string
+          format: date
+        type:
+          type: string
+    ArtefactItemTagNewInput:
+      type: object
+      properties:
+        value:
+          type: string
+        key:
+          type: string
+        type:
+          type: string
+      x-examples:
+        example-1:
+          value: string
+          key: string
+          type: string
+    BatchDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        batch_sequence:
+          type: string
+        lockedDate:
+          type: string
+          format: date
+        creatioDate:
+          type: string
+          format: date
+        lastModificationDate:
+          type: string
+          format: date
+        status:
+          type: string
+          enum:
+            - INIT
+            - INSERTED
+            - COMPLETED
+            - DELETED
+        operator:
+          $ref: '#/components/schemas/WipoUserDTO'
+        lockedBy:
+          $ref: '#/components/schemas/WipoUserDTO'
+        lastModUser:
+          $ref: '#/components/schemas/WipoUserDTO'
+        artefacts:
+          $ref: '#/components/schemas/ArtefactDTO'
+    BatchNewRequest:
+      type: object
+      title: ''
+      x-examples: {}
+      properties:
+        batchSequence:
+          type: string
+        creationDate:
+          type: string
+          format: date
+    AdminUserDTO:
+      required:
+        - login
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        firstName:
+          maxLength: 50
+          minLength: 0
+          type: string
+        lastName:
+          maxLength: 50
+          minLength: 0
+          type: string
+        email:
+          maxLength: 254
+          minLength: 5
+          type: string
+        imageUrl:
+          maxLength: 256
+          minLength: 0
+          type: string
+        activated:
+          type: boolean
+        langKey:
+          maxLength: 10
+          minLength: 2
+          type: string
+        createdBy:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        lastModifiedDate:
+          type: string
+          format: date-time
+        authorities:
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+    artefactItemUrl:
+      type: object
+      properties:
+        artefactId:
+          type: string
+        signedS3Url:
+          type: string
+        jobId:
+          type: string
+        collectionId:
+          type: string
+      x-examples:
+        example-1:
+          artefactId: string
+          signedS3Url: string
+          jobId: string
+          collectionId: string
+    ArtefactItemsResults:
+      type: object
+      properties:
+        next:
+          type: string
+        previous:
+          type: string
+        documents:
+          $ref: '#/components/schemas/ArtefactItemDTO'
+    ArtefactItemsVersions:
+      type: object
+      properties:
+        next:
+          type: string
+        versions:
+          $ref: '#/components/schemas/ArtefactItemVersions'
+    ArtefactItemVersions:
+      type: array
+      items:
+        $ref: '#/components/schemas/ArtefactItemVersion'
+    ArtefactItemVersion:
+      required:
+        - versionId
+      type: object
+      properties:
+        versionId:
+          type: string
+        lastModifiedDate:
+          type: string
+    ArtefactContent:
+      type: object
+      properties:
+        content:
+          type: string
+        contentUrl:
+          type: string
+        contentType:
+          type: string
+        isBase64:
+          type: boolean
+    ArtefactItemsTags:
+      type: object
+      properties:
+        next:
+          type: string
+        previous:
+          type: string
+        tags:
+          $ref: '#/components/schemas/ArtefactItemTags'
+    ArtefactItemTags:
+      type: array
+      items:
+        $ref: '#/components/schemas/ArtefactItemTag'
+    ArtefactItemTag:
+      type: object
+      properties:
+        insertedDate:
+          type: string
+        artefactItemId:
+          type: string
+        type:
+          type: string
+        userId:
+          type: string
+        value:
+          type: string
+        key:
+          type: string
+      required:
+        - value
+        - key
+    ArtefactItemTagValueBody:
+      required:
+        - value
+      type: object
+      properties:
+        value:
+          type: string
+      x-examples: {}
+    ArtefactUrl:
+      type: object
+      x-examples:
+        example-1:
+          artefactId: string
+          url: string
+      properties:
+        artefactId:
+          type: string
+        url:
+          type: string
+
+    ArtefactJob:
+      type: object
+      x-examples:
+        example-1:
+          id: string
+          path: string
+          filename: string
+          jobStatus: string
+          artefactId: string
+          creationDate: string
+          lastModDate: string
+      properties:
+        id:
+          type: string
+          format: int64
+        path:
+          type: string
+        filename:
+          type: string
+        jobStatus:
+          type: string
+          enum:
+              - INIT
+              - UPLOADED
+              - ERROR
+        artefactId:
+          type: string
+        creationDate:
+          type: string
+        lastModDate:
+          type: string
+      required:
+        - id
+        - jobStatus
+        - artefactId
+    ArtefactBatchUploadDTO:
+      type: object
+      properties:
+        type:
+          type: string  
+        artefactName:
+          type: string
+        artefactClassType:
+          type: string
+        batchSequence:
+          type: string
+        creationDate:
+          type: string
+        requestType:
+         type: string
+        filename:
+         type: string
+        path:
+         type: string
+        contentType:
+         type: string
+         enum:
+          - PDF
+          - PNG
+          - JPG
+          - JPEG
+          - TIFF
+          - WAV
+          - MP3
+          - MP4
+        user:
+          type: string        
+  securitySchemes:
+    AuthorizationCognito:
+      type: oauth2
+      flows: {}
+      x-amazon-apigateway-authorizer:
+        type: jwt
+        jwtConfiguration:
+          issuer:
+            'Fn::Sub': 'https://cognito-idp.${AWS::Region}.amazonaws.com/${CognitoUserPool}'
+          audience:
+            - 'Fn::Sub': '${CognitoUserPoolClient}'
+        identitySource: $request.header.Authorization
+    sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      x-amazon-apigateway-authtype: awsSigv4
+  x-amazon-apigateway-integrations:
+    lambdaApi200:
+      uri:
+        'Fn::Sub': 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ArtefactsApiRequests.Arn}/invocations'
+      responses:
+        default:
+          statusCode: '200'
+          responseParameters:
+            method.response.header.Access-Control-Allow-Methods: '''*'''
+            method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key'''
+            method.response.header.Access-Control-Allow-Origin: '''*'''
+      passthroughBehavior: when_no_templates
+      httpMethod: POST
+      type: aws_proxy
+      payloadFormatVersion: '1.0'
+    lambdaApi201:
+      uri:
+        'Fn::Sub': 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ArtefactsApiRequests.Arn}/invocations'
+      responses:
+        default:
+          statusCode: '201'
+          responseParameters:
+            method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key'''
+            method.response.header.Access-Control-Allow-Methods: '''*'''
+            method.response.header.Access-Control-Allow-Origin: '''*'''
+      passthroughBehavior: WHEN_NO_TEMPLATES
+      httpMethod: POST
+      type: aws_proxy
+      payloadFormatVersion: '1.0'
+x-amazon-apigateway-gateway-responses:
+  UNAUTHORIZED:
+    statusCode: 401
+    responseParameters:
+      gatewayresponse.header.Access-Control-Allow-Methods: '''*'''
+      gatewayresponse.header.Access-Control-Allow-Origin: '''*'''
+      gatewayresponse.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key'''
+x-amazon-apigateway-cors:
+  allowOrigins:
+    - '*'
+  maxAge: 3600
+  allowMethods:
+    - '*'
+  allowHeaders:
+    - '*'

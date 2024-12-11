@@ -1,0 +1,18 @@
+{
+    "packageType": "v0.2",
+    "systemName": "Madrid Aws API",
+    "systemVersion": "00.01",
+    "codeRepository": {
+        "type": "CODE_REPOSITORY_TYPE",
+        "url": "CODE_REPOSITORY_URL",
+        "branch": "BRANCH_NAME",
+        "commit": "COMMIT_ID"
+    },
+    "build": {
+        "number": "BUILD_NUMBER",
+        "date": "BUILD_DATE_TIME"
+    },
+    "deploy": {
+        "infrastructure": "aws"
+    }
+}

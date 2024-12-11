@@ -1,0 +1,885 @@
+{
+  "requestItems": {
+    "Aws-table": [
+      {
+        "putRequest": {
+          "item": {
+            "s3_signed_url": {
+              "s": "http://registry-bucket.localhost:4566/Aws-2023-07-11/null/trademark_picture?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230711T122339Z&X-Amz-SignedHeaders=host%3Bx-amz-meta-artefact-id-key%3Bx-amz-meta-batch-seq-key%3Bx-amz-meta-job-id-key&X-Amz-Expires=172800&X-Amz-Credential=localstack%2F20230711%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=496a8a2ea8f6a9e053500686f0e50ded6320c8c07a17764a6cceb3844eac02a3"
+            },
+            "jobId": {
+              "s": "68e1bff9-e4e7-4197-8354-e059550c8961"
+            },
+            "jobStatus": {
+              "s": "INIT"
+            },
+            "insertedDate" : {
+              "s": "2023-12-14T12:25:06+0000"
+            },
+            "requestId": {
+              "s": "32981436-b4eb-4103-bd89-4ae2661152b2"
+            },
+            "artefactId": {
+              "s": "null-trademark_picture"
+            },
+            "SK": {
+              "s": "job"
+            },
+            "PK": {
+              "s": "jobs#68e1bff9-e4e7-4197-8354-e059550c8961"
+            },
+            "type": {
+              "s": "job"
+            },
+            "batchSequence": {
+              "s": "4354562353"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "s3Key": {
+              "s": "Merged_document.tiff"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-07-07"
+            },
+            "insertedDate": {
+              "s": "2023-07-07T13:09:21+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-07T13:09:21+0000#4b917a69-c1e5-420e-8eb8-78195bdfa174"
+            },
+            "artefactId": {
+              "s": "4b917a69-c1e5-420e-8eb8-78195bdfa174"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "mirisDocId": {
+              "s": "12232"
+            },
+            "fileName": {
+              "s": "Merged_document.tiff"
+            },
+            "contentLength": {
+              "n" : "20550"
+            },
+            "sizeWarning": {
+              "bool" : "true"
+            },
+            "PK": {
+              "s": "artefacts#4b917a69-c1e5-420e-8eb8-78195bdfa174"
+            },
+            "type": {
+              "s": "ARTEFACT#MULTIMEDIA"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "s3Bucket": {
+              "s": "test-bucket"
+            },
+            "status": {
+              "s": "INDEXED"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "s3_signed_url": {
+              "s": "http://registry-bucket.localhost:4566/Aws-2023-07-07/4b917a69-c1e5-420e-8eb8-78195bdfa174/mov_bbb.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230707T130922Z&X-Amz-SignedHeaders=host%3Bx-amz-meta-artefact-id-key%3Bx-amz-meta-job-id-key%3Bx-amz-meta-miris-doc-id&X-Amz-Expires=172800&X-Amz-Credential=localstack%2F20230707%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=3bb02671ff3679cc4b77f6550f82ca84db011fef39879c742d0b30a3287c59f9"
+            },
+            "jobId": {
+              "s": "4d37ad36-883b-4c64-b17f-d3d099bc8824"
+            },
+            "jobStatus": {
+              "s": "INIT"
+            },
+            "artefactId": {
+              "s": "4b917a69-c1e5-420e-8eb8-78195bdfa174"
+            },
+            "SK": {
+              "s": "job"
+            },
+            "PK": {
+              "s": "jobs#4d37ad36-883b-4c64-b17f-d3d099bc8824"
+            },
+            "type": {
+              "s": "job"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "fileName": {
+              "s": "trademark_picture"
+            },
+            "type": {
+              "s": "ARTEFACT#SOUND"
+            },
+            "samplingFrequency": {
+              "s" : "44100"
+            },
+            "bitDepth" : {
+              "s" : "16"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "BatchSequenceId": {
+              "s": "4354562353"
+            },
+            "s3Bucket": {
+              "s": "registry-bucket"
+            },
+            "s3Key": {
+              "s": "Aws-2023-07-11/metadata_test_artefact/trademark_picture"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-07-11"
+            },
+            "insertedDate": {
+              "s": "2023-07-11T12:23:39+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-11T12:23:39+0000#metadata_test_artefact"
+            },
+            "artefactId": {
+              "s": "metadata_test_artefact"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "PK": {
+              "s": "artefacts#metadata_test_artefact"
+            },
+            "status": {
+              "s": "INIT"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "fileName": {
+              "s": "trademark_picture"
+            },
+            "belongsToArtefactId": {
+              "s": "unit-test-artefactbatch"
+            },
+            "type": {
+              "s": "ARTEFACT#null"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "BatchSequenceId": {
+              "s": "4354562353"
+            },
+            "s3Bucket": {
+              "s": "registry-bucket"
+            },
+            "artefactContainerName": {
+              "s": "unit-test-artefactbatch"
+            },
+            "s3Key": {
+              "s": "Aws-2023-07-11/unit-test-artefactbatch/trademark_picture"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-07-11"
+            },
+            "insertedDate": {
+              "s": "2023-07-11T12:24:48+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-11T12:24:48+0000#unit-test-artefactbatch-trademark_picture"
+            },
+            "artefactId": {
+              "s": "unit-test-artefactbatch-trademark_picture"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "PK": {
+              "s": "artefacts#unit-test-artefactbatch-trademark_picture"
+            },
+            "status": {
+              "s": "INIT"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "s3Key": {
+              "s": "Merged_document_2.tiff"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-07-07"
+            },
+            "insertedDate": {
+              "s": "2023-07-07T13:09:26+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-07T13:09:26+0000#8ab7ed96-0799-4c4f-8a3b-4739fa0ec738"
+            },
+            "artefactId": {
+              "s": "8ab7ed96-0799-4c4f-8a3b-4739fa0ec738"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "mirisDocId": {
+              "s": "12233"
+            },
+            "PK": {
+              "s": "artefacts#8ab7ed96-0799-4c4f-8a3b-4739fa0ec738"
+            },
+            "type": {
+              "s": "ARTEFACT#MULTIMEDIA"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "s3Bucket": {
+              "s": "test-bucket"
+            },
+            "status": {
+              "s": "INIT"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "s3_signed_url": {
+              "s": "http://registry-bucket.localhost:4566/Aws-2023-07-11/null/trademark_movie?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230711T105250Z&X-Amz-SignedHeaders=host%3Bx-amz-meta-artefact-id-key%3Bx-amz-meta-batch-seq-key%3Bx-amz-meta-job-id-key&X-Amz-Expires=172800&X-Amz-Credential=localstack%2F20230711%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=0acafb5d726a479871d7905de97c86ddb19af6b35548ffbeaa367c847167a0d4"
+            },
+            "jobId": {
+              "s": "d65a9f67-b380-4d05-b42f-482065e3ee3a"
+            },
+            "jobStatus": {
+              "s": "INIT"
+            },
+            "requestId": {
+              "s": "d73496d7-6bcc-413c-b4b7-b63bb0fd1ff7"
+            },
+            "artefactId": {
+              "s": "null-trademark_movie"
+            },
+            "SK": {
+              "s": "job"
+            },
+            "PK": {
+              "s": "jobs#d65a9f67-b380-4d05-b42f-482065e3ee3a"
+            },
+            "type": {
+              "s": "job"
+            },
+            "batchSequence": {
+              "s": "12345678"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "s3Key": {
+              "s": "Aws-2023-07-07/86c9c042-b94a-4dc9-9c4a-372a55d2036f/mov_bbb.mp4"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-07-07"
+            },
+            "insertedDate": {
+              "s": "2023-07-07T13:09:31+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-07T13:09:31+0000#86c9c042-b94a-4dc9-9c4a-372a55d2036f"
+            },
+            "artefactId": {
+              "s": "86c9c042-b94a-4dc9-9c4a-372a55d2036f"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "mirisDocId": {
+              "s": "12234"
+            },
+            "PK": {
+              "s": "artefacts#86c9c042-b94a-4dc9-9c4a-372a55d2036f"
+            },
+            "type": {
+              "s": "ARTEFACT#MULTIMEDIA"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "s3Bucket": {
+              "s": "registry-bucket"
+            },
+            "status": {
+              "s": "INIT"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "s3_signed_url": {
+              "s": "http://registry-bucket.localhost:4566/Aws-2023-07-07/8ab7ed96-0799-4c4f-8a3b-4739fa0ec738/mov_bbb.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230707T130926Z&X-Amz-SignedHeaders=host%3Bx-amz-meta-artefact-id-key%3Bx-amz-meta-job-id-key%3Bx-amz-meta-miris-doc-id&X-Amz-Expires=172800&X-Amz-Credential=localstack%2F20230707%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=5cf083292666ca9912b2e8893aac939a941e67507f799ef665830d144a2232c0"
+            },
+            "jobId": {
+              "s": "1fac0465-9470-4c0a-abc9-5dd595a6e0f6"
+            },
+            "jobStatus": {
+              "s": "INIT"
+            },
+            "artefactId": {
+              "s": "8ab7ed96-0799-4c4f-8a3b-4739fa0ec738"
+            },
+            "SK": {
+              "s": "job"
+            },
+            "PK": {
+              "s": "jobs#1fac0465-9470-4c0a-abc9-5dd595a6e0f6"
+            },
+            "type": {
+              "s": "job"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "SK": {
+              "s": "2023-07-07"
+            },
+            "PK": {
+              "s": "artefactdate"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "SK": {
+              "s": "2023-07-11"
+            },
+            "PK": {
+              "s": "artefactdate"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "SK": {
+              "s": "artefacts#null-trademark_movie"
+            },
+            "PK": {
+              "s": "batch#12345678"
+            },
+            "batchSequence": {
+              "s": "12345678"
+            },
+            "artefactId": {
+              "s": "null-trademark_movie"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "GSI1PK": {
+              "s": "artefactts#null"
+            },
+            "requestType": {
+              "s": ""
+            },
+            "requestId": {
+              "s": "d73496d7-6bcc-413c-b4b7-b63bb0fd1ff7"
+            },
+            "artefactId": {
+              "s": "null-trademark_movie"
+            },
+            "GSI1SK": {
+              "s": "null#12345678"
+            },
+            "SK": {
+              "s": "batch"
+            },
+            "PK": {
+              "s": "batch#12345678"
+            },
+            "batchSequence": {
+              "s": "12345678"
+            },
+            "type": {
+              "s": "batch"
+            },
+            "batchStatus": {
+              "s": "INIT"
+            },
+            "operator": {
+              "s": "alogothetis"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "s3_signed_url": {
+              "s": "http://registry-bucket.localhost:4566/Aws-2023-07-07/86c9c042-b94a-4dc9-9c4a-372a55d2036f/mov_bbb.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230707T130931Z&X-Amz-SignedHeaders=host%3Bx-amz-meta-artefact-id-key%3Bx-amz-meta-job-id-key%3Bx-amz-meta-miris-doc-id&X-Amz-Expires=172800&X-Amz-Credential=localstack%2F20230707%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ef85d64da79e19f6a891ec6d6f6196df250d3a2a1023f767e6145e3831b49b78"
+            },
+            "jobId": {
+              "s": "c1a1c207-9c59-4d06-9f0d-8083cf192842"
+            },
+            "jobStatus": {
+              "s": "INIT"
+            },
+            "artefactId": {
+              "s": "86c9c042-b94a-4dc9-9c4a-372a55d2036f"
+            },
+            "SK": {
+              "s": "job"
+            },
+            "PK": {
+              "s": "jobs#c1a1c207-9c59-4d06-9f0d-8083cf192842"
+            },
+            "type": {
+              "s": "job"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "s3_signed_url": {
+              "s": "http://registry-bucket.localhost:4566/Aws-2023-07-11/unit-test-artefactbatch/trademark_picture?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230711T122448Z&X-Amz-SignedHeaders=host%3Bx-amz-meta-artefact-id-key%3Bx-amz-meta-batch-seq-key%3Bx-amz-meta-job-id-key&X-Amz-Expires=172800&X-Amz-Credential=localstack%2F20230711%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=871698026571b89a9873726430478d7c1a93f224e45362d2a4bafa8c784c8434"
+            },
+            "jobId": {
+              "s": "dc12d620-7b1f-4a44-839f-9e4017823a39"
+            },
+            "jobStatus": {
+              "s": "INIT"
+            },
+            "requestId": {
+              "s": "8bdf287c-5bac-4d92-bb07-e12a14a864df"
+            },
+            "artefactId": {
+              "s": "unit-test-artefactbatch-trademark_picture"
+            },
+            "SK": {
+              "s": "job"
+            },
+            "PK": {
+              "s": "jobs#dc12d620-7b1f-4a44-839f-9e4017823a39"
+            },
+            "type": {
+              "s": "job"
+            },
+            "batchSequence": {
+              "s": "4354562353"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "fileName": {
+              "s": "trademark_movie"
+            },
+            "type": {
+              "s": "ARTEFACT#null"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "BatchSequenceId": {
+              "s": "12345678"
+            },
+            "s3Bucket": {
+              "s": "test-bucket"
+            },
+            "s3Key": {
+              "s": "Aws-2023-07-11/null/trademark_movie"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-07-11"
+            },
+            "insertedDate": {
+              "s": "2023-07-11T10:52:46+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-11T10:52:46+0000#null-trademark_movie"
+            },
+            "artefactId": {
+              "s": "null-trademark_movie"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "PK": {
+              "s": "artefacts#null-trademark_movie"
+            },
+            "status": {
+              "s": "INIT"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "SK": {
+              "s": "artefacts#null-trademark_picture"
+            },
+            "PK": {
+              "s": "batch#4354562353"
+            },
+            "batchSequence": {
+              "s": "4354562353"
+            },
+            "artefactId": {
+              "s": "null-trademark_picture"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "SK": {
+              "s": "artefacts#unit-test-artefactbatch-trademark_picture"
+            },
+            "PK": {
+              "s": "batch#4354562353"
+            },
+            "batchSequence": {
+              "s": "4354562353"
+            },
+            "artefactId": {
+              "s": "unit-test-artefactbatch-trademark_picture"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "GSI1PK": {
+              "s": "artefactts#null"
+            },
+            "requestType": {
+              "s": "requestTypeValue"
+            },
+            "user": {
+              "s": "alogoth"
+            },
+            "requestId": {
+              "s": "8bdf287c-5bac-4d92-bb07-e12a14a864df"
+            },
+            "artefactId": {
+              "s": "unit-test-artefactbatch-trademark_picture"
+            },
+            "GSI1SK": {
+              "s": "null#4354562353"
+            },
+            "SK": {
+              "s": "batch"
+            },
+            "PK": {
+              "s": "batch#4354562353"
+            },
+            "batchSequence": {
+              "s": "4354562353"
+            },
+            "type": {
+              "s": "batch"
+            },
+            "locked": {
+              "bool": false
+            },
+            "batchStatus": {
+              "s": "INSERTED"
+            },
+            "operator": {
+              "s": "alogothetis"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "s3Key": {
+              "s": "Aws-2023-07-07/86c9c042-b94a-4dc9-12235-372a55d2036f/mov_bbb.mp4"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-10-07"
+            },
+            "insertedDate": {
+              "s": "2023-07-07T13:09:31+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-07T13:09:31+0000#86c9c042-b94a-4dc9-12235-372a55d2036f"
+            },
+            "artefactId": {
+              "s": "86c9c042-b94a-4dc9-12235-372a55d2036f"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "mirisDocId": {
+              "s": "12235"
+            },
+            "PK": {
+              "s": "artefacts#86c9c042-b94a-4dc9-12235-372a55d2036f"
+            },
+            "type": {
+              "s": "ARTEFACT#MULTIMEDIA"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "s3Bucket": {
+              "s": "registry-bucket"
+            },
+            "status": {
+              "s": "INDEXED"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "s3Key": {
+              "s": "Aws-2023-10-07/86c9c042-b94a-4dc9-12236-372a55d2036f/mov_bbb.jpg"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-10-07"
+            },
+            "insertedDate": {
+              "s": "2023-10-07T13:09:31+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-10-07T13:09:31+0000#86c9c042-b94a-4dc9-12236-372a55d2036f"
+            },
+            "artefactId": {
+              "s": "86c9c042-b94a-4dc9-12236-372a55d2036f"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "mirisDocId": {
+              "s": "12236"
+            },
+            "PK": {
+              "s": "artefacts#86c9c042-b94a-4dc9-12236-372a55d2036f"
+            },
+            "type": {
+              "s": "ARTEFACT#COLOURLOGO"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "s3Bucket": {
+              "s": "registry-bucket"
+            },
+            "status": {
+              "s": "INDEXED"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "s3Key": {
+              "s": "Aws-2023-10-07/86c9c042-b94a-4dc9-12237-372a55d2036f/mov_bbb.jpg"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-10-07"
+            },
+            "insertedDate": {
+              "s": "2023-10-07T13:09:31+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-10-07T13:09:31+0000#86c9c042-b94a-4dc9-12237-372a55d2036f"
+            },
+            "artefactId": {
+              "s": "86c9c042-b94a-4dc9-12237-372a55d2036f"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "mirisDocId": {
+              "s": "12237"
+            },
+            "PK": {
+              "s": "artefacts#86c9c042-b94a-4dc9-12237-372a55d2036f"
+            },
+            "type": {
+              "s": "ARTEFACT#BWLOGO"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "s3Bucket": {
+              "s": "registry-bucket"
+            },
+            "status": {
+              "s": "INDEXED"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "s3Key": {
+              "s": "Aws-2023-10-07/86c9c042-b94a-4dc9-12238-372a55d2036f/mov_bbb.jpg"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-10-07"
+            },
+            "insertedDate": {
+              "s": "2023-10-07T13:09:31+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-10-07T13:09:31+0000#86c9c042-b94a-4dc9-12238-372a55d2036f"
+            },
+            "artefactId": {
+              "s": "86c9c042-b94a-4dc9-12238-372a55d2036f"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "mirisDocId": {
+              "s": "12238"
+            },
+            "PK": {
+              "s": "artefacts#86c9c042-b94a-4dc9-12238-372a55d2036f"
+            },
+            "type": {
+              "s": "ARTEFACT#SOUND"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "s3Bucket": {
+              "s": "registry-bucket"
+            },
+            "status": {
+              "s": "INDEXED"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "s3Key": {
+              "s": "Aws-2023-10-07/86c9c042-b94a-4dc9-12239-372a55d2036f/mov_bbb.jpg"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-10-07"
+            },
+            "insertedDate": {
+              "s": "2023-10-07T13:09:31+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-10-07T13:09:31+0000#86c9c042-b94a-4dc9-12239-372a55d2036f"
+            },
+            "artefactId": {
+              "s": "86c9c042-b94a-4dc9-12239-372a55d2036f"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "mirisDocId": {
+              "s": "12239"
+            },
+            "PK": {
+              "s": "artefacts#86c9c042-b94a-4dc9-12239-372a55d2036f"
+            },
+            "type": {
+              "s": "ARTEFACT#CERTIFICATE"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "s3Bucket": {
+              "s": "registry-bucket"
+            },
+            "status": {
+              "s": "INDEXED"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "s3Key": {
+              "s": "Aws-2023-10-07/86c9c042-b94a-4dc9-12240-372a55d2036f/mov_bbb.jpg"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-10-07"
+            },
+            "insertedDate": {
+              "s": "2023-10-07T13:09:31+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-10-07T13:09:31+0000#86c9c042-b94a-4dc9-12240-372a55d2036f"
+            },
+            "artefactId": {
+              "s": "86c9c042-b94a-4dc9-12240-372a55d2036f"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "mirisDocId": {
+              "s": "12240"
+            },
+            "PK": {
+              "s": "artefacts#86c9c042-b94a-4dc9-12240-372a55d2036f"
+            },
+            "type": {
+              "s": "ARTEFACT#DOCUMENT"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "s3Bucket": {
+              "s": "registry-bucket"
+            },
+            "status": {
+              "s": "INDEXED"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,136 @@
+---
+sidebar_position: 1
+tags:
+  - test
+---
+
+# Workflow - Create and Upload an Artefact
+
+## Workflow Request Steps
+
+OverView
+
+Create an Artefact, is a 3-step process.
+
+### 1. Initial Request
+
+This is a metadata validation, and is synchronous, with a response giving the output of the validation, and if successful, an S3SignedUrl to upload the artefact
+The url is a temporary url that timeout's after a period has passed.
+
+```
+https://{API-URL}/api/artefacts/upload
+```
+
+Curl Example:
+
+```shell
+curl -L -X POST 'https://{API-URL}/api/artefacts/upload' \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+--data-raw '{
+  "artefactName": "string",
+  "artefactClassType": "CERTIFICATE",
+  "artefactItemTags": [
+    {
+      "value": "string",
+      "key": "string",
+      "type": "string"
+    }
+  ],
+  "items": [
+    {
+      "storage": "string",
+      "path": "string",
+      "filename": "string",
+      "contentType": "string"
+    }
+  ],
+  "mirisDocId": "string",
+  "contentType": "application/pdf"
+}'
+```
+Response:
+
+```json
+{
+"jobId":"3caf92fb-ec77-4cc1-a2c2-116071a41507",
+"artefactId":"e1767e41-f1e4-4017-a075-83c8cae3e552",
+"signedS3Url":"https://Aws-registry-bucket-dev-eu-central-1-551493771163.s3.eu-central-1.amazonaws.com/Aws-2024-02-27/e1767e41-f1e4-4017-a075-83c8cae3e552/00000000-1.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPT%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDGV1LWNlbnRyYWwtMSJHMEUCIBBs0Tlhqv526K263chWOq%2F%2FQVpDBIOPuSbTBxDUp8ZzAiEA3HRLiLW9xZ6gSb2pT5dNzp4aIXOfT17TLIt7LXYik4YqowMI3f%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAEGgw1NTE0OTM3NzExNjMiDKYKmfkSPGDtAfutmyr3Ai0esVUgXf2mStVbB4jdiYDGQeLBYMZqHN1KhUWcFhOSP5rCicOSSVmwOHsJx3nHrBJYgiJ6EEdIp%2FEf6vuc6Km6cKAHzb3QDsIVy1hmh5ZfnVy5RkCKxkVuk4yK2nzKL6nhshiLabZiG6e2QhQ1VFIeaGtmrnCwX6lBP%2BOyJiAHoGJ0MdsU%2FrinVmJuZz%2BPkjVd1ur0e%2FXSCeacV6h8fvvG4LcyjeTgKMDTddOvWJkkwdyuinwZ%2BZjgKRR2%2B67UFEQX%2BtyuhNruzb8a7L2jw9dp%2B6%2FSZhmmi%2FmoVsVFTE2VNVhN1yVKGf2B%2BjhE7Ol55%2BjYZrj54EfVUlL%2BjSxXbEYYmhmrTBW%2Bkvf7%2FC3LOYR1rT0OmAjWsINUP1I9F57Xa4dD4CWuCZyvFQRo3MZp5fs3l6JUKLTiFheI%2Fsk%2BfdDNd4hfpiqua5E0qwGbj%2FZUWJkqDQSPsdBz6QjI1ubcv6niWv3oSTUX06aCEkkAK%2FQ9HmpjflGzdDCo8fiuBjqdAXgIeR48oMtcLZe%2FjIJLox8mN00PRsx5J3ItRsKP2lSck%2F7zEm6w3QCaWmvT%2B%2F2PmbfVYcaX9vpksfjKhDyy8H%2F6QsUsZyAl2EBJNgrvaGEFeQwaeAtxnHMVnVTYPck6N8mOYGdjUz1l%2B9JNZ5a0AHraHBCLh9CP7Kpztk7tiXpomqYCZivXIIF2M%2Fu3ss9LBC0HaLZG3oCMONs%2FRa8%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240227T193156Z&X-Amz-SignedHeaders=host%3Bx-amz-meta-artefact-id-key%3Bx-amz-meta-job-id-key%3Bx-amz-meta-miris-doc-id&X-Amz-Expires=172800&X-Amz-Credential=ASIAYAZ4XD6NUMKF2H7Z%2F20240227%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Signature=f058e599e5ac6710bdd6467c0e4c0079001d42cecd7621026881d26db2201f4e"
+}
+```
+
+### 2. Uplaod to S3
+
+The URL to upload is returned in `Step 1`. Note that headers have to set to ensure the right metadata is being used.
+
+
+
+:::tip Compulsory headers
+
+`x-amz-meta-artefact-id-key`
+`x-amz-meta-job-id-key`
+`x-amz-meta-miris-doc-id`
+
+:::
+
+
+Examples Request
+
+```shell
+curl 'https://Aws-registry-bucket-dev-eu-central-1-551493771163.s3.eu-central-1.amazonaws.com/Aws-2024-02-27/e1767e41-f1e4-4017-a075-83c8cae3e552/00000000-1.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPT%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDGV1LWNlbnRyYWwtMSJHMEUCIBBs0Tlhqv526K263chWOq%2F%2FQVpDBIOPuSbTBxDUp8ZzAiEA3HRLiLW9xZ6gSb2pT5dNzp4aIXOfT17TLIt7LXYik4YqowMI3f%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAEGgw1NTE0OTM3NzExNjMiDKYKmfkSPGDtAfutmyr3Ai0esVUgXf2mStVbB4jdiYDGQeLBYMZqHN1KhUWcFhOSP5rCicOSSVmwOHsJx3nHrBJYgiJ6EEdIp%2FEf6vuc6Km6cKAHzb3QDsIVy1hmh5ZfnVy5RkCKxkVuk4yK2nzKL6nhshiLabZiG6e2QhQ1VFIeaGtmrnCwX6lBP%2BOyJiAHoGJ0MdsU%2FrinVmJuZz%2BPkjVd1ur0e%2FXSCeacV6h8fvvG4LcyjeTgKMDTddOvWJkkwdyuinwZ%2BZjgKRR2%2B67UFEQX%2BtyuhNruzb8a7L2jw9dp%2B6%2FSZhmmi%2FmoVsVFTE2VNVhN1yVKGf2B%2BjhE7Ol55%2BjYZrj54EfVUlL%2BjSxXbEYYmhmrTBW%2Bkvf7%2FC3LOYR1rT0OmAjWsINUP1I9F57Xa4dD4CWuCZyvFQRo3MZp5fs3l6JUKLTiFheI%2Fsk%2BfdDNd4hfpiqua5E0qwGbj%2FZUWJkqDQSPsdBz6QjI1ubcv6niWv3oSTUX06aCEkkAK%2FQ9HmpjflGzdDCo8fiuBjqdAXgIeR48oMtcLZe%2FjIJLox8mN00PRsx5J3ItRsKP2lSck%2F7zEm6w3QCaWmvT%2B%2F2PmbfVYcaX9vpksfjKhDyy8H%2F6QsUsZyAl2EBJNgrvaGEFeQwaeAtxnHMVnVTYPck6N8mOYGdjUz1l%2B9JNZ5a0AHraHBCLh9CP7Kpztk7tiXpomqYCZivXIIF2M%2Fu3ss9LBC0HaLZG3oCMONs%2FRa8%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240227T193156Z&X-Amz-SignedHeaders=host%3Bx-amz-meta-artefact-id-key%3Bx-amz-meta-job-id-key%3Bx-amz-meta-miris-doc-id&X-Amz-Expires=172800&X-Amz-Credential=ASIAYAZ4XD6NUMKF2H7Z%2F20240227%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Signature=f058e599e5ac6710bdd6467c0e4c0079001d42cecd7621026881d26db2201f4e'
+-X PUT
+-H 'x-amz-meta-artefact-id-key: e1767e41-f1e4-4017-a075-83c8cae3e552'
+-H 'x-amz-meta-job-id-key: 3caf92fb-ec77-4cc1-a2c2-116071a41507'
+-H 'x-amz-meta-miris-doc-id: 45454545'
+-H 'Content-Type: application/pdf'
+-H 'Content-Length: 30197'
+-H 'Connection: keep-alive'
+
+```
+
+### 3. Get Status of Job
+
+Request
+
+```shell
+curl -L -X GET 'https://{API-URL}/api/job/:jobid/status'
+```
+
+```json
+{
+"jobStatus":"INIT",
+"artefactId":"e1767e41-f1e4-4017-a075-83c8cae3e552",
+"id":"3caf92fb-ec77-4cc1-a2c2-116071a41507"
+}
+```
+## Workflow Sequence Diagram
+
+Below is an overview of the upload flow.
+
+
+```mermaid
+sequenceDiagram
+    autonumber
+    Client->>+API: POST request to upload API
+    API->>+Interface: Validates POSY body (MirisDoci, content, class types)
+    Interface->>+Scheduler: Create a Job
+    Scheduler-->>-Interface: Return a JobId
+
+    Interface->>+Scheduler: Create an artefactId
+    Scheduler-->>-Interface: Return a artefactId
+    Interface->>+Scheduler: Create an S3Url
+    Scheduler-->>-Interface: Return an S3Url
+    Interface-->>+API: Return a JobId S3URL and ArtefactId
+
+    API-->>-Client: Return a JobId S3URL and ArtefactId
+    Client->>+API: Upload to S3URL with headers
+    API->>+Interface: S3 Trigger
+
+    Interface->>+EventBridge: Send Document Events
+    Interface->>+Scheduler: UpdateJobId
+    Client->>+API: Check Status for Job
+    API-->>-Client: Returns Job Status
+    Interface->>+Scheduler: Close JobID on Successful Upload
+
+```
+

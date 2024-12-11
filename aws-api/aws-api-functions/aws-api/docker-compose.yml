@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  api:
+    image: 'Aws-core:latest'
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    container_name: dbapp
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://Awsdatabase:5432/Awsdb
+      - SPRING_DATASOURCE_USERNAME=Awsuser
+      - SPRING_DATASOURCE_PASSWORD=Awspassword
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  dynamodb:
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
+    image: "amazon/dynamodb-local:latest"
+    ports:
+      - "8000:8000"
+    volumes:
+      - "./docker/dynamodb:/home/dynamodblocal/data"
+    working_dir: /home/dynamodblocal
+  localstack:
+    image: localstack/localstack:2.1
+    ports:
+      - "127.0.0.1:4566:4566"            # LocalStack Gateway
+      - "127.0.0.1:4510-4559:4510-4559"  # ext services port range
+      - "127.0.0.1:53:53"                # DNS config
+      - "127.0.0.1:53:53/udp"            # DNS config
+      - "127.0.0.1:443:443"              # LocalStack HTTPS Gateway
+    environment:
+      - DEBUG=1
+      - PERSISTENCE=${PERSISTENCE-}
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - LS_LOG=trace
+    volumes:
+      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"

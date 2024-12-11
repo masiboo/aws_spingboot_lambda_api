@@ -1,0 +1,40 @@
+---
+id: delete-artefact-tags
+title: "DeleteArtefactTags"
+description: "Delete artefact tags."
+sidebar_label: "DeleteArtefactTags"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVm1v2zYQ/isCUSDbYElOuu6DvnlOigVbkSxO1wJFENASLbGTSJWk7CiC/nvvKEqy55ch+dwvtiTe3XO8e+6lIQnTseKl4VKQiFyynBnmUWXYisbGMzTVAZkQWTJFUeY6GaRmTugeZECkpIoW8FlpEn1piIAXEO0tgd6EcIQoqcngeRe3t+X9XTFVe9cJE4avOFMIrti3iisGyEZVbEJ0nLGCkqghpi4RRBvFRUradjLgguN/svokJvjtgcxrETQ3bLzVN/R7D2IBMkcvs6K5Pon1gNK6lEIzjecX0yn+7ULc2Aft3TlJxMgYTWweGjKLY6a1P5fCKJn7szyXG/9G8RS9bk5d9LDqB2YymehX6f4xunVcF5Rj0IKQwal91SyuFDe1pdWsAnzFny0Z5zIV3Eg4eMBgPfm0oM9S+LTkKTVsQ2ufg6m0oy6igSH8ey+iaFEtLT9FRDc6GlWiN83s0yKK7lgKSm2U02KZ0AgpFF5Mz9/507f+2/NwVYnYRj4EecdePSv5HeSXaaODmRJtyMVaxhZdk/Y/6UxAp8qNDYehptJzmWAoMM2j6O1WWTWksOEP+sOgy3RwOlXk7JczsPgS3SFV5GzeZcO/h0RNPvuz4tm/hEhNdjKBByX3oZxeitRz0Tpp811SrU2mZJVmv7OMrrlUcLzJmHgU8tGwoswBH1tOZkzZ3RIEbm8W9/DN8Qly+lgq+VTbzlTnkibvpSqo+Qeu1VXOeTDFnGCLAwYNLUgToBJ7gjtrmzZk3b/QSqL/5deErGlesR88+8GzPZ5hfyp6E4mdn1YD5lJEQmBF2E9KHTbj0GxDpGfYdOOsJdgN1bqfsZXKQRu901EY0qTgIiik1kFBE8WTIGHrYMOW58GGlzIAqhJ0o++nC+zBHUUOd9WhOUsK5xcAvoJIokJ7uNlSZ4apLeWvGwOa8Av5WPG0Gpsx17rqRMc66S8Td074PCmD3UIJOlwIfBDLAqrC+fsRInMrZd5iAdAq4UzEzIZptL4nPM9BzIDKAyhxO6ghMLJSqEreqK7IBmJth8nOOc3T9a9bl4VgdGuHWxJ2Ndyu0Fkjx2M4cmth7SMSF6suJdzkePjBpti7WX5lsDYtjFQ0Zd6i1kBcb3Z7vbeLOIWDkjmPod3ZzuUcLxVfg0cYy/XA5GnwW9czS6lNQcWWvFschz3OLYU7LjTjZD+6aLqrG2jAIdQfxAvgLM8bVy1fMMggOdQLPEc7a6bpsCO3AwLlM/AXNZtmSTX7qPK2xc/d0oYUSbimy3xrKzvq+IGV7qDP3cgYlkQ3GYitwDVVHOFeCP3Tndsdf/ZO7ssH/ek5Jeptb3o/t+KHK+6rfNrap1/hgUuWLcShUV5e/XV1f4XJrjD1+w3JPeAC2LbfAR7Tc6E=
+sidebar_class_name: "delete api-method"
+info_path: docs/Awsapi/madrid-object-storage-system-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>DeleteArtefactTags</h1>
+
+<MethodEndpoint method={"delete"} path={"/api/artefacts/{artefactId}/tags/{tagKey}"}></MethodEndpoint>
+
+
+
+Delete artefact tags.
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"artefactId","in":"path","description":"Artefact Query Identifier.","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"tagKey","in":"path","description":"Tag Key.","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"siteId","in":"query","description":"Site Identifier.","required":false,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+Options Response.
+
+</div><details style={{"textAlign":"left","marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collaposed={true} open={false}><summary style={{}}><strong>Response Headers</strong></summary><ul style={{"marginLeft":"1rem"}}><li className={"schemaItem"}><summary style={{}}><strong>Access-Control-Allow-Origin</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Access-Control-Allow-Methods</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Access-Control-Allow-Headers</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li></ul></details><div></div></TabItem></ApiTabs></div></div>
+      

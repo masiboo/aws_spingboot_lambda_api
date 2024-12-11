@@ -1,0 +1,48 @@
+---
+id: update-artefact
+title: "updateArtefact"
+description: "PUT"
+sidebar_label: "updateArtefact"
+hide_title: true
+hide_table_of_contents: true
+api: eJzFVktv4zYQ/isEkUML2HI2CHrQzY1dwNi2m8YJWmCbAy2NZaYSyeXDjlfwf+8MKdlynaa9rQ1YNDnzzczHeajlJbjCSuOlVjzn90+PfMS1AStoZ1HiXjCl8DC1Htai8Hhs4UsA53/U5Z7nLS+08qA8LYUxtSyi6uTFEWLLXbGBRtAKXkVjaqBlI610M11EA0tvpar4AT8JXFrAfW8D4IYXleP5Z9474PjziBthRQMeLB21XOEfBBKdCKKOuKR4jPAbXJ8H2SOx3wLYPVuU6L1cS7AZ/6f90cB9vzdkxPXePpOwM1o5cHR+c31Nj3Nbnz4i5v9mqDOhVy8QmTaWrsLLZKAB50QFl75cBMhcKAqUZr3K6EQ+X6azdajrPZOqhFcomd8AO17x4ZDu4vatiBZqK2pZMkwK8Q1im1ur7TGu6GYXmhvk2PgD/UFHA5yh80eMs5JbUMdomXRM1BZESWywxa+z+R/zGR8Aj2/eATvCOC98cIQ2m/88f5zPmFAlK4RiSnu2ggFyz+7tJbtHOFJa66DKb87xMHcoYjEg7ugl20m/YZgW7akID12oGCvW6kZTrZsQ/aKyzPlEGDnp5d0k5uLkDADrD+y2L/Nga9TaeG9cPpmIspEqa7RzWSNKK8ushG22g9WHbCeNziQyRkXqoAhW+v2SaEpMTAO6Y+XXyOOdrpT0esifwPMbNL6u9Y4UMILXsWjEV63G6HOF/XAn9mPRwYAdKL/sKEL8vdNqLauQOikJSOdCEv1J5fkyrAbBFMmJsSxNdtVOf1/m+QNUqHjIkl2xc1mhm8lV2/n7hMzca10jyyMuQilBFRBpOqFfCN/VKOZR5RmVZGx8SIwOllT5VdfZsw1WA7bDM5piRThZbW8HwSIZH2GP8XYd+Fyja8IJjf87hz3Yzi0jPlmi5H44DZr5f8wOMrVOdyh9TNVfYk6wT7EW2NJri8nMlnvnoWHT+8VF1ncKb0pizQH2ecLvIjVWbjEEskz5mSCusx+ya9oy2vlGqIF8mqJsMEbPrA/GaDeEO1I8vPqJqQUyibixAtqufj4T/Sh5rKBIONYQPvPBLMQa2KA/pNC2K+HgydaHA21/oQGI+7jcCivFqk4ZVEpHayR4LWoH7/j63UM3L79n747VN6Pp711RBnX9lePyL0yps2ke07VLI/IvCdwlL8aPBHMCuGiRh1GvMcXJZ/y7ss+DZpUuYtW95zS6JBUrdvSagL85/xO/8X2JAGJnifstr4WqQhoSCZY+fwMXG0U1
+sidebar_class_name: "put api-method"
+info_path: docs/Awsapi/madrid-object-storage-system-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>updateArtefact</h1>
+
+<MethodEndpoint method={"put"} path={"/api/artefacts/index/{artefactId}"}></MethodEndpoint>
+
+
+
+PUT
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"artefactId","in":"path","description":"Artefact Query Identifier.","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><MimeTabs className={"openapi-tabs__mime"}><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} className={"openapi-markdown__details mime"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-mime"}><h3 className={"openapi-markdown__details-summary-header-body"}>Body</h3><strong className={"openapi-schema__required"}>required</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem></MimeTabs><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"A success message","example":"Successfully indexed the Artefact"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"Successfully indexed the Artefact\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Invalid data
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"Error message"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"example-1"} value={"example-1"}><ResponseSamples responseExample={"{\n  \"message\": \"The given Artefact is already in INDEXED\"\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"example-2"} value={"example-2"}><ResponseSamples responseExample={"{\n  \"message\": \"The Artefact status is DELETED and can not be INDEXED\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Artefact not found
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"Error message","example":"The artefact is not found with id {artefactId}"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"The artefact is not found with id {artefactId}\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

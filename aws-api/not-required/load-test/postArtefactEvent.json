@@ -1,0 +1,30 @@
+{
+  "id": -9223372036854776000,
+  "artefactName": "string",
+  "artefactClassType": "CERTIFICATE",
+  "status": "INSERTED",
+  "error": "string",
+  "indexationDate": "2019-08-24",
+  "archiveDate": "2019-08-24",
+  "gets3Bucket": "string",
+  "ArtefactItemTags": [
+    {
+      "id": 0,
+      "value": "string",
+      "key": "string",
+      "insertedDate": "2019-08-24",
+      "type": "string"
+    }
+  ],
+  "items": {
+    "id": 0,
+    "storage": "string",
+    "path": "string",
+    "filename": "string",
+    "artefactType": "CERTIFICATE",
+    "contentType": "string",
+    "totalPages": 0,
+    "jobId": "string",
+    "jobStatus": "string"
+  }
+}

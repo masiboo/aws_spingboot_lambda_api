@@ -1,0 +1,100 @@
+{
+"version": "1.0",
+"resource": "/api/v2/batches/upload",
+"path": "/api/v2/batches/upload",
+"httpMethod": "POST",
+"headers": {
+"Content-Length": "298",
+"Content-Type": "application/json",
+"Host": "84pov58vh6.execute-api.eu-central-1.amazonaws.com",
+"User-Agent": "Amazon CloudFront",
+"X-Amz-Cf-Id": "SqIjnCPLcvejWIanTuIKhFSk_hRMimwq5bcsOFBT6tD0h9XAw6hLAA==",
+"X-Amzn-Trace-Id": "Root=1-6617be82-1c0f736460f48b0a27ac0196",
+"X-Forwarded-For": "3.126.58.85, 64.252.89.24",
+"X-Forwarded-Port": "443",
+"X-Forwarded-Proto": "https",
+"accept-encoding": "gzip, compress, deflate, br",
+"request-start-time": "1712832130268",
+"via": "1.1 39d8f38d04a419ec3e27c10bef324750.cloudfront.net (CloudFront)"
+},
+"multiValueHeaders": {
+"Content-Length": [
+"298"
+],
+"Content-Type": [
+"application/json"
+],
+"Host": [
+"84pov58vh6.execute-api.eu-central-1.amazonaws.com"
+],
+"User-Agent": [
+"Amazon CloudFront"
+],
+"X-Amz-Cf-Id": [
+"SqIjnCPLcvejWIanTuIKhFSk_hRMimwq5bcsOFBT6tD0h9XAw6hLAA=="
+],
+"X-Amzn-Trace-Id": [
+"Root=1-6617be82-1c0f736460f48b0a27ac0196"
+],
+"X-Forwarded-For": [
+"3.126.58.85, 64.252.89.24"
+],
+"X-Forwarded-Port": [
+"443"
+],
+"X-Forwarded-Proto": [
+"https"
+],
+"accept-encoding": [
+"gzip, compress, deflate, br"
+],
+"request-start-time": [
+"1712832130268"
+],
+"via": [
+"1.1 39d8f38d04a419ec3e27c10bef324750.cloudfront.net (CloudFront)"
+]
+},
+"queryStringParameters": {
+  "scannedApp": "Addendum",
+  "overwriteBatch": "true"
+},
+"multiValueQueryStringParameters": null,
+"requestContext": {
+"accountId": "551493771163",
+"apiId": "84pov58vh6",
+"domainName": "84pov58vh6.execute-api.eu-central-1.amazonaws.com",
+"domainPrefix": "84pov58vh6",
+"extendedRequestId": "WDq0aiRcFiAEP4g=",
+"httpMethod": "POST",
+"identity": {
+"accessKey": null,
+"accountId": null,
+"caller": null,
+"cognitoAmr": null,
+"cognitoAuthenticationProvider": null,
+"cognitoAuthenticationType": null,
+"cognitoIdentityId": null,
+"cognitoIdentityPoolId": null,
+"principalOrgId": null,
+"sourceIp": "3.126.58.85",
+"user": null,
+"userAgent": "Amazon CloudFront",
+"userArn": null
+},
+"path": "/api/v2/batches/upload",
+"protocol": "HTTP/1.1",
+"requestId": "WDq0aiRcFiAEP4g=",
+"requestTime": "11/Apr/2024:10:42:10 +0000",
+"requestTimeEpoch": 1712832130344,
+"resourceId": "POST /api/v2/batches/upload",
+"resourcePath": "/api/v2/batches/upload",
+"stage": "$default"
+},
+"pathParameters": null,
+"stageVariables": null,
+"body": "[{\"type\":\"Addendum\",\"filename\":\"00000000.TIF\",\"batchSequence\":221122.1,\"contentType\":\"TIFF\",\"path\":221122.1,\"artefactClassType\":\"CERTIFICATE\",\"artefactItemFileName\":\"0221122.1000-00000000.TIF\",\"artefactName\":\"0221122.1000-0000D\",\"mirisDocId\":16529262,\"creationDate\":\"20240701\",\"page\":1,\"user\" : \"test-user\"},{\"type\":\"Addendum\",\"filename\":\"00000001.TIF\",\"batchSequence\":221122.1,\"contentType\":\"TIFF\",\"path\":221122.1,\"artefactClassType\":\"DOCUMENT\",\"artefactItemFileName\":\"0221122.1000-00000001.TIF\",\"artefactName\":\"0221122.1000-0000D\",\"mirisDocId\":16529262,\"creationDate\":\"20240701\",\"page\":2,\"user\" : \"test-user\"},{\"type\":\"Addendum\",\"filename\":\"00010000.TIF\",\"batchSequence\":221122.1,\"contentType\":\"TIFF\",\"path\":221122.1,\"artefactClassType\":\"DOCUMENT\",\"artefactItemFileName\":\"0221122.1000-00010000.TIF\",\"artefactName\":\"0221122.1000-0001D\",\"mirisDocId\":16529262,\"creationDate\":\"20240701\",\"page\":1,\"user\" : \"test-user\"},{\"type\":\"Addendum\",\"filename\":\"00010001.TIF\",\"batchSequence\":221122.1,\"contentType\":\"TIFF\",\"path\":221122.1,\"artefactClassType\":\"DOCUMENT\",\"artefactItemFileName\":\"0221122.1000-00010001.TIF\",\"artefactName\":\"0221122.1000-0001D\",\"mirisDocId\":16529262,\"creationDate\":\"20240701\",\"page\":2,\"user\" : \"test-user\"},{\"type\":\"Addendum\",\"filename\":\"00020000.TIF\",\"batchSequence\":221122.1,\"contentType\":\"TIFF\",\"path\":221122.1,\"artefactClassType\":\"DOCUMENT\",\"artefactItemFileName\":\"0221122.1000-00020000.TIF\",\"artefactName\":\"0221122.1000-0002D\",\"mirisDocId\":16529262,\"creationDate\":\"20240701\",\"page\":1,\"user\" : \"test-user\"},{\"type\":\"Addendum\",\"filename\":\"00020001.TIF\",\"batchSequence\":221122.1,\"contentType\":\"TIFF\",\"path\":221122.1,\"artefactClassType\":\"DOCUMENT\",\"artefactItemFileName\":\"0221122.1000-00020001.TIF\",\"artefactName\":\"0221122.1000-0002D\",\"mirisDocId\":16529262,\"creationDate\":\"20240701\",\"page\":2,\"user\" : \"test-user\"}]",
+
+
+"isBase64Encoded": false
+}

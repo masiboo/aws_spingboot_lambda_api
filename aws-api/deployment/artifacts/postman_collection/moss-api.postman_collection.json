@@ -1,0 +1,1057 @@
+{
+  "info": {
+    "_postman_id": "f5838a1e-526b-4fa2-984b-4fff3c0adf6a",
+    "name": "Aws-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "artefacts",
+          "item": [
+            {
+              "name": "{artefactId}",
+              "item": [
+                {
+                  "name": "/api/artefacts/:artefactId",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/artefacts/:artefactId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "artefacts",
+                        ":artefactId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "artefactId",
+                          "value": "in qui Exc",
+                          "description": "(Required) Generated path parameter for artefactId"
+                        },
+                        {
+                          "key": "basePath",
+                          "value": "{{basePath}}"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Default response for GET /api/artefacts/{artefactId}",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/artefacts/:artefactId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "artefacts",
+                            ":artefactId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "artefactId",
+                              "value": "in qui Exc",
+                              "description": "(Required) Generated path parameter for artefactId"
+                            },
+                            {
+                              "key": "basePath",
+                              "value": "{{basePath}}"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/artefacts/:artefactId/url",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/artefacts/:artefactId/url",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "artefacts",
+                        ":artefactId",
+                        "url"
+                      ],
+                      "variable": [
+                        {
+                          "key": "artefactId",
+                          "value": "in qui Exc",
+                          "description": "(Required) Generated path parameter for artefactId"
+                        },
+                        {
+                          "key": "basePath",
+                          "value": "{{basePath}}"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Default response for GET /api/artefacts/{artefactId}/url",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/artefacts/:artefactId/url",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "artefacts",
+                            ":artefactId",
+                            "url"
+                          ],
+                          "variable": [
+                            {
+                              "key": "artefactId",
+                              "value": "in qui Exc",
+                              "description": "(Required) Generated path parameter for artefactId"
+                            },
+                            {
+                              "key": "basePath",
+                              "value": "{{basePath}}"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "IndexArtefact",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "exec": [
+                          "",
+                          "console.log('ARTEFACTID --->>>> ' + pm.environment.get(\"artefactId\"));",
+                          "var currentURL = pm.request.url.toString();",
+                          "",
+                          "// Test positive scenarios",
+                          "const reqWithValidMirisDocId = {mirisDocId:'12345'};",
+                          "var invalidArtefactId = pm.environment.get(\"artefactId\");",
+                          "var updatedUrl = currentURL.replace(/\\/([^\\/]+)$/, '/' + invalidArtefactId);",
+                          "console.log('invalidArtefactId URL : ' + updatedUrl);",
+                          "",
+                          "pm.sendRequest(",
+                          "    {",
+                          "        url : updatedUrl,",
+                          "        method: 'PUT',",
+                          "        header:  {",
+                          "            'Content-Type' : 'application/json'",
+                          "        },",
+                          "        body :{",
+                          "            mode :'raw',",
+                          "            raw: JSON.stringify(reqWithValidMirisDocId)",
+                          "",
+                          "        }",
+                          "    }, function (err, response) {",
+                          "        if(err){",
+                          "            console.log(err);",
+                          "        }else{",
+                          "            pm.test(\"Successfully index an artefact with valid data\", function () {",
+                          "                console.log(response.json())",
+                          "                    pm.expect(response).not.to.be.empty;",
+                          "                    pm.expect(response.code).to.be.equals(200)",
+                          "                    pm.expect(response.json().message).to.be.equals(\"Successfully indexed the Artefact\")",
+                          "            });",
+                          "",
+                          "        }",
+                          "    }",
+                          ");",
+                          "",
+                          "pm.sendRequest(",
+                          "    {",
+                          "        url : currentURL,",
+                          "        method: 'PUT',",
+                          "        header:  {",
+                          "            'Content-Type' : 'application/json'",
+                          "        },",
+                          "        body :{",
+                          "            mode :'raw',",
+                          "        }",
+                          "    }, function (err, response) {",
+                          "        if(err){",
+                          "            console.log(err);",
+                          "        }else{",
+                          "            pm.test(\"Status code is 400 when body is empty\", function () {",
+                          "                    pm.expect(response).not.to.be.empty;",
+                          "                    pm.expect(response.code).to.be.equals(400)",
+                          "                    pm.expect(response.json().message).to.be.equals(\"Empty request body\")",
+                          "            });",
+                          "",
+                          "        }",
+                          "    }",
+                          ");",
+                          "",
+                          "",
+                          "",
+                          "const reqWithoutMirisDocId = {mirisdocId:'test'};",
+                          "",
+                          "pm.sendRequest(",
+                          "    {",
+                          "        url : currentURL,",
+                          "        method: 'PUT',",
+                          "        header:  {",
+                          "            'Content-Type' : 'application/json'",
+                          "        },",
+                          "        body :{",
+                          "            mode :'raw',",
+                          "            raw: JSON.stringify(reqWithoutMirisDocId)",
+                          "        }",
+                          "    }, function (err, response) {",
+                          "        if(err){",
+                          "            console.log(err);",
+                          "        }else{",
+                          "            pm.test(\"Status code is 400 when mirisDocId is not passed\", function () {",
+                          "                    pm.expect(response).not.to.be.empty;",
+                          "                    pm.expect(response.code).to.equal(400);",
+                          "",
+                          "                    pm.expect(response.json().message).to.be.equals(\"Failed to parse mirisDocId from request body\")",
+                          "            });",
+                          "",
+                          "        }",
+                          "    }",
+                          ");",
+                          "",
+                          "const reqWithUnknownArtefactId = {mirisDocId:'46578'};",
+                          "// Negative scenario - constructing URL for negative scenario",
+                          "var invalidArtefactId = '1';",
+                          "var updatedUrl = currentURL.replace(/\\/([^\\/]+)$/, '/' + invalidArtefactId);",
+                          "console.log('invalidArtefactId URL : ' + updatedUrl);",
+                          "pm.sendRequest(",
+                          "    {",
+                          "        url : updatedUrl,",
+                          "        method: 'PUT',",
+                          "        header:  {",
+                          "            'Content-Type' : 'application/json'",
+                          "        },",
+                          "        body :{",
+                          "            mode :'raw',",
+                          "            raw: JSON.stringify(reqWithUnknownArtefactId)",
+                          "        }",
+                          "    }, function (err, response) {",
+                          "        if(err){",
+                          "            console.log(err);",
+                          "        }else{",
+                          "            pm.test(\"Status code is 404 when artefact is not found\", function () {",
+                          "                    let respJson = response.json();",
+                          "                    pm.expect(respJson).not.to.be.empty;",
+                          "                    pm.expect(response.code).to.equal(404);",
+                          "                    pm.expect(respJson.message).to.be.equals(\"The artefact is not found with id 1\")",
+                          "            });",
+                          "",
+                          "        }",
+                          "    }",
+                          ");",
+                          "",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    },
+                    {
+                      "listen": "prerequest",
+                      "script": {
+                        "exec": [
+                          "",
+                          "var batchUploadBody =  [{ ",
+                          "    type :'new',",
+                          "    artefactName : 'application',",
+                          "    artefactClassType : 'SOUND',",
+                          "    batchSequence :'2004',",
+                          "    creationDate :'202303',",
+                          "    requestType : 'application_2004_4.pdf',",
+                          "    filename : 'file_2004_5.pdf',",
+                          "    path : 'pdf',",
+                          "    contentType : 'MP3',",
+                          "    user : 'batchUser_2004'",
+                          "",
+                          "}];",
+                          "",
+                          "",
+                          "var batchUploadUrl = pm.collectionVariables.get(\"baseUrl\").toString() + '/api/batches/upload/NEW_REQUEST';",
+                          "",
+                          "console.log(\"batchUploadUrl : \" + batchUploadUrl);",
+                          "",
+                          "",
+                          "pm.sendRequest({",
+                          "    url : batchUploadUrl,",
+                          "    method: 'POST',",
+                          "    header:  {",
+                          "        'Content-Type' : 'application/json'",
+                          "    },",
+                          "    body :{",
+                          "        mode :'raw',",
+                          "        raw: JSON.stringify(batchUploadBody)",
+                          "    }",
+                          "    ",
+                          "    }, function (err, response) {",
+                          "        if(err){",
+                          "            console.error(err);",
+                          "        }else{",
+                          "            console.log(\"batchUploadResponse \" + response.json())",
+                          "            pm.expect(response.text()).to.include(\"artefactId\");",
+                          "            pm.environment.set(\"artefactId\",response.json()[0].artefactId)",
+                          "        }",
+                          "        console.log('artefactId from batch upload response ' + response.json()[0].artefactId);",
+                          "",
+                          "    }",
+                          ");",
+                          "",
+                          "",
+                          "",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "protocolProfileBehavior": {
+                    "disabledSystemHeaders": {}
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"mirisDocId\": \"123456\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/artefacts/index/:artefactId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "artefacts",
+                        "index",
+                        ":artefactId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "artefactId",
+                          "value": "12345"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "/api/artefacts",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/artefacts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "artefacts"
+                  ],
+                  "variable": [
+                    {
+                      "key": "basePath",
+                      "value": "{{basePath}}"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Default response for GET /api/artefacts",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/artefacts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "artefacts"
+                      ],
+                      "variable": [
+                        {
+                          "key": "basePath",
+                          "value": "{{basePath}}"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "/api/artefacts/by-doc-id/:mirisDocId",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/artefacts/by-doc-id/:mirisDocId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "artefacts",
+                    "by-doc-id",
+                    ":mirisDocId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "mirisDocId",
+                      "value": "in qui Exc",
+                      "description": "(Required) Generated path parameter for mirisDocId"
+                    },
+                    {
+                      "key": "basePath",
+                      "value": "{{basePath}}"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Default response for GET /api/artefacts/by-doc-id/{mirisDocId}",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/artefacts/by-doc-id/:mirisDocId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "artefacts",
+                        "by-doc-id",
+                        ":mirisDocId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "mirisDocId",
+                          "value": "in qui Exc",
+                          "description": "(Required) Generated path parameter for mirisDocId"
+                        },
+                        {
+                          "key": "basePath",
+                          "value": "{{basePath}}"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "/api/artefacts/upload",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/artefacts/upload",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "artefacts",
+                    "upload"
+                  ],
+                  "variable": [
+                    {
+                      "key": "basePath",
+                      "value": "{{basePath}}"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Default response for POST /api/artefacts/upload",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/artefacts/upload",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "artefacts",
+                        "upload"
+                      ],
+                      "variable": [
+                        {
+                          "key": "basePath",
+                          "value": "{{basePath}}"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "/api/artefacts/validate",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/artefacts/validate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "artefacts",
+                    "validate"
+                  ],
+                  "variable": [
+                    {
+                      "key": "basePath",
+                      "value": "{{basePath}}"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Default response for POST /api/artefacts/validate",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/artefacts/validate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "artefacts",
+                        "validate"
+                      ],
+                      "variable": [
+                        {
+                          "key": "basePath",
+                          "value": "{{basePath}}"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "job",
+          "item": [
+            {
+              "name": "JobStatusByReqId",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "",
+                      "pm.test(\"Status code is 200 when valid requestId is passed\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "pm.test(\"Body matches string when status code is 200\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"requestId\");",
+                      "    pm.expect(pm.response.text()).to.include(\"batchSequence\");",
+                      "    pm.expect(pm.response.text()).to.include(\"batchStatus\");",
+                      "    pm.expect(pm.response.text()).to.include(\"jobs\");",
+                      "    ",
+                      "    let jobs  = pm.response.json().jobs[0];",
+                      "    pm.expect(jobs.jobId).to.be.not.empty",
+                      "    pm.expect(jobs.jobStatus).to.be.not.empty",
+                      "    pm.expect(jobs.artefactId).to.be.not.empty",
+                      "});",
+                      "",
+                      "// Negative scenario - constructing URL for negative scenario",
+                      "var currentURL = pm.request.url.toString();",
+                      "var invalidRequestId = '1';",
+                      "var updatedUrl = currentURL.replace(/\\/([^\\/]+)$/, '/' + invalidRequestId);",
+                      "console.log('updatedUrl : ' + updatedUrl);",
+                      "",
+                      "pm.sendRequest(updatedUrl, function (err, response) {",
+                      "   if(err){",
+                      "       console.log(err);",
+                      "   }else{",
+                      "       pm.test(\"Status code is 404 when valid requestId is passed\", function () {",
+                      "            console.log('Negative :' + response.text())",
+                      "            pm.expect(response).not.to.be.empty;",
+                      "            pm.expect(response.code).to.equal(404)",
+                      "            pm.expect(response.text()).to.include(invalidRequestId);",
+                      "            pm.expect(response.text()).to.include(\"Job Not found for the requestId\");",
+                      "       });",
+                      "",
+                      "   }",
+                      "",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "// Hiting batch upload and get the requestId",
+                      "console.log(\"basePath\" + pm.collectionVariables.get(\"basePath\"))",
+                      "console.log(\"baseUrl\" + pm.collectionVariables.get(\"baseUrl\"))",
+                      "var batchUploadURL = pm.collectionVariables.get(\"baseUrl\").toString()+ '/api/batches/upload/new_request';",
+                      "console.log(\"batch upload URL : \" + batchUploadURL);",
+                      "",
+                      "const requestBody = [",
+                      "            { ",
+                      "                type :'new',",
+                      "                artefactName : 'application',",
+                      "                artefactClassType : 'DOCUMENT',",
+                      "                batchSequence : '2002',",
+                      "                creationDate : '20221128',",
+                      "                requestType :  'application.pdf',",
+                      "                filename :  'test',",
+                      "                path :  'pdf',",
+                      "                contentType :  'pdf',",
+                      "                user :  'user1'",
+                      "",
+                      "            }];",
+                      "pm.sendRequest({",
+                      "    url : batchUploadURL,",
+                      "    method: 'POST',",
+                      "    header:  {",
+                      "        'Content-Type' : 'application/json'",
+                      "    },",
+                      "    body :{",
+                      "        mode :'raw',",
+                      "        raw: JSON.stringify(requestBody)",
+                      "    }",
+                      "    ",
+                      "    }, function (err, response) {",
+                      "        if(err){",
+                      "            console.error(err);",
+                      "        }else{",
+                      "            pm.expect(response.text()).to.include(\"requestId\");",
+                      "            pm.environment.set(\"request-id\",response.json()[0].requestId)",
+                      "        }",
+                      "        console.log('reqId from batch upload response ' + response.json()[0].requestId);",
+                      "",
+                      "    }",
+                      ");"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/job/status/{{request-id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "job",
+                    "status",
+                    "{{request-id}}"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Default response for GET /api/job/status/{requestId}",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/job/status/:requestId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "job",
+                        "status",
+                        ":requestId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "requestId",
+                          "value": "in qui Exc",
+                          "description": "(Required) Generated path parameter for requestId"
+                        },
+                        {
+                          "key": "basePath",
+                          "value": "{{basePath}}"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "/api/job/:jobid/status",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/job/:jobid/status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "job",
+                    ":jobid",
+                    "status"
+                  ],
+                  "variable": [
+                    {
+                      "key": "jobid",
+                      "value": "in qui Exc",
+                      "description": "(Required) Generated path parameter for jobid"
+                    },
+                    {
+                      "key": "basePath",
+                      "value": "{{basePath}}"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Default response for GET /api/job/{jobid}/status",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/job/:jobid/status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "job",
+                        ":jobid",
+                        "status"
+                      ],
+                      "variable": [
+                        {
+                          "key": "jobid",
+                          "value": "in qui Exc",
+                          "description": "(Required) Generated path parameter for jobid"
+                        },
+                        {
+                          "key": "basePath",
+                          "value": "{{basePath}}"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "/api/healthcheck",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/healthcheck",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "healthcheck"
+              ],
+              "variable": [
+                {
+                  "key": "basePath",
+                  "value": "{{basePath}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Default response for GET /api/healthcheck",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/healthcheck",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "healthcheck"
+                  ],
+                  "variable": [
+                    {
+                      "key": "basePath",
+                      "value": "{{basePath}}"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "/api/batches/upload/:scannedApp",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "[{ \n    \"type\" :\"new\",\n    \"artefactName\" : \"application\",\n    \"artefactClassType\" : \"SOUND\",\n    \"batchSequence\" :\"2004\",\n    \"creationDate\" :\"202303\",\n    \"requestType\" : \"application_2004_1.pdf\",\n    \"filename\" : \"file_2004_1.pdf\",\n    \"path\" : \"pdf\",\n    \"contentType\" : \"MP3\",\n    \"user\" : \"batchUser_2004\"\n\n}]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/batches/upload/:scannedApp",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "batches",
+                "upload",
+                ":scannedApp"
+              ],
+              "variable": [
+                {
+                  "key": "scannedApp",
+                  "value": "NEW_REQUEST",
+                  "description": "(Required) Generated path parameter for scannedApp"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Default response for POST /api/batches/upload/{scannedApp}",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/batches/upload/:scannedApp",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "batches",
+                    "upload",
+                    ":scannedApp"
+                  ],
+                  "variable": [
+                    {
+                      "key": "scannedApp",
+                      "value": "in qui Exc",
+                      "description": "(Required) Generated path parameter for scannedApp"
+                    },
+                    {
+                      "key": "basePath",
+                      "value": "{{basePath}}"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "basePath",
+      "value": "",
+      "type": "any",
+      "disabled": true
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://4fa1ljh7v9.execute-api.eu-central-1.amazonaws.com",
+      "type": "string"
+    }
+  ]
+}

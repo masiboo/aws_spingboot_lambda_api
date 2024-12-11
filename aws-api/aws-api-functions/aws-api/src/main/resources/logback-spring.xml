@@ -1,0 +1,26 @@
+<configuration>
+    <springProfile name="default | dev | test">
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>[%thread] %-5level >>> %d{yyyy-MM-dd HH:mm:ss} >>> [%file:%line] --> %msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <root level="INFO">
+            <appender-ref ref="CONSOLE" />
+        </root>
+    </springProfile>
+
+    <springProfile name="prod | acc">
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>[%thread] %-5level >>> %d{yyyy-MM-dd HH:mm:ss} >>> [%file:%line] --> %msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <root level="WARN">
+            <appender-ref ref="CONSOLE" />
+        </root>
+    </springProfile>
+
+</configuration>

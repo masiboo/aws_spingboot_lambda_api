@@ -1,0 +1,20 @@
+{
+  "Records": [
+    {
+      "messageId": "19dd0b57-b21e-4ac1-bd88-01bbb068cb78",
+      "receiptHandle": "MessageReceiptHandle",
+      "body": "{\"version\": \"0\",\"id\": \"ebb2fcc5-f098-a6cd-b819-3f14aa6ddc97\",\"detail-type\": \"ArtefactCreated\",\"source\": \"action.source\",\"account\": \"551493771163\",\"time\": \"2023-10-02T12:43:59Z\",\"region\": \"eu-central-1\",\"resources\": [],\"detail\": {\"artefactId\": \"2449471e-bdc4-49fe-9ee8-7ea047696e33\",\"artefact\": {\"GSI1PK\": \"artefactts#2023-10-02\",\"GSI1SK\": \"2023-10-02T12:43:46+0000#2449471e-bdc4-49fe-9ee8-7ea047696e33\",\"PK\": \"artefacts#2449471e-bdc4-49fe-9ee8-7ea047696e33\",\"SK\": \"document\",\"artefactId\": \"2449471e-bdc4-49fe-9ee8-7ea047696e33\",\"insertedDate\": \"2023-10-02T12:43:46+0000\",\"mirisDocId\": \"99999999\",\"s3Bucket\": \"Aws-registry-bucket-dev-eu-central-1-551493771163\",\"s3Key\": \"Aws-2023-10-02/2449471e-bdc4-49fe-9ee8-7ea047696e33/15794161.pdf\",\"status\": \"INDEXED\",\"type\": \"ARTEFACT#DOCUMENT\",\"userId\": \"Anonymous\"},\"artefactType\":\"ARTEFACT#DOCUMENT\",\"eventType\": \"MODIFY\",\"eventId\": \"c63fbb03e7700804a3334a64864f55dd\"}}",
+      "attributes": {
+        "ApproximateReceiveCount": "1",
+        "SentTimestamp": "1523232000000",
+        "SenderId": "123456789012",
+        "ApproximateFirstReceiveTimestamp": "1523232000001"
+      },
+      "messageAttributes": {},
+      "md5OfBody": "7b270e59b47ff90a553787216d55d91d",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:eu-central-1:123456789012:MyQueue",
+      "awsRegion": "eu-central-1"
+    }
+  ]
+}

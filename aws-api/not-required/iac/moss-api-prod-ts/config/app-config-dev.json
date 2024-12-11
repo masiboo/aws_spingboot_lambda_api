@@ -1,0 +1,83 @@
+{
+    "Project": {
+        "Name": "AwsAPI",
+        "Stage": "dev",
+        "Account": "042275564270",
+        "Region": "eu-west-2",
+        "Profile": "pigstydev"
+    },
+
+    "Stack": {
+        "AwsCoreCfnVpc": {
+            "Name": "AwsCoreCfnVpcStack",
+
+            "TemplatePath": "infra/stack/template/master.yml",
+            "infrastructureTemplatePath": "infra/stack/template/infra.yml",
+            "dnsTemplatePath": "infra/stack/template/dns.yml",
+            "Parameters": [
+                {
+                    "Key": "VpcName",
+                    "Value": "Awscore-vpc"
+                },
+                {
+                    "Key": "BuildId",
+                    "Value": "build-123"
+                }
+            ]
+        },
+        "AwsCoreVpcRds": {
+            "Name": "AwsCoreRdsStack",
+            "ClusterIdentifier": "AwsCoreDatabase",
+            "DatabaseName": "Awscoredb"
+        },
+        "AwsCoreVpcCloud9": {
+            "Name": "AwsCoreVpcCloud9Stack",
+
+            "InstanceType": "t3.large",
+            "IamUser": "your-iam-user-id"
+        },
+        "AwsCoreVpcEcs": {
+            "Name": "AwsCoreEcsStack",
+
+            "ClusterName": "AwsCoreCluster",
+            "FilePath": "../codes/db-init-access",
+            "Memory": 1024,
+            "Cpu": 512,
+            "DesiredCount": 1
+        },
+        "VpcInfra": {
+            "Name": "AwsVpcInfraStack",
+
+            "VPCName": "AwsCommonVPC",
+            "VPCMaxAzs": 3,
+            "VPCCIDR": "10.0.0.0/16",
+            "NATGatewayCount": 0,
+
+            "ECSClusterName": "AwsCoreCluster"
+        },
+        "AwsCoreDBAccess": {
+            "Name": "AwsCoreDBAccessStack",
+            "InfraVersion": "'1.0.0'",
+            "DockerImageType": "LOCAL",
+            "DockerImageType-Desc": "HUB or ECR or LOCAL",
+
+            "PortNumber": 8080,
+            "InternetFacing": true,
+
+            "AppPath": "../codes/db-init-access",
+            "DesiredTasks": 1,
+            "Cpu": 256,
+            "Memory": 512,
+
+            "AutoScalingEnable": false,
+            "AutoScalingMinCapacity": 1,
+            "AutoScalingMaxCapacity": 2,
+            "AutoScalingTargetInvocation": 50,
+
+            "TableName": "LogTable",
+
+            "AlarmThreshold": 200,
+            "SubscriptionEmails": ["arahsoe@gmail.com"]
+        }
+    }
+}

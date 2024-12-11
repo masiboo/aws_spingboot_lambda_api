@@ -1,0 +1,8 @@
+#!/bin/sh
+
+#cd ${LAMBDA_TASK_ROOT:-.}
+
+$LAMBDA_TASK_ROOT/jre18-slim/bin/java -Dspring.main.web-application-type=none -Dspring.jmx.enabled=false \
+  -noverify -XX:TieredStopAtLevel=1 -Xss256K -XX:MaxMetaspaceSize=128M \
+  -Djava.security.egd=file:/dev/./urandom \
+  -cp .:`echo lib/*.jar | tr ' ' :` org.iprosoft.trademarks.aws.artefacts.ArtefactsApplication

@@ -1,0 +1,2363 @@
+openapi: 3.0.0
+info:
+  title: Madrid Object Storage System API
+  description: Madrid Storage System API
+  license:
+    name: private
+  version: 0.2.0
+servers:
+  - url: ''
+    description: Generated server url
+paths:
+  /api/v2/artefacts:
+    get:
+      tags:
+        - Artefacts
+      parameters:
+        - $ref: '#/components/parameters/mirisDocIdParam'
+        - $ref: '#/components/parameters/docTypeParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ArtefactSummaryDTO'
+        '201':
+          description: {
+            "error": {
+              "code": "404",
+              "message": "No artefacts found"
+            }
+          }
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Failure message
+                    example: "Artefacts Not found"
+        '400':
+          description: Invalid document type
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Failure message
+                    example: "Invalid 'docType' provided :'log'  and allowed values are [DOCUMENT, LOGO, MEDIA]"
+
+  /api/v2/artefacts/convert/gif-to-jpg:
+    post:
+      tags:
+        - Artefacts
+      description: API to convert the image type from GIF to JPG
+      parameters:
+        - $ref: '#/components/parameters/s3Bucket'
+        - $ref: '#/components/parameters/s3Key'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  signedS3Url:
+                    type: string
+                    description: Success message
+                    example: "http_presigned_url"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Failure message
+                    example: "Both 'key' and 'bucket' must be present with non-empty values"
+
+
+  /api/v2/batches/bulkupload:
+    post:
+      summary: Bulk Upload Artefacts
+      description: Uploads multiple artefacts in bulk.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ArtefactInputs'
+      responses:
+        '201':
+          description: Bulk upload successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkUploadResponse'
+        '400':
+          description: Bad request, typically due to invalid or empty request body or request entity too large
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Empty request body or request entity too large, too many records in the upload
+
+        '500':
+          description: Internal server error while processing the bulk upload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Error converting to JSON {error_message}
+
+  /api/v2/batches/upload:
+    post:
+      description: Create Batch Scanned Uploads
+      operationId: createAndUploadScannedBatch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ArtefactBatchUploadDTO'
+              example:
+                - type: "String"
+                  artefactName: "String"
+                  artefactClassType: "String"
+                  batchSequence: "String"
+                  creationDate: "String"
+                  requestType: "String"
+                  filename: "String"
+                  path: "String"
+                  contentType: "PDF | PNG | JPG | JPEG | TIFF | WAV | MP3 | MP4"
+                  user: "String"
+        required: true
+      parameters:
+        - name: "scannedApp"
+          in: "query"
+          description: "Generated query parameter for scannedApp"
+          required: true
+          schema:
+            type: "string"
+            enum:
+              - new_request
+              - addendum
+            example:
+              - new_request
+        - name: "overwriteBatch"
+          in: "query"
+          description: "Generated query parameter for overwriteBatch"
+          required: false
+          schema:
+            type: "boolean"
+            boolean:
+              - true
+              - false
+            example:
+              - true
+
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ArtefactBatchUploadDTO'
+              example:
+                - type: "String"
+                  artefactName: "String"
+                  artefactClassType: "String"
+                  batchSequence: "String"
+                  creationDate: "String"
+                  requestType: "String"
+                  filename: "String"
+                  path: "String"
+                  contentType: "String"
+                  user: "String"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Failure message
+                    example: "Failed to parse artefact from request body"
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Failure message
+                    example: "Error occurred during file upload details in error message"
+        '409':
+          description: Conflict batch found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Failure message
+                    example: "{\"batches\":\"0221123.050, 0221120.050, 0221129.050\",\"message\":\" batch sequence already exists\"}"
+      tags:
+        - Batch Resource
+
+
+  /api/v2/job/cancelJob/{jobid}:
+    put:
+      summary: Cancel a job by its ID
+      description:
+        Cancels the job with the given ID.
+      parameters:
+        - in: path
+          name: jobid
+          required: true
+          description: The ID of the job to cancel.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Job status is set to CANCELED for the given jobid
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Missing 'jobid' parameter in path
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: No job found by jobid
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Internal Server Error
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jobStatus:
+                  type: string
+                  description: Status to set for the job (e.g., "CANCELED")
+              example:
+                jobStatus: CANCELED
+
+  /api/v2/artefacts/convert/image-to-tif/{mirisDocId}:
+    post:
+      summary: Generate a thumbnail and resize any image to TIFF format
+      description: Convert a thumbnail and resize any image to TIFF format
+      parameters:
+        - in: path
+          name: mirisDocId
+          required: true
+          description: The mirisDocId of the artefact
+          schema:
+            type: string
+      responses:
+        '201':
+          description: CREATED
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ImageToTifResponse'
+        '404':
+          description: Artefact not found or no BWLOGO or COLOURLOGO artefact found by the given mirisDocId
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "No BWLOGO or COLOURLOGO artefact found by mirisDocId: 12345678"
+
+        '400':
+          description: Bad request, missing or invalid 'mirisDocId' parameter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: 'mirisDocId' must be present with non-empty values.
+
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: An error occurred during the conversion process
+
+
+  /api/v2/report/get-indexed-file-report:
+    get:
+      summary: Get Indexed File Report
+      description: Generates a report of indexed batches, optionally filtered by date.
+      parameters:
+        - in: query
+          name: date
+          required: false
+          description: The date to filter the report by date.
+          schema:
+            type: string
+            format: date in ISO format yyyy-MM-dd'T'HH:mm:ssZ
+            example: '2024-05-17T14:30:00+0000'
+      responses:
+        '201':
+          description: Successfully created report
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BatchOutput'
+        '400':
+          description: Bad request, invalid or missing query parameters.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Query parameter validation error.
+        '404':
+          description: Indexed file report not found or report generation failed.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Indexed file report not found.
+        '500':
+          description: Internal server error during report generation.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Error generating indexed file report.
+
+  /api/v2/email:
+    post:
+      summary: Send an email
+      description: Sends an email with the specified details.
+      requestBody:
+        description: Email details to be sent
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmailDetails"
+      responses:
+        '200':
+          description: Email sent successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Email sent successfully.
+        '400':
+          description: Bad request, failed to parse email details from request body.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Failed to parse email details from request body
+        '500':
+          description: Internal server error while sending the email.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Error detailed error message
+
+
+  /api/v2/job/batches/status/{requestId}:
+    get:
+      summary: Get Job Status by Request ID
+      description: Retrieve the status of all jobs associated with the given request ID.
+      operationId: getJobStatusByRequestId
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          description: The ID of the request to retrieve job statuses
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  requestId:
+                    type: string
+                  batchSequence:
+                    type: string
+                  jobs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        jobId:
+                          type: string
+                        jobStatus:
+                          type: string
+                        artefactId:
+                          type: string
+                          nullable: true
+                  batchStatus:
+                    type: string
+              example:
+                requestId: "123456"
+                batchSequence: "060624.999"
+                jobs:
+                  - jobId: "123"
+                    jobStatus: "INIT"
+                    artefactId: "123654"
+                  - jobId: "123"
+                    jobStatus: "INDEXED"
+                    artefactId: "965874"
+                batchStatus: "INDEXED"
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Missing 'requestId' parameter in path"
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "No jobs found for this requestId: {requestId}"
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Exception when returning APIGatewayV2HTTPResponse: {error_message}"
+
+  /api/v2/job/batches/cancel/{requestId}:
+    post:
+      summary: Cancel Jobs by Request ID
+      description: Cancel all jobs associated with the given request ID.
+      operationId: cancelJobsByRequestId
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          description: The ID of the request to cancel jobs.
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "For the requestId {requestId}. All job statuses set to CANCELED"
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "requestId is null/empty"
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "No jobs found for this requestId: {requestId}"
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Exception when processing job status response map: {error_message}"
+
+  /api/v2/job/bulk/cancel/{requestId}:
+    post:
+      summary: Cancel jobs in bulk by request ID
+      description: Cancels all jobs associated with the provided request ID. The endpoint processes the job statuses and updates them to "CANCELED."
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          description: The unique identifier for the request. Used to find and cancel associated jobs.
+          schema:
+            type: string
+      requestBody:
+        description: Request body is not needed for this operation. The `requestId` is passed as a path parameter.
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                exampleField:
+                  type: string
+                  example: "exampleValue"
+      responses:
+        '201':
+          description: Successful response. All jobs for the provided request ID have been canceled.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "For the requestId {requestId}. All job statuses set to CANCELED"
+        '400':
+          description: Bad Request. The `requestId` parameter is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Missing 'requestId' parameter in path"
+        '404':
+          description: Not Found. No jobs were found for the provided `requestId`.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "No jobs found for this requestId: {requestId}"
+        '500':
+          description: Internal Server Error. An unexpected error occurred while processing the request.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Exception when processing job status response map: Error message"
+
+
+  /api/v2/job/bulk/status/{requestId}:
+    get:
+      summary: Get job statuses by request ID
+      description: Retrieves the status of all jobs associated with the provided request ID.
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          description: The unique identifier for the request. Used to find associated jobs and their statuses.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  requestId:
+                    type: string
+                  batchSequence:
+                    type: string
+                  jobs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        jobId:
+                          type: string
+                        jobStatus:
+                          type: string
+                        artefactId:
+                          type: string
+                          nullable: true
+                  batchStatus:
+                    type: string
+              example:
+                requestId: "123456"
+                jobs:
+                  - jobId: "123"
+                    jobStatus: "INIT"
+                    artefactId: "123654"
+                  - jobId: "123"
+                    jobStatus: "INDEXED"
+                    artefactId: "965874"
+        '400':
+          description: Bad Request. The `requestId` parameter is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Missing 'requestId' parameter in path"
+        '404':
+          description: Not Found. No jobs were found for the provided `requestId`.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "No jobs found for this requestId: 12345"
+        '500':
+          description: Internal Server Error. An unexpected error occurred while processing the request.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Exception for artefactJobService.getAllJobStatusByRequestId(requestId) reason: Error message"
+
+/api/v2/artefact/upload:
+    post:
+      summary: Upload an artefact
+      operationId: uploadArtefact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                artefactName:
+                  type: string
+                artefactClassType:
+                  type: string
+                artefactItemTags:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                      key:
+                        type: string
+                      type:
+                        type: string
+                items:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      storage:
+                        type: string
+                      path:
+                        type: string
+                      filename:
+                        type: string
+                      contentType:
+                        type: string
+                      contentLength:
+                        type: string
+                mirisDocId:
+                  type: string
+              required:
+                - artefactName
+                - artefactClassType
+                - items
+      responses:
+        '201':
+          description: Artefact successfully uploaded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  artefactId:
+                    type: string
+                  signedS3Url:
+                    type: string
+                  jobId:
+                    type: string
+                  warning:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+
+/api/v2/artefacts/byDateStatus:
+      get:
+        summary: Retrieve artefacts by date and status.
+        parameters:
+          - name: date
+            in: query
+            description: Specific date to retrieve artefacts for that date (format yyyy-MM-dd)
+            required: true
+            schema:
+              type: string
+              format: date format yyyy-MM-dd
+          - name: status
+            in: query
+            description: Filter artefacts by status.
+            required: true
+            schema:
+              type: string
+              format: [INDEXED, DELETED, INSERTED, UPLOADED, ERROR, INIT, CANCELED]
+      responses:
+        '200':
+          description: List of artefacts retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Artefact'
+        '400':
+          description: Bad Request - Validation errors in query parameters.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: No artefacts found.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: No artefacts found
+        '500':
+          description: Internal Server Error.
+
+
+/api/v2/artefacts/byIntervalStatus:
+  get:
+    summary: Retrieve artefacts by interval or date range and status.
+    parameters:
+      - name: fromDate
+        in: query
+        description: Start date to retrieve artefacts (format yyyy-MM-dd)
+        required: true
+        schema:
+          type: string
+          format: date format yyyy-MM-dd
+      - name: untilDate
+        in: query
+        description: Until date to retrieve artefacts (format yyyy-MM-dd)
+        required: true
+        schema:
+          type: string
+          format: date format yyyy-MM-dd
+      - name: status
+        in: query
+        description: Filter artefacts by status.
+        required: true
+        schema:
+          type: string
+          format: [INDEXED, DELETED, INSERTED, UPLOADED, ERROR, INIT, CANCELED]
+  responses:
+        '200':
+          description: List of artefacts retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Artefact'
+        '400':
+          description: Bad Request - Validation errors in query parameters.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: No artefacts found.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: No artefacts found
+        '500':
+          description: Internal Server Error.
+
+  /api/v2/batches/checkExistingBatchSequence:
+    post:
+      summary: Check if a batch sequences already exist in the database.
+      description:
+        This endpoint checks if any of the provided batch sequences already exist in the database.
+        It accepts either a JSON or CSV payload. If any batch sequence exists, it returns HTTP status `200 OK`
+        with the existing batch sequences. If none exist, it returns `200 OK` with an empty array [].
+      operationId: checkExistingBatchSequence
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/StringList'
+            example:
+              [ "221122.1", "221122.2", "221122.3" ]
+          text/csv:
+            schema:
+              type: string
+              description: CSV formatted string representing batch sequences and artefacts.
+      responses:
+        '200':
+          description: If existing batch sequences found, array of batch sequences ID. If no found, empty array
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "[ '221122.1' ] OR []"
+        '400':
+          description: Bad request or empty request body
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Empty request body"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "An unexpected error occurred"
+
+  /job/{jobId}/status:
+    get:
+      summary: Get the status of a job
+      description: Retrieve the status of a job using its job ID.
+      operationId: getJobStatus
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          description: The unique identifier of the job.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved job status
+          example: {
+            "jobStatus": "INIT",
+            "artefactId": "99889924.051-00000000.TIF",
+            "id": "322b0942-bdad-4176-b0f1-1dbc8aa96aec"
+          }
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request - Invalid or missing jobId parameter.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message explaining why the request failed.
+              example:
+                message: "Missing 'jobId' parameter in path"
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message indicating no job was found.
+              example:
+                message: "No job found"
+        '500':
+          description: Internal Server Error - Exception during job lookup.
+
+  /api/v2/artefacts/index/{artefactId}:
+    put:
+      summary: Index an artefact
+      description: Updates the status of an artefact to "INDEXED" if it is not already indexed or deleted.
+      parameters:
+        - name: artefactId
+          in: query
+          required: true
+          description: The ID of the artefact to be indexed.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactIndexDto'
+            examples:
+              validRequest:
+                summary: Example request to index artefact
+                value:
+                  mirisDocId: "12345678"
+      responses:
+        '200':
+          description: Successfully indexed the artefact.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Successfully indexed the Artefact mirisDocId: 12345"
+        '400':
+          description: Bad Request. Possible causes empty request body, invalid mirisDocId, or artefact already indexed/deleted.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    examples:
+                      emptyBody:
+                        value: "Empty request body"
+                      invalidDocId:
+                        value: "The given mirisDocId is invalid: 12345"
+                      alreadyIndexed:
+                        value: "Artefact is already in INDEXED mirisDocId 12345"
+                      deletedArtefact:
+                        value: "Artefact status is DELETED and cannot be INDEXED mirisDocId: 12345"
+                      emptyArtefactId:
+                        value: "'artefactId' parameter is empty"
+        '201':
+          description: {
+            "error": {
+              "code": "404",
+              "message": "No artefacts found"
+            }
+          }
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Failure message
+                    example: "The artefact is not found with id: {artefactId}"
+
+        '500':
+          description: Internal Server Error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Internal server error occurred: [error details]"
+
+  /api/v2/getInsertedBatches:
+    get:
+      summary: Retrieve batches with a specific status.
+      operationId: getAllBatches
+
+      responses:
+        200:
+          description: Successfully retrieved batches.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BatchOutput'
+        201:
+          description: No batches found with the specified status.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "No batches found"
+        500:
+          description: Internal server error due to unexpected issues.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Unexpected exception occurred"
+
+
+  /batches/delete/{batchSeq}:
+    put:
+      summary: Delete a batch by batch sequence
+      description: Deletes a batch based on the provided batch sequence. Returns appropriate http code on whether the batch is already deleted, or was successfully deleted.
+      parameters:
+        - name: batchSequence
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The batch sequence identifier of the batch to delete.
+      responses:
+        '200':
+          description: Batch deleted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Batch with batchSequence {batchSeq} deleted."
+                  batchDetail:
+                    type: object
+                    properties:
+                      batchSeq:
+                        type: string
+                        example: "020216.24"
+                      status:
+                        type: string
+                        example: "DELETED"
+        '404':
+          description: Batch is already deleted.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Batch is already in DELETED"
+        '201':
+          description: Batch not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "The Batch is not found"
+        '400':
+          description: Invalid request, missing or empty `batchSeq`.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "'batchSeq' parameter is empty"
+        '500':
+          description: Internal server error occurred.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Internal server error occurred: {error_message}"
+
+
+components:
+  headers:
+    AccessControlAllowOrigin:
+      schema:
+        type: string
+    AccessControlAllowMethods:
+      schema:
+        type: string
+    AccessControlAllowHeaders:
+      schema:
+        type: string
+    Location:
+      schema:
+        type: string
+  responses:
+    200Cors:
+      description: Options Response.
+      headers:
+        Access-Control-Allow-Origin:
+          schema:
+            type: string
+        Access-Control-Allow-Methods:
+          schema:
+            type: string
+        Access-Control-Allow-Headers:
+          schema:
+            type: string
+      content: { }
+  parameters:
+    versionIdParam:
+      name: versionId
+      in: query
+      description: Version Identifier
+      required: false
+      schema:
+        type: string
+    webhooksParam:
+      name: webhooks+
+      in: path
+      required: true
+      description: Web Hook Param
+      schema:
+        type: string
+    webhookIdParam:
+      name: webhookId
+      in: path
+      required: true
+      description: Web Hook Param
+      schema:
+        type: string
+    siteIdParam:
+      name: siteId
+      in: query
+      description: Site Identifier.
+      required: false
+      schema:
+        type: string
+    limitParam:
+      name: limit
+      in: query
+      description: Limit Results
+      required: false
+      schema:
+        type: string
+    artefactIdParam:
+      name: artefactId
+      in: path
+      description: Artefact Query Identifier.
+      required: true
+      schema:
+        type: string
+    mirisDocIdParam:
+      name: mirisDocId
+      in: query
+      description: miris document Id Query Identifier.
+      required: true
+      schema:
+        type: string
+    docTypeParam:
+      name: DocumentType
+      in: query
+      description: Type of the document to filter the artefact.
+      required: false
+      schema:
+        type: string
+        enum:
+          - DOCUMENT
+          - LOGO
+          - MEDIA
+    tagkeyParam:
+      name: tagKey
+      in: path
+      description: Tag Key.
+      required: true
+      schema:
+        type: string
+    contentLengthParam:
+      name: contentLength
+      in: query
+      description: Indicates the size of the entity-body.
+      required: false
+      schema:
+        type: integer
+    artefactIdQueryParam:
+      name: artefactId
+      in: query
+      description: Artefact Identifier.
+      schema:
+        type: string
+        format: uuid
+    durationParam:
+      name: duration
+      in: query
+      description: Indicates the number of hours request is valid for.
+      required: true
+      schema:
+        type: integer
+    batchIdPathParam:
+      name: batchIdPathParam
+      in: path
+      required: true
+      schema:
+        type: string
+    batchSeqPathParam:
+      name: batchSequence
+      in: path
+      required: true
+      schema:
+        type: string
+    s3Bucket:
+      name: bucket
+      in: path
+      required: true
+      schema:
+        type: string
+    s3Key:
+      name: key
+      in: path
+      required: true
+      schema:
+        type: string
+
+  schemas:
+    ArtefactIndexDto:
+      type: object
+      required:
+        - mirisDocId
+      properties:
+        mirisDocId:
+          type: string
+    StringList:
+      type: array
+      items:
+        type: string
+    BatchOutput:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the batch.
+        batch_sequence:
+          type: string
+          description: The sequence number of the batch.
+        lockedDate:
+          type: string
+          format: date-time ISO yyyy-MM-dd'T'HH:mm:ssZ
+          description: The date and time when the batch was locked.
+          example: "2023-01-01T12:00:00Z"
+        creationDate:
+          type: string
+          format: date-time ISO yyyy-MM-dd'T'HH:mm:ssZ
+          description: The date and time when the batch was created.
+          example: "2023-01-01T12:00:00Z"
+        lastModificationDate:
+          type: string
+          format: date-time ISO yyyy-MM-dd'T'HH:mm:ssZ
+          description: The date and time when the batch was last modified.
+          example: "2023-01-01T12:00:00Z"
+        status:
+          type: string
+          description: The current status of the batch.
+        operator:
+          $ref: '#/components/schemas/Operator'
+        lockedBy:
+          $ref: '#/components/schemas/LockedBy'
+        lastModUser:
+          $ref: '#/components/schemas/LastModUser'
+        requestType:
+          type: string
+          description: The type of request associated with the batch.
+        user:
+          type: string
+          description: The user associated with the batch.
+        artefacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactOutput'
+          description: The list of artefacts associated with the batch.
+        reportDate:
+          type: string
+          format: date-time
+          description: The date and time of the report.
+          example: "2023-01-01T12:00:00Z"
+        reportUrl:
+          type: string
+          description: The URL of the report.
+        s3Bucket:
+          type: string
+          description: The S3 bucket where the batch is stored.
+        s3Key:
+          type: string
+          description: The S3 key where the batch is stored.
+        additionalProperties:
+          type: object
+          description: Additional properties of the batch.
+      required:
+        - id
+        - batch_sequence
+        - creationDate
+        - status
+        - operator
+        - lockedBy
+        - lastModUser
+        - requestType
+        - user
+        - s3Bucket
+        - s3Key
+      example:
+        id: "123456"
+        batch_sequence: "001"
+        lockedDate: "2023-01-01T12:00:00Z"
+        creationDate: "2023-01-01T12:00:00Z"
+        lastModificationDate: "2023-01-01T12:00:00Z"
+        status: "Completed"
+        operator: { "id": 1, "wipoId": "W123", "username": "operator1", "cognitoId": "C123" }
+        lockedBy: { "id": 2, "wipoId": "W456", "username": "lockedBy1", "cognitoId": "C456" }
+        lastModUser: { "id": 3, "wipoId": "W789", "username": "lastModUser1", "cognitoId": "C789" }
+        requestType: "Type A"
+        user: "User1"
+        artefacts: [ { "id": "artefact1", "artefactName": "Artefact 1", "artefactClassType": "ClassA", "status": "Processed", "error": "", "indexationDate": "2023-01-01T12:00:00Z", "archiveDate": "2023-01-01T12:00:00Z", "gets3Bucket": "bucket1", "mirisDocId": "doc1" } ]
+        reportDate: "2023-01-01T12:00:00Z"
+        reportUrl: "http://example.com/report"
+        s3Bucket: "my-bucket"
+        s3Key: "my-key"
+        additionalProperties: {}
+    Operator:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The unique identifier of the operator.
+        wipoId:
+          type: string
+          description: The WIPO ID of the operator.
+        username:
+          type: string
+          description: The username of the operator.
+        cognitoId:
+          type: string
+          description: The Cognito ID of the operator.
+        additionalProperties:
+          type: object
+          description: Additional properties of the operator.
+      required:
+        - id
+        - wipoId
+        - username
+        - cognitoId
+      example:
+        id: 1
+        wipoId: "W123"
+        username: "operator1"
+        cognitoId: "C123"
+        additionalProperties: {}
+    LockedBy:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The unique identifier of the person who locked the batch.
+        wipoId:
+          type: string
+          description: The WIPO ID of the person who locked the batch.
+        username:
+          type: string
+          description: The username of the person who locked the batch.
+        cognitoId:
+          type: string
+          description: The Cognito ID of the person who locked the batch.
+        additionalProperties:
+          type: object
+          description: Additional properties of the person who locked the batch.
+      required:
+        - id
+        - wipoId
+        - username
+        - cognitoId
+      example:
+        id: 2
+        wipoId: "W456"
+        username: "lockedBy1"
+        cognitoId: "C456"
+        additionalProperties: {}
+    LastModUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The unique identifier of the person who last modified the batch.
+        wipoId:
+          type: string
+          description: The WIPO ID of the person who last modified the batch.
+        username:
+          type: string
+          description: The username of the person who last modified the batch.
+        cognitoId:
+          type: string
+          description: The Cognito ID of the person who last modified the batch.
+        additionalProperties:
+          type: object
+          description: Additional properties of the person who last modified the batch.
+      required:
+        - id
+        - wipoId
+        - username
+        - cognitoId
+      example:
+        id: 3
+        wipoId: "W789"
+        username: "lastModUser1"
+        cognitoId: "C789"
+        additionalProperties: {}
+    ArtefactOutput:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the artefact.
+        artefactName:
+          type: string
+          description: The name of the artefact.
+        artefactClassType:
+          type: string
+          description: The class type of the artefact.
+        status:
+          type: string
+          description: The status of the artefact.
+        error:
+          type: string
+          description: Any error associated with the artefact.
+        indexationDate:
+          type: string
+          format: date-time
+          description: The date and time when the artefact was indexed.
+          example: "2023-01-01T12:00:00Z"
+        archiveDate:
+          type: string
+          format: date-time
+          description: The date and time when the artefact was archived.
+          example: "2023-01-01T12:00:00Z"
+        gets3Bucket:
+          type: string
+          description: The S3 bucket where the artefact is stored.
+        mirisDocId:
+          type: string
+          description: The MIRIS document ID of the artefact.
+        additionalProperties:
+          type: object
+          description: Additional properties of the artefact.
+      required:
+        - id
+        - artefactName
+        - artefactClassType
+      example:
+        id: "artefact1"
+        artefactName: "Artefact 1"
+        artefactClassType: "ClassA"
+        status: "Processed"
+        error: ""
+        indexationDate: "2023-01-01T12:00:00Z"
+        archiveDate: "2023-01-01T12:00:00Z"
+        gets3Bucket: "bucket1"
+        mirisDocId: "doc1"
+        additionalProperties: {}
+    EmailDetails:
+      type: "object"
+      properties:
+        from:
+          type: "string"
+          example: sender@example.com
+        to:
+          type: "array"
+          items:
+            type: "string"
+            example: recipient@example.com
+        cc:
+          type: "array"
+          items:
+            type: "string"
+            example: cc@example.com
+        bcc:
+          type: "array"
+          items:
+            type: "string"
+            example: bcc@example.com
+        subject:
+          type: "string"
+          example: Subject of the email
+        body:
+          type: "string"
+          example: Body content of the email
+        attachment:
+          $ref: "#/components/schemas/Attachment"
+
+    Attachment:
+      type: "object"
+      properties:
+        filename:
+          type: "string"
+          example: file.txt
+        contentType:
+          type: "string"
+          example: text/plain
+        base64Content:
+          type: "string"
+          example: SGVsbG8sIFdvcmxkIQ==
+
+    ImageToTifResponse:
+      type: "object"
+      properties:
+        signedS3Url:
+          type: "string"
+        artefactMetadata:
+          $ref: "#/components/schemas/ArtefactMetadata"
+
+    ArtefactMetadata:
+      type: "object"
+      properties:
+        artefactId:
+          type: "string"
+        mediaType:
+          type: "string"
+        fileType:
+          type: "string"
+        size:
+          type: "string"
+        bitDepth:
+          type: "string"
+        samplingFrequency:
+          type: "string"
+        resolutionInDpi:
+          type: "string"
+        sizeWarning:
+          type: "boolean"
+    Artefact:
+      type: object
+      properties:
+        id:
+          type: string
+        artefactName:
+          type: string
+          nullable: false
+          description: Name of the artefact
+        artefactClassType:
+          type: string
+          nullable: false
+          description: Class type of the artefact
+        status:
+          type: string
+        error:
+          type: string
+        indexationDate:
+          type: string
+          format: date-time
+          description: Date and time when the artefact was indexed
+        archiveDate:
+          type: string
+          format: date-time
+          description: Date and time when the artefact was archived
+        s3Bucket:
+          type: string
+        s3Key:
+          type: string
+        artefactItemTags:
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactItemTags'
+        mirisDocId:
+          type: string
+          pattern: '^[0-9]{5,8}$'
+          description: 'MirisDocId must be between 5 to 8 digits and no space allowed'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Items'
+        sizeWarning:
+          type: boolean
+        contentLength:
+          type: string
+      required:
+        - artefactName
+        - artefactClassType
+    Items:
+      type: object
+      properties:
+        id:
+          type: integer
+        storage:
+          type: string
+        path:
+          type: string
+        filename:
+          type: string
+        artefactType:
+          type: string
+        contentType:
+          type: string
+        totalPages:
+          type: integer
+        jobId:
+          type: string
+        jobStatus:
+          type: string
+    WipoUserDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        wipoId:
+          type: string
+        username:
+          type: string
+        cognitoId:
+          type: string
+    ArtefactSummaryDTO:
+      type: object
+      x-examples: { }
+      properties:
+        id:
+          type: integer
+          format: int64
+        artefactName:
+          type: string
+        artefactClassType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - MULTIMEDIA
+            - SOUND
+            - DOCUMENT
+        status:
+          type: string
+          enum:
+            - INIT
+            - INSERTED
+            - INDEXED
+            - DELETED
+        s3Bucket:
+          type: string
+        s3Key:
+          type: string
+        mirisDocId:
+          type: string
+        contentLength:
+          type: string
+        sizeWarning:
+          type: boolean
+
+    ArtefactDTO:
+      type: object
+      x-examples: { }
+      properties:
+        id:
+          type: integer
+          format: int64
+        artefactName:
+          type: string
+        artefactClassType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - MULTIMEDIA
+            - SOUND
+            - DOCUMENT
+        status:
+          type: string
+          enum:
+            - INIT
+            - INSERTED
+            - INDEXED
+            - DELETED
+        error:
+          type: string
+        indexationDate:
+          type: string
+          format: date
+        archiveDate:
+          type: string
+          format: date
+        mirisDocId:
+          type: string
+        sizeWarning:
+          type: boolean
+        contentLength:
+          type: string
+        artefactItemTags:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactItemTagDTO'
+        items:
+          $ref: '#/components/schemas/ArtefactItemDTO'
+    ArtefactInputs:
+      type: array
+      items:
+        $ref: '#/components/schemas/ArtefactInput'
+    ArtefactInput:
+      type: object
+      description: Uploading a New Artefact with exis MIRIS Doc ID
+      x-examples:
+        example-1:
+          artefactName: string
+          artefactClassType: CERTIFICATE
+          artefactItemTags:
+            - id: 0
+              value: string
+              key: string
+              insertedDate: '2019-08-24'
+              type: string
+          items:
+            - storage: string
+              path: string
+              filename: string
+              contentType: string
+          mirisDocId: string
+      title: ArtefactInput
+      properties:
+        artefactName:
+          type: string
+        artefactClassType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - MULTIMEDIA
+            - SOUND
+            - DOCUMENT
+        artefactItemTags:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactItemTagNewInput'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactNewRequestItem'
+        mirisDocId:
+          type: string
+          minLength: 5
+        contentType:
+          type: string
+          enum:
+            - "application/pdf"
+            - "image/gif"
+            - "image/png"
+            - "image/tiff"
+            - "image/x-tiff"
+            - "image/jpeg"
+            - "image/pjpeg"
+            - "audio/mpeg"
+            - "audio/wav"
+      required:
+        - artefactName
+        - artefactClassType
+        - artefactItemTags
+        - items
+        - contentType
+    BulkUploadResponse:
+      type: object
+      properties:
+        bulkId:
+          type: string
+        artefacts:
+          type: array
+          items:
+            type: object
+            properties:
+              artefactName:
+                type: string
+              signedS3Url:
+                type: string
+              mirisDocId:
+                type: string
+              artefactClassType:
+                type: string
+              jobId:
+                type: string
+              artefactId:
+                type: string
+              requestId:
+                type: string
+              user:
+                type: string
+              validation:
+                type: string
+              status:
+                type: string
+              warning:
+                type: string
+              validationErrorMsg:
+                type: string
+    ArtefactBatchInput:
+      type: object
+      description: Uploading a New Artefact
+      x-examples: { }
+      title: ArtefactBatchInput
+      properties:
+        artefactName:
+          type: string
+        artefactClassType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - MULTIMEDIA
+            - SOUND
+            - DOCUMENT
+        artefactItemTags:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactItemTagNewInput'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactNewRequestItem'
+        batch:
+          $ref: '#/components/schemas/BatchNewRequest'
+        mirisDocId:
+          type: string
+      required:
+        - artefactName
+        - artefactClassType
+        - items
+    ArtefactItemDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        storage:
+          type: string
+        path:
+          type: string
+        filename:
+          type: string
+        contentType:
+          type: string
+        totalPages:
+          type: integer
+          format: int32
+      x-examples:
+        example-1:
+          id: -9223372036854776000
+          storage: string
+          path: string
+          filename: string
+          contentType: string
+          totalPages: -2147483648
+    ArtefactBatchItemDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        storage:
+          type: string
+        path:
+          type: string
+        filename:
+          type: string
+        artefactType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - MULTIMEDIA
+            - SOUND
+            - DOCUMENT
+        contentType:
+          type: string
+        totalPages:
+          type: integer
+          format: int32
+        jobId:
+          type: string
+        jobStatus:
+          type: string
+      required:
+        - id
+        - path
+        - filename
+        - artefactType
+    ArtefactNewRequestItem:
+      type: object
+      properties:
+        storage:
+          type: string
+        path:
+          type: string
+        filename:
+          type: string
+        contentType:
+          type: string
+      required:
+        - filename
+      x-examples:
+        example-1:
+          storage: string
+          path: string
+          filename: string
+          contentType: string
+    ArtefactItemTagDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        value:
+          type: string
+        key:
+          type: string
+        insertedDate:
+          type: string
+          format: date
+        type:
+          type: string
+    ArtefactItemTagNewInput:
+      type: object
+      properties:
+        value:
+          type: string
+        key:
+          type: string
+        type:
+          type: string
+      x-examples:
+        example-1:
+          value: string
+          key: string
+          type: string
+    BatchDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        batch_sequence:
+          type: string
+        lockedDate:
+          type: string
+          format: date
+        creatioDate:
+          type: string
+          format: date
+        lastModificationDate:
+          type: string
+          format: date
+        status:
+          type: string
+          enum:
+            - INIT
+            - INSERTED
+            - COMPLETED
+            - DELETED
+        operator:
+          $ref: '#/components/schemas/WipoUserDTO'
+        lockedBy:
+          $ref: '#/components/schemas/WipoUserDTO'
+        lastModUser:
+          $ref: '#/components/schemas/WipoUserDTO'
+        artefacts:
+          $ref: '#/components/schemas/ArtefactDTO'
+    BatchNewRequest:
+      type: object
+      title: ''
+      x-examples: { }
+      properties:
+        batchSequence:
+          type: string
+        creationDate:
+          type: string
+          format: date
+    AdminUserDTO:
+      required:
+        - login
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        firstName:
+          maxLength: 50
+          minLength: 0
+          type: string
+        lastName:
+          maxLength: 50
+          minLength: 0
+          type: string
+        email:
+          maxLength: 254
+          minLength: 5
+          type: string
+        imageUrl:
+          maxLength: 256
+          minLength: 0
+          type: string
+        activated:
+          type: boolean
+        langKey:
+          maxLength: 10
+          minLength: 2
+          type: string
+        createdBy:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        lastModifiedDate:
+          type: string
+          format: date-time
+        authorities:
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+    artefactItemUrl:
+      type: object
+      properties:
+        artefactId:
+          type: string
+        signedS3Url:
+          type: string
+        jobId:
+          type: string
+        collectionId:
+          type: string
+      x-examples:
+        example-1:
+          artefactId: string
+          signedS3Url: string
+          jobId: string
+          collectionId: string
+    ArtefactItemsResults:
+      type: object
+      properties:
+        next:
+          type: string
+        previous:
+          type: string
+        documents:
+          $ref: '#/components/schemas/ArtefactItemDTO'
+    ArtefactItemsVersions:
+      type: object
+      properties:
+        next:
+          type: string
+        versions:
+          $ref: '#/components/schemas/ArtefactItemVersions'
+    ArtefactItemVersions:
+      type: array
+      items:
+        $ref: '#/components/schemas/ArtefactItemVersion'
+    ArtefactItemVersion:
+      required:
+        - versionId
+      type: object
+      properties:
+        versionId:
+          type: string
+        lastModifiedDate:
+          type: string
+    ArtefactContent:
+      type: object
+      properties:
+        content:
+          type: string
+        contentUrl:
+          type: string
+        contentType:
+          type: string
+        isBase64:
+          type: boolean
+    ArtefactItemsTags:
+      type: object
+      properties:
+        next:
+          type: string
+        previous:
+          type: string
+        tags:
+          $ref: '#/components/schemas/ArtefactItemTags'
+    ArtefactItemTags:
+      type: array
+      items:
+        $ref: '#/components/schemas/ArtefactItemTag'
+    ArtefactItemTag:
+      type: object
+      properties:
+        insertedDate:
+          type: string
+        artefactItemId:
+          type: string
+        type:
+          type: string
+        userId:
+          type: string
+        value:
+          type: string
+        key:
+          type: string
+      required:
+        - value
+        - key
+    ArtefactItemTagValueBody:
+      required:
+        - value
+      type: object
+      properties:
+        value:
+          type: string
+      x-examples: { }
+    ArtefactUrl:
+      type: object
+      x-examples:
+        example-1:
+          artefactId: string
+          url: string
+      properties:
+        artefactId:
+          type: string
+        url:
+          type: string
+
+    ArtefactJob:
+      type: object
+      x-examples:
+        example-1:
+          id: string
+          path: string
+          filename: string
+          jobStatus: string
+          artefactId: string
+          creationDate: string
+          lastModDate: string
+      properties:
+        id:
+          type: string
+          format: int64
+        path:
+          type: string
+        filename:
+          type: string
+        jobStatus:
+          type: string
+          enum:
+            - INIT
+            - UPLOADED
+            - ERROR
+        artefactId:
+          type: string
+        creationDate:
+          type: string
+        lastModDate:
+          type: string
+      required:
+        - id
+        - jobStatus
+        - artefactId
+    ArtefactBatchUploadDTO:
+      type: object
+      properties:
+        type:
+          type: string
+        artefactName:
+          type: string
+        artefactClassType:
+          type: string
+        batchSequence:
+          type: string
+        creationDate:
+          type: string
+        requestType:
+          type: string
+        filename:
+          type: string
+        path:
+          type: string
+        contentType:
+          type: string
+          enum:
+            - PDF
+            - PNG
+            - JPG
+            - JPEG
+            - TIFF
+            - WAV
+            - MP3
+            - MP4
+        user:
+          type: string
+  securitySchemes:
+    AuthorizationCognito:
+      type: oauth2
+      flows: { }
+      x-amazon-apigateway-authorizer:
+        type: jwt
+        jwtConfiguration:
+          issuer:
+            'Fn::Sub': 'https://cognito-idp.${AWS::Region}.amazonaws.com/${CognitoUserPool}'
+          audience:
+            - 'Fn::Sub': '${CognitoUserPoolClient}'
+        identitySource: $request.header.Authorization
+    sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      x-amazon-apigateway-authtype: awsSigv4
+  x-amazon-apigateway-integrations:
+    lambdaApi200:
+      uri:
+        'Fn::Sub': 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ArtefactsApiRequests.Arn}/invocations'
+      responses:
+        default:
+          statusCode: '200'
+          responseParameters:
+            method.response.header.Access-Control-Allow-Methods: '''*'''
+            method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key'''
+            method.response.header.Access-Control-Allow-Origin: '''*'''
+      passthroughBehavior: when_no_templates
+      httpMethod: POST
+      type: aws_proxy
+      payloadFormatVersion: '1.0'
+    lambdaApi201:
+      uri:
+        'Fn::Sub': 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ArtefactsApiRequests.Arn}/invocations'
+      responses:
+        default:
+          statusCode: '201'
+          responseParameters:
+            method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key'''
+            method.response.header.Access-Control-Allow-Methods: '''*'''
+            method.response.header.Access-Control-Allow-Origin: '''*'''
+      passthroughBehavior: WHEN_NO_TEMPLATES
+      httpMethod: POST
+      type: aws_proxy
+      payloadFormatVersion: '1.0'
+x-amazon-apigateway-gateway-responses:
+  UNAUTHORIZED:
+    statusCode: 401
+    responseParameters:
+      gatewayresponse.header.Access-Control-Allow-Methods: '''*'''
+      gatewayresponse.header.Access-Control-Allow-Origin: '''*'''
+      gatewayresponse.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key'''
+x-amazon-apigateway-cors:
+  allowOrigins:
+    - '*'
+  maxAge: 3600
+  allowMethods:
+    - '*'
+  allowHeaders:
+    - '*'

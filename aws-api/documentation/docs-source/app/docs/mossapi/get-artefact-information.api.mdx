@@ -1,0 +1,52 @@
+---
+id: get-artefact-information
+title: "Get Artefact Information"
+description: "Retrieve information about an artefact using its artefact ID."
+sidebar_label: "Get Artefact Information"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9Vm1v2zYQ/isEEaAb4EhO6g6FvnlJmxlbtyBO0Q9BUdDiWWYqkRxJ2XEE/ffdSbIlJ6mLYUPzwaHIe3nuuRey4hJ86pQNymie8BsITsEamNJL4wpB20wsTBmYwIULsBRpYKVXOmMq+H5rdhnxEbfCiQICOM+Tu4orsmlFWOGRxgP82inMJO45+LtUDiRPgith9ATM7QrQLDNLFnC1UyQ3Pl1BIXhS8bC1ZNUjbJ3xuv5MRr012oOn8/PxmP4dGp7uQA+jdF3okvkyTcH7ZZnnW3SWGh1ABzIjrM1V2sjH955sVc+xmMU9pIHIcMaCC6pFsg8cff4Lafk8yhGHB1HYHLfOzl9P3tQjXoBU4raROiLNVSEyiC0xNeJLlcP3Va7/vCLhhQqXYDGRx4TPJyjp6QMP3lNyQafb4/Ynk+js62+P5AMTZ/KSyJ3pS6uO6r0ej8mXeoRPwmk67KUXxuQg9FB8KXIP9T6Xf4DOvhfLePJ2jE7wb8SDCg3Y6SCHN12Z8VZk8lKh/Soka2jwYcTQFdYO1hSTJbBgmGCF8k0nGYeluBa5kmzfQf9f5RVYzJj343n40EF51Vfeqx4MwmNNH9f1LtzJkb7SJrClKbX8wUHcDuYEU77HwTYqrBjSW/Xh1ftg3ryUuxnCdlrkzINbIwPgHKZps8KuYQiNJgTxRaOpS/EPDvZdA6i0UgQcWsMRyXwQofSsajB/6azt4m3GRVgZnCw8g8Y5ZTbhsbAq3tnw8ZCqmCYlDd6Gi3a4ly5HpVUI1idxLGShdFQY76NCSKdkJGEdbWBxFm2UNZFCVmg6e0hLp8J2TlS00U5LROPUY8PVhcm0CgcTUuD5OTpf5mZDChjAw6koxKPRpwg5w/g3YnsqOjPYOr3y/YYCxN8Lo5cqK51o04t3k/dlK/peJ8m8XAyCSVsQp0ra6KSafponyQ1kqFhHrV+x8VFqivik6vB+RGauce7UNMhEKRVOPmho6q0/E77IUSygymdUUhLXRIwpHanyk66sohUICS46oInXzfjL1pNBsEjG77Dt79pDjVF7HbfW+Lc53Bnb+Hljnzyp3aXVDcIPTYrZX035snkwDguMzbc+QMGm1zP+9C7vFF6UxDYBGqRovwNunVojIuKSyq01MY5+ica0ZY0PhdAD+SsIbD98Zv2l/hRG1Tfof37qdDQFeAixzQVyi9Canqi6hrqjhKDkvqVwnRy8fxpasSlWGBHJV9VCePjo8rqmbUy/w+vzDpdr4ZRY5G1JSeVpLbt77UiQP910L6yf2bdfUy9GsqsCTfWEV1NJX7j8igV28IprircrKgLXCkzxCWXDQPXZOKRhsJ9DV+9usc7+AUV1rng=
+sidebar_class_name: "get api-method"
+info_path: docs/Awsapi/madrid-object-storage-system-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get Artefact Information</h1>
+
+<MethodEndpoint method={"get"} path={"/api/artefacts/{artefactId}/info"}></MethodEndpoint>
+
+
+
+Retrieve information about an artefact using its artefact ID.
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"in":"path","name":"artefactId","required":true,"description":"The ID of the artefact.","schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+Artefact information retrieved successfully
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}} className={"openapi-markdown__details"}><summary style={{}}><span className={"openapi-schema__container"}><strong className={"openapi-schema__property"}>artefactInfo</strong><span className={"openapi-schema__name"}> object</span></span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"artefactId"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":12345}}></SchemaItem><SchemaItem collapsible={false} name={"mediaType"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"image/png"}}></SchemaItem><SchemaItem collapsible={false} name={"fileType"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"PNG"}}></SchemaItem><SchemaItem collapsible={false} name={"bitDepth"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":24}}></SchemaItem><SchemaItem collapsible={false} name={"samplingFrequency"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"44.1kHz"}}></SchemaItem><SchemaItem collapsible={false} name={"resolutionInDpi"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":300}}></SchemaItem><SchemaItem collapsible={false} name={"sizeWarning"} required={false} schemaName={"boolean"} qualifierMessage={undefined} schema={{"type":"boolean","example":false}}></SchemaItem><SchemaItem collapsible={false} name={"contentLength"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":2048000}}></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"artefactInfo\": {\n    \"artefactId\": 12345,\n    \"mediaType\": \"image/png\",\n    \"fileType\": \"PNG\",\n    \"bitDepth\": 24,\n    \"samplingFrequency\": \"44.1kHz\",\n    \"resolutionInDpi\": 300,\n    \"sizeWarning\": false,\n    \"contentLength\": 2048000\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad request, typically due to a missing or invalid parameter
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"Missing 'artefactId' parameter in path"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"Missing 'artefactId' parameter in path\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Artefact not found
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"The artefact is not found with id {artefactId}"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"The artefact is not found with id {artefactId}\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"500"} value={"500"}><div>
+
+Internal server error while processing the request
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"Error updated the artefact status {error_message}"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"Error updated the artefact status {error_message}\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

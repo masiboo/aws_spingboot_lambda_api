@@ -1,0 +1,1684 @@
+openapi: 3.0.0
+info:
+  title: Madrid Object Storage System API
+  description: Madrid Storage System API
+  license:
+    name: private
+  version: 0.0.7
+servers:
+  - url: 'https://Aws.madrid.wipo.int.local'
+    description: Generated server url
+paths:
+  '/api/batches/{id}':
+    get:
+      tags:
+        - Batch Resource
+      description: Get
+      operationId: getBatch
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BatchDTO'
+    put:
+      description: Get
+      operationId: updateBatch
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BatchDTO'
+      tags:
+        - Batch Resource
+    delete:
+      description: Get
+      operationId: deleteBatch
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Batch Resource
+    patch:
+      description: Get
+      operationId: partialUpdateBatch
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchDTO'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/BatchDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BatchDTO'
+      tags:
+        - Batch Resource
+  '/api/artefacts/{id}':
+    get:
+      tags:
+        - Artefacts
+      description: Get
+      operationId: getArtefact
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactDTO'
+    put:
+      operationId: updateArtefact
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactDTO'
+      tags:
+        - Artefacts
+    delete:
+      operationId: deleteArtefact
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Artefacts
+    patch:
+      operationId: partialUpdateArtefact
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactDTO'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/ArtefactDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactDTO'
+      tags:
+        - Artefacts
+  '/api/artefact-items/{id}':
+    get:
+      operationId: getArtefactItem
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactItemDTO'
+      tags:
+        - Artefacts
+    put:
+      operationId: updateArtefactItem
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactItemDTO'
+      tags:
+        - Artefacts
+    delete:
+      operationId: deleteArtefactItem
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Artefacts
+    patch:
+      operationId: partialUpdateArtefactItem
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemDTO'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactItemDTO'
+      tags:
+        - Artefacts
+  '/api/artefact-item-tags/{id}':
+    get:
+      operationId: getArtefactItemTag
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactItemTagDTO'
+      tags:
+        - Artefacts
+        - Tags
+    put:
+      operationId: updateArtefactItemTag
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemTagDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactItemTagDTO'
+      tags:
+        - Artefacts
+        - Tags
+    delete:
+      operationId: deleteArtefactItemTag
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Artefacts
+        - Tags
+      summary: ''
+    patch:
+      operationId: partialUpdateArtefactItemTag
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemTagDTO'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemTagDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactItemTagDTO'
+      tags:
+        - 'Artefacts '
+        - Tags
+  /api/batches:
+    get:
+      tags:
+        - Batch Resource
+      operationId: getAllBatches
+      parameters:
+        - name: page
+          in: query
+          description: Zero-based page index (0..N)
+          required: false
+          schema:
+            minimum: 0
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: The size of the page to be returned
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            default: 20
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BatchDTO'
+    post:
+      operationId: createBatch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchNewRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BatchDTO'
+      tags:
+        - Batch Resource
+  /api/authenticate:
+    get:
+      tags:
+        - account-resource
+      operationId: isAuthenticated
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /api/artefact-items:
+    get:
+      operationId: getAllArtefactItems
+      parameters:
+        - name: page
+          in: query
+          description: Zero-based page index (0..N)
+          required: false
+          schema:
+            minimum: 0
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: The size of the page to be returned
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            default: 20
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ArtefactItemDTO'
+      tags:
+        - Artefacts
+    post:
+      operationId: createArtefactItem
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactBatchItemDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactItemDTO'
+      tags:
+        - Artefacts
+  /api/artefact-item-tags:
+    get:
+      operationId: getAllArtefactItemTags
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ArtefactItemTagDTO'
+      tags:
+        - Artefacts
+    post:
+      operationId: createArtefactItemTag
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemTagDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtefactItemTagDTO'
+      tags:
+        - Artefacts
+  /api/account:
+    get:
+      tags:
+        - account-resource
+      operationId: getAccount
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AdminUserDTO'
+      description: Get details of currently Logged-in User
+  /api/authorities:
+    get:
+      operationId: getAuthorities
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+      description: Get Authorities for Logged in User
+      tags:
+        - Account
+  '/api/artefacts/{artefactId}/versions':
+    get:
+      description: Get artefact versions.
+      tags:
+        - Artefacts
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+        - $ref: '#/components/parameters/siteIdParam'
+        - name: tz
+          in: query
+          schema:
+            type: string
+        - name: next
+          in: query
+          description: Next Page Token.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactItemsVersions'
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+    parameters:
+      - schema:
+          type: string
+        name: artefactId
+        in: path
+        required: true
+  '/api/artefacts/{artefactId}/content':
+    get:
+      description: Get artefact content.
+      tags:
+        - Artefacts
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+        - $ref: '#/components/parameters/siteIdParam'
+        - $ref: '#/components/parameters/versionIdParam'
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+            Location:
+              $ref: '#/components/headers/Location'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactContent'
+              examples:
+                example-1:
+                  value:
+                    content: string
+                    contentUrl: string
+                    contentType: string
+                    isBase64: true
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+    parameters:
+      - schema:
+          type: string
+        name: artefactId
+        in: path
+        required: true
+  '/api/artefacts/{artefactId}/tags':
+    get:
+      description: Get artefact tags.
+      tags:
+        - Artefacts
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+        - $ref: '#/components/parameters/siteIdParam'
+        - $ref: '#/components/parameters/limitParam'
+        - name: next
+          in: query
+          description: Next Page Token.
+          schema:
+            type: string
+        - name: previous
+          in: query
+          description: Previous Page Token.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactItemsTags'
+              examples:
+                example-1:
+                  value:
+                    next: string
+                    previous: string
+                    tags:
+                      - insertedDate: string
+                        artefactID: string
+                        type: string
+                        userId: string
+                        value: string
+                        key: string
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+    post:
+      description: Add Tag to artefact.
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+        - $ref: '#/components/parameters/siteIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemTag'
+      responses:
+        '201':
+          $ref: '#/components/responses/200Cors'
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi201'
+      tags:
+        - Artefacts
+    parameters:
+      - schema:
+          type: string
+        name: artefactId
+        in: path
+        required: true
+  '/api/artefacts/{artefactId}/tags/{tagKey}':
+    get:
+      description: Get artefact tags.
+      tags:
+        - Artefacts
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+        - $ref: '#/components/parameters/tagkeyParam'
+        - $ref: '#/components/parameters/siteIdParam'
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactItemTag'
+              examples:
+                example-1:
+                  value:
+                    insertedDate: string
+                    artefactID: string
+                    type: string
+                    userId: string
+                    value: string
+                    key: string
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+    put:
+      description: Replace Tag value.
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+        - $ref: '#/components/parameters/tagkeyParam'
+        - $ref: '#/components/parameters/siteIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactItemTagValueBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Cors'
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+      tags:
+        - Artefacts
+    delete:
+      description: Delete artefact tags.
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+        - $ref: '#/components/parameters/tagkeyParam'
+        - $ref: '#/components/parameters/siteIdParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Cors'
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+      tags:
+        - Artefacts
+    parameters:
+      - schema:
+          type: string
+        name: artefactId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: tagKey
+        in: path
+        required: true
+  '/api/artefacts/{artefactId}/url':
+    get:
+      description: Returns a list of URL to fetch the artefact.
+      tags:
+        - Artefacts
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+        - $ref: '#/components/parameters/versionIdParam'
+        - $ref: '#/components/parameters/durationParam'
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactUrl'
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+    parameters:
+      - schema:
+          type: string
+        name: artefactId
+        in: path
+        required: true
+  /api/artefacts:
+    get:
+      tags:
+        - Artefacts
+      operationId: getAllArtefacts
+      parameters:
+        - name: page
+          in: query
+          description: Zero-based page index (0..N)
+          required: false
+          schema:
+            minimum: 0
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: The size of the page to be returned
+          required: false
+          schema:
+            minimum: 1
+            type: integer
+            default: 20
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: eagerload
+          in: query
+          required: false
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ArtefactDTO'
+              examples:
+                example-1:
+                  value:
+                    - id: 0
+                      artefactName: string
+                      artefactClassType: CERTIFICATE
+                      status: INSERTED
+                      error: string
+                      indexationDate: '2019-08-24'
+                      archiveDate: '2019-08-24'
+                      gets3Bucket: string
+                      mirisDocId: string
+                      ArtefactItemTags:
+                        - id: 0
+                          value: string
+                          key: string
+                          insertedDate: '2019-08-24'
+                          type: string
+                      items:
+                        id: 0
+                        storage: string
+                        path: string
+                        filename: string
+                        artefactType: CERTIFICATE
+                        contentType: string
+                        totalPages: 0
+      description: Get All artefacts
+  /api/artefacts/upload:
+    get:
+      description: Returns URL that can accept uploads largers than 5 MB.
+      tags:
+        - Artefacts
+      parameters:
+        - name: path
+          in: query
+          description: The upload file's path.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/contentLengthParam'
+        - $ref: '#/components/parameters/durationParam'
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactUrl'
+              examples: {}
+        '201':
+          description: Created
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+    parameters: []
+    post:
+      operationId: Upload and create Artefact record
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtefactNewRequest'
+            examples:
+              example-1:
+                value:
+                  artefactName: string
+                  artefactClassType: CERTIFICATE
+                  artefactItemTags:
+                    - id: 0
+                      value: string
+                      key: string
+                      insertedDate: '2019-08-24'
+                      type: string
+                  items:
+                    - storage: string
+                      path: string
+                      filename: string
+                      contentType: string
+                  batch:
+                    batchSequence: string
+                    creationDate: '2019-08-24'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactITemUrl'
+              examples:
+                example-1:
+                  value:
+                    artefactId: string
+                    signed_s3_url: string
+                    jobId: string
+                    collectionId: string
+      description: Upload and save artefact
+      tags:
+        - Artefacts
+  '/api/artefacts/{artefactId}/upload':
+    get:
+      parameters:
+        - $ref: '#/components/parameters/artefactIdParam'
+        - $ref: '#/components/parameters/contentLengthParam'
+        - $ref: '#/components/parameters/durationParam'
+      description: Returns URL to upload content larger than 5 MB.
+      tags:
+        - Artefacts
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactUrl'
+              examples:
+                example-1:
+                  value:
+                    documentId: string
+                    url: string
+                    jobId: string
+                    collectionId: string
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+    parameters:
+      - schema:
+          type: string
+        name: artefactId
+        in: path
+        required: true
+  /api/search:
+    get:
+      description: Searches for artefacts.
+      tags:
+        - Search Resource
+      parameters:
+        - $ref: '#/components/parameters/limitParam'
+        - schema:
+            type: array
+            items: {}
+          in: query
+          name: tag
+          description: Tags
+        - $ref: '#/components/parameters/artefactIdQueryParam'
+        - schema:
+            type: string
+          in: query
+          name: docId
+          description: Miris DocId
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactItemsResults'
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+    parameters: []
+  '/api/job/{jobid}/status':
+    get:
+      description: Get Status of Job
+      tags:
+        - Job Status
+      parameters: []
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/AccessControlAllowOrigin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/AccessControlAllowMethods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/AccessControlAllowHeaders'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtefactJob'
+              examples:
+                example-1:
+                  value:
+                    id: string
+                    path: string
+                    filename: string
+                    jobStatus: string
+                    artefactId: string
+                    creationDate: string
+                    lastModDate: string
+      security:
+        - AuthorizationCognito: []
+      x-amazon-apigateway-integration:
+        $ref: '#/components/x-amazon-apigateway-integrations/lambdaApi200'
+      operationId: ''
+      summary: ''
+    parameters:
+      - schema:
+          type: string
+        name: jobid
+        in: path
+        required: true
+        description: Job ID
+components:
+  headers:
+    AccessControlAllowOrigin:
+      schema:
+        type: string
+    AccessControlAllowMethods:
+      schema:
+        type: string
+    AccessControlAllowHeaders:
+      schema:
+        type: string
+    Location:
+      schema:
+        type: string
+  responses:
+    200Cors:
+      description: Options Response.
+      headers:
+        Access-Control-Allow-Origin:
+          schema:
+            type: string
+        Access-Control-Allow-Methods:
+          schema:
+            type: string
+        Access-Control-Allow-Headers:
+          schema:
+            type: string
+      content: {}
+  parameters:
+    versionIdParam:
+      name: versionId
+      in: query
+      description: Version Identifier
+      required: false
+      schema:
+        type: string
+    webhooksParam:
+      name: webhooks+
+      in: path
+      required: true
+      description: Web Hook Param
+      schema:
+        type: string
+    webhookIdParam:
+      name: webhookId
+      in: path
+      required: true
+      description: Web Hook Param
+      schema:
+        type: string
+    siteIdParam:
+      name: siteId
+      in: query
+      description: Site Identifier.
+      required: false
+      schema:
+        type: string
+    limitParam:
+      name: limit
+      in: query
+      description: Limit Results
+      required: false
+      schema:
+        type: string
+    artefactIdParam:
+      name: artefactId
+      in: path
+      description: Artefact Query Identifier.
+      required: true
+      schema:
+        type: string
+    tagkeyParam:
+      name: tagKey
+      in: path
+      description: Tag Key.
+      required: true
+      schema:
+        type: string
+    contentLengthParam:
+      name: contentLength
+      in: query
+      description: Indicates the size of the entity-body.
+      required: false
+      schema:
+        type: integer
+    artefactIdQueryParam:
+      name: artefactId
+      in: query
+      required: false
+      description: Artefact Identifier.
+      schema:
+        type: string
+        format: uuid
+    durationParam:
+      name: duration
+      in: query
+      description: Indicates the number of hours request is valid for.
+      required: true
+      schema:
+        type: integer
+  schemas:
+    WipoUserDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        wipoId:
+          type: string
+        username:
+          type: string
+        cognitoId:
+          type: string
+    ArtefactDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        artefactName:
+          type: string
+        artefactClassType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - artefact
+            - MULTIMEDIA
+            - SOUND
+        status:
+          type: string
+          enum:
+            - INSERTED
+            - INDEXED
+            - DELETED
+        error:
+          type: string
+        indexationDate:
+          type: string
+          format: date
+        archiveDate:
+          type: string
+          format: date
+        gets3Bucket:
+          type: string
+        mirisDocId:
+          type: string
+        ArtefactItemTags:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactItemTagDTO'
+        items:
+          $ref: '#/components/schemas/ArtefactItemDTO'
+    ArtefactNewRequest:
+      type: object
+      description: ''
+      x-examples:
+        example-1:
+          artefactName: string
+          artefactClassType: CERTIFICATE
+          artefactItemTags:
+            - id: 0
+              value: string
+              key: string
+              insertedDate: '2019-08-24'
+              type: string
+          items:
+            - storage: string
+              path: string
+              filename: string
+              contentType: string
+          batch:
+            batchSequence: string
+            creationDate: '2019-08-24'
+      title: ''
+      properties:
+        artefactName:
+          type: string
+        artefactClassType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - artefact
+            - MULTIMEDIA
+            - SOUND
+        artefactItemTags:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactItemTagDTO'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtefactNewRequestItem'
+        batch:
+          $ref: '#/components/schemas/BatchNewRequest'
+      required:
+        - artefactName
+        - artefactClassType
+        - items
+    ArtefactItemDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        storage:
+          type: string
+        path:
+          type: string
+        filename:
+          type: string
+        artefactType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - artefact
+            - MULTIMEDIA
+            - SOUND
+        contentType:
+          type: string
+        totalPages:
+          type: integer
+          format: int32
+    ArtefactBatchItemDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        storage:
+          type: string
+        path:
+          type: string
+        filename:
+          type: string
+        artefactType:
+          type: string
+          enum:
+            - CERTIFICATE
+            - BWLOGO
+            - COLOURLOGO
+            - artefact
+            - MULTIMEDIA
+            - SOUND
+        contentType:
+          type: string
+        totalPages:
+          type: integer
+          format: int32
+        jobId:
+          type: string
+        jobStatus:
+          type: string
+      required:
+        - id
+        - path
+        - filename
+        - artefactType
+    ArtefactNewRequestItem:
+      type: object
+      properties:
+        storage:
+          type: string
+        path:
+          type: string
+        filename:
+          type: string
+        contentType:
+          type: string
+      required:
+        - filename
+    ArtefactItemTagDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        value:
+          type: string
+        key:
+          type: string
+        insertedDate:
+          type: string
+          format: date
+        type:
+          type: string
+    BatchDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        batch_sequence:
+          type: string
+        lockedDate:
+          type: string
+          format: date
+        creatioDate:
+          type: string
+          format: date
+        lastModificationDate:
+          type: string
+          format: date
+        status:
+          type: string
+          enum:
+            - INSERTED
+            - COMPLETED
+            - DELETED
+        operator:
+          $ref: '#/components/schemas/WipoUserDTO'
+        lockedBy:
+          $ref: '#/components/schemas/WipoUserDTO'
+        lastModUser:
+          $ref: '#/components/schemas/WipoUserDTO'
+        dmsArtefacts:
+          $ref: '#/components/schemas/ArtefactDTO'
+    BatchNewRequest:
+      type: object
+      title: ''
+      x-examples: {}
+      properties:
+        batchSequence:
+          type: string
+        creationDate:
+          type: string
+          format: date
+    AdminUserDTO:
+      required:
+        - login
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        firstName:
+          maxLength: 50
+          minLength: 0
+          type: string
+        lastName:
+          maxLength: 50
+          minLength: 0
+          type: string
+        email:
+          maxLength: 254
+          minLength: 5
+          type: string
+        imageUrl:
+          maxLength: 256
+          minLength: 0
+          type: string
+        activated:
+          type: boolean
+        langKey:
+          maxLength: 10
+          minLength: 2
+          type: string
+        createdBy:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        lastModifiedDate:
+          type: string
+          format: date-time
+        authorities:
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+    ArtefactITemUrl:
+      type: object
+      properties:
+        artefactId:
+          type: string
+        signedS3Url:
+          type: string
+        jobId:
+          type: string
+        collectionId:
+          type: string
+      x-examples:
+        example-1:
+          artefactId: string
+          signedS3Url: string
+          jobId: string
+          collectionId: string
+    ArtefactItemsResults:
+      type: object
+      properties:
+        next:
+          type: string
+        previous:
+          type: string
+        documents:
+          $ref: '#/components/schemas/ArtefactItemDTO'
+    ArtefactItemsVersions:
+      type: object
+      properties:
+        next:
+          type: string
+        versions:
+          $ref: '#/components/schemas/ArtefactItemVersions'
+    ArtefactItemVersions:
+      type: array
+      items:
+        $ref: '#/components/schemas/ArtefactItemVersion'
+    ArtefactItemVersion:
+      required:
+        - versionId
+      type: object
+      properties:
+        versionId:
+          type: string
+        lastModifiedDate:
+          type: string
+    ArtefactContent:
+      type: object
+      properties:
+        content:
+          type: string
+        contentUrl:
+          type: string
+        contentType:
+          type: string
+        isBase64:
+          type: boolean
+    ArtefactItemsTags:
+      type: object
+      properties:
+        next:
+          type: string
+        previous:
+          type: string
+        tags:
+          $ref: '#/components/schemas/ArtefactItemTags'
+    ArtefactItemTags:
+      type: array
+      items:
+        $ref: '#/components/schemas/ArtefactItemTag'
+    ArtefactItemTag:
+      type: object
+      properties:
+        insertedDate:
+          type: string
+        artefactItemId:
+          type: string
+        type:
+          type: string
+        userId:
+          type: string
+        value:
+          type: string
+        key:
+          type: string
+      required:
+        - value
+        - key
+    ArtefactItemTagValueBody:
+      required:
+        - value
+      type: object
+      properties:
+        value:
+          type: string
+      x-examples: {}
+    ArtefactUrl:
+      type: object
+      x-examples:
+        example-1:
+          documentId: string
+          url: string
+      properties:
+        documentId:
+          type: string
+        url:
+          type: string
+        jobId:
+          type: string
+        collectionId:
+          type: string
+    ArtefactItemUrl:
+      type: object
+      x-examples:
+        example-1:
+          documentId: string
+          url: string
+      properties:
+        documentId:
+          type: string
+        url:
+          type: string
+        jobId:
+          type: string
+        collectionId:
+          type: string
+      title: ''
+    ArtefactJob:
+      type: object
+      x-examples:
+        example-1:
+          id: string
+          path: string
+          filename: string
+          jobStatus: string
+          artefactId: string
+          creationDate: string
+          lastModDate: string
+      properties:
+        id:
+          type: string
+          format: int64
+        path:
+          type: string
+        filename:
+          type: string
+        jobStatus:
+          type: string
+        artefactId:
+          type: string
+        creationDate:
+          type: string
+        lastModDate:
+          type: string
+      required:
+        - id
+        - jobStatus
+        - artefactId
+  securitySchemes:
+    AuthorizationCognito:
+      type: oauth2
+      flows: {}
+      x-amazon-apigateway-authorizer:
+        type: jwt
+        jwtConfiguration:
+          issuer:
+            'Fn::Sub': 'https://cognito-idp.${AWS::Region}.amazonaws.com/${CognitoUserPool}'
+          audience:
+            - 'Fn::Sub': '${CognitoUserPoolClient}'
+        identitySource: $request.header.Authorization
+    sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      x-amazon-apigateway-authtype: awsSigv4
+  x-amazon-apigateway-integrations:
+    lambdaApi200:
+      uri:
+        'Fn::Sub': 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ArtefactsApiRequests.Arn}/invocations'
+      responses:
+        default:
+          statusCode: '200'
+          responseParameters:
+            method.response.header.Access-Control-Allow-Methods: '''*'''
+            method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key'''
+            method.response.header.Access-Control-Allow-Origin: '''*'''
+      passthroughBehavior: when_no_templates
+      httpMethod: POST
+      type: aws_proxy
+      payloadFormatVersion: '1.0'
+    lambdaApi201:
+      uri:
+        'Fn::Sub': 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ArtefactsApiRequests.Arn}/invocations'
+      responses:
+        default:
+          statusCode: '201'
+          responseParameters:
+            method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key'''
+            method.response.header.Access-Control-Allow-Methods: '''*'''
+            method.response.header.Access-Control-Allow-Origin: '''*'''
+      passthroughBehavior: WHEN_NO_TEMPLATES
+      httpMethod: POST
+      type: aws_proxy
+      payloadFormatVersion: '1.0'
+x-amazon-apigateway-gateway-responses:
+  UNAUTHORIZED:
+    statusCode: 401
+    responseParameters:
+      gatewayresponse.header.Access-Control-Allow-Methods: '''*'''
+      gatewayresponse.header.Access-Control-Allow-Origin: '''*'''
+      gatewayresponse.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key'''
+x-amazon-apigateway-cors:
+  allowOrigins:
+    - '*'
+  maxAge: 3600
+  allowMethods:
+    - '*'
+  allowHeaders:
+    - '*'

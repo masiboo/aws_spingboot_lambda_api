@@ -1,0 +1,2 @@
+type,artefactName, artefactClassType, batchSequence, creationDate, requestType,filename, path, contentType, user
+new,application, DOCUMENT, 20221128.001, 20221128, application.pdf, RE-1,folderName, pdf, QRA-110

@@ -1,0 +1,312 @@
+{
+  "requestItems": {
+    "Aws-table": [
+      {
+        "putRequest": {
+          "item": {
+            "fileName": {
+              "s": "trademark_picture"
+            },
+            "type": {
+              "s": "ARTEFACT#DOCUMENT"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "BatchSequenceId": {
+              "s": "4354562353"
+            },
+            "s3Bucket": {
+              "s": "registry-bucket"
+            },
+            "s3Key": {
+              "s": "Aws-2023-07-11/null/trademark_picture"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-07-11"
+            },
+            "insertedDate": {
+              "s": "2023-07-11T12:23:39+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-11T12:23:39+0000#null-trademark_picture"
+            },
+            "artefactId": {
+              "s": "test-trademark_picture"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "PK": {
+              "s": "artefacts#test-trademark_picture"
+            },
+            "status": {
+              "s": "INSERTED"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "fileName": {
+              "s": "trademark_picture"
+            },
+            "belongsToArtefactId": {
+              "s": "unit-test-artefactbatch"
+            },
+            "type": {
+              "s": "ARTEFACT#DOCUMENT"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "BatchSequenceId": {
+              "s": "4354562353"
+            },
+            "s3Bucket": {
+              "s": "registry-bucket"
+            },
+            "artefactContainerName": {
+              "s": "unit-test-artefactbatch"
+            },
+            "s3Key": {
+              "s": "Aws-2023-07-11/unit-test-artefactbatch/trademark_picture"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-07-11"
+            },
+            "insertedDate": {
+              "s": "2023-07-11T12:24:48+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-11T12:24:48+0000#unit-test-artefactbatch-trademark_picture"
+            },
+            "artefactId": {
+              "s": "unit-test-artefactbatch-trademark_picture"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "PK": {
+              "s": "artefacts#unit-test-artefactbatch-trademark_picture"
+            },
+            "status": {
+              "s": "INSERTED"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "fileName": {
+              "s": "trademark_picture"
+            },
+            "s3Key": {
+              "s": "Aws-2023-07-07/86c9c042-b94a-4dc9-9c4a-372a55d2036f/mov_bbb.mp4"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-07-07"
+            },
+            "insertedDate": {
+              "s": "2023-07-07T13:09:31+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-07T13:09:31+0000#86c9c042-b94a-4dc9-9c4a-372a55d2036f"
+            },
+            "artefactId": {
+              "s": "86c9c042-b94a-4dc9-9c4a-372a55d2036f"
+            },
+            "BatchSequenceId": {
+              "s": "4354562353"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "mirisDocId": {
+              "s": "12234"
+            },
+            "PK": {
+              "s": "artefacts#86c9c042-b94a-4dc9-9c4a-372a55d2036f"
+            },
+            "type": {
+              "s": "ARTEFACT#DOCUMENT"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "s3Bucket": {
+              "s": "registry-bucket"
+            },
+            "status": {
+              "s": "INDEXED"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "fileName": {
+              "s": "trademark_picture_part"
+            },
+            "s3Key": {
+              "s": "Aws-2023-07-07/86c9c042-b94a-4dc9-9c4a-372a55d2036f/mov_bbb.mp4"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-07-07"
+            },
+            "insertedDate": {
+              "s": "2023-07-07T13:09:31+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-07T13:09:31+0000#86c9c042-b94a-4dc9-9c4a-372a55dpart"
+            },
+            "artefactId": {
+              "s": "86c9c042-b94a-4dc9-9c4a-372a55dpart"
+            },
+            "BatchSequenceId": {
+              "s": "4354562353"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "mirisDocId": {
+              "s": "12234"
+            },
+            "PK": {
+              "s": "artefacts#86c9c042-b94a-4dc9-9c4a-372a55dpart"
+            },
+            "type": {
+              "s": "ARTEFACT#DOCUMENT#PART"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "s3Bucket": {
+              "s": "registry-bucket"
+            },
+            "status": {
+              "s": "INSERTED"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "GSI1PK": {
+              "s": "artefactts#null"
+            },
+            "requestType": {
+              "s": "requestTypeValue"
+            },
+            "requestId": {
+              "s": "8bdf287c-5bac-4d92-bb07-e12a14a864df"
+            },
+            "artefactId": {
+              "s": "unit-test-artefactbatch-trademark_picture"
+            },
+            "GSI1SK": {
+              "s": "null#4354562353"
+            },
+            "SK": {
+              "s": "batch"
+            },
+            "PK": {
+              "s": "batch#4354562353"
+            },
+            "batchSequence": {
+              "s": "4354562353"
+            },
+            "type": {
+              "s": "batch"
+            },
+            "locked": {
+              "bool": false
+            },
+            "batchStatus": {
+              "s": "INSERTED"
+            },
+            "operator": {
+              "s": "sk"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "SK": {
+              "s": "artefacts#test-trademark_picture"
+            },
+            "PK": {
+              "s": "batch#4354562353"
+            },
+            "batchSequence": {
+              "s": "4354562353"
+            },
+            "artefactId": {
+              "s": "test-trademark_picture"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "SK": {
+              "s": "artefacts#unit-test-artefactbatch-trademark_picture"
+            },
+            "PK": {
+              "s": "batch#4354562353"
+            },
+            "batchSequence": {
+              "s": "4354562353"
+            },
+            "artefactId": {
+              "s": "unit-test-artefactbatch-trademark_picture"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "SK": {
+              "s": "artefacts#86c9c042-b94a-4dc9-9c4a-372a55d2036f"
+            },
+            "PK": {
+              "s": "batch#4354562353"
+            },
+            "batchSequence": {
+              "s": "4354562353"
+            },
+            "artefactId": {
+              "s": "86c9c042-b94a-4dc9-9c4a-372a55d2036f"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "SK": {
+              "s": "artefacts#86c9c042-b94a-4dc9-9c4a-372a55dpart"
+            },
+            "PK": {
+              "s": "batch#4354562353"
+            },
+            "batchSequence": {
+              "s": "4354562353"
+            },
+            "artefactId": {
+              "s": "86c9c042-b94a-4dc9-9c4a-372a55dpart"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

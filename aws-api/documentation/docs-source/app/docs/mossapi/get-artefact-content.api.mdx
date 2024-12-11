@@ -1,0 +1,40 @@
+---
+id: get-artefact-content
+title: "getArtefactContent"
+description: "Get artefact content."
+sidebar_label: "getArtefactContent"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV99v2zYQ/lcEokC2wZKctOuD3txs7YKtSBan24DCCGjpLDOTSJWk7DiG/vfdifo5O16z5+YhlsU7fse7746f9ywBE2tRWKEki9gHsB7XFlY8tl6spAVpAzZhqgDNyeYqQasU7KwxunQ2aGJ5alj0mbUrhi0mrOCa52BB09KeSfyC/i0CbjZhgnALbtf4PA6m3cn7vQS9864SBBIrAZoi0vClFBowHKtLmDATryHnLNozuysIxFgtZMqqatLhGmGhx/xCux6AztHmWagVz8xXYm3wzC5fJ+H+cGYDxJcBLsjaFEoaMLR+MZ3SxxgEX3qtFW6/Bp7UFdmzWRyDMT5VUavMn2WZ2vrXWqQU8v7UQY+7fgS7Von5X76/9GGd8v1Nxdyd65QdGjb0pVVeFJlwbuGDecZXLR8gJiYXmuhuhcvoYJt/gXQQn3R2avmufn9kXZh33MDbN4PFpVIZcFmf1AqbwaAP2l7DJXjkeZG5AJtn/5y+bHhWwijsFm8c7cHbu1Fww9iovyr3h0yEuNTC7up2npVYbS2e6sReqlQKq3BhQax89HnOn5T0eSFSbmHLd75ApFR31cON6OO9jKJ5uazngoz41kS9S/RqP/tzHkW3kKJTFWU8XyY8onERXkzPf/Snr/3X5+GqlDHtakK0b+fPrBC32EhgrAlmWlahkJuGO4ZyOOqbBH3KrK6ysdyW5lIl4FqH9aY3g3G2Z3lN9qBdDFxfBacbg539cIY7vsS3awx21lDAp2pN/vJn+ZP/E2ZqMqoELRTC/xV2L0VqO78Osq53wY2xa63KdP0O1nwjlMbl7RrkvVT3FpB5iG9oqlhbuFOiwc31/I7uBEcqrOk9NtUjjb+C7zLFk/dK59w20w9NzoOp4zUez9QVIoL9DUi0/6TSpGf9N0p9o9SIUjSK8nYL1C21OWqNiIVIibBVIibc96KkCuNO1RjQm1a9lPXgpKBMFIY8yYUMcmVMkPNEiyRIYBNsYXkebEWhAkGTetFPzDndN44Zx+dmfxFxXL9A8BUmkByq4+OUN9ugZuidH7YUNv7HMqxEWvbjVhhTOtO+PdrDxC4IXyRFMO6PwOFivoNY5dgMTbyfMDM3eFlVxHteJgJkDHWa+t0PjC8zNLPosqDbr5Y8mBhVanJlr7TrrY5PwzTVN6IR6WZ4W2IykJJ43kZ0jT0a4eV2Y8/nsKfUvN6fkIRcuZI0d/DHusTeda0RvLlVmqfgzXcG+erNbq4OhF3jcNQStQiQFIs6tVhoscGIKJebjsDT4K2bioUyNudyYI9M9jp53GvwUQhDDfCcrm+ObnHuhth2mC+EK52ccX3ymZKMll2n4HM0EvAtCnJ9jYGSy36/RPGAQqOq6LWTvsSNRBi+zAbK9tmIj+jwo8G6K6JT9s1NwBhJ8a9HOyrDT+AN1X0PuaAvWhDmC0/73W0j+b/3Tv7qORpSy1+5G0bThjqoVd12TTv01yuN7cIOXA/U8miIfviZxjD1zbGR1TyQCKyqfwDAaAMx
+sidebar_class_name: "get api-method"
+info_path: docs/Awsapi/madrid-object-storage-system-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>getArtefactContent</h1>
+
+<MethodEndpoint method={"get"} path={"/api/artefacts/{artefactId}/content"}></MethodEndpoint>
+
+
+
+Get artefact content.
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"artefactId","in":"path","description":"Artefact Query Identifier.","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"siteId","in":"query","description":"Site Identifier.","required":false,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"versionId","in":"query","description":"Version Identifier","required":false,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+200 response
+
+</div><details style={{"textAlign":"left","marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collaposed={true} open={false}><summary style={{}}><strong>Response Headers</strong></summary><ul style={{"marginLeft":"1rem"}}><li className={"schemaItem"}><summary style={{}}><strong>Access-Control-Allow-Origin</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Access-Control-Allow-Methods</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Access-Control-Allow-Headers</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Location</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li></ul></details><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"content"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"contentUrl"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"contentType"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"isBase64"} required={false} schemaName={"boolean"} qualifierMessage={undefined} schema={{"type":"boolean"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"content\": \"string\",\n  \"contentUrl\": \"string\",\n  \"contentType\": \"string\",\n  \"isBase64\": true\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"example-1"} value={"example-1"}><ResponseSamples responseExample={"{\n  \"content\": \"string\",\n  \"contentUrl\": \"string\",\n  \"contentType\": \"string\",\n  \"isBase64\": true\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

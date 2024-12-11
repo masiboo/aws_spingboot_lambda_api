@@ -1,0 +1,40 @@
+---
+id: get-all-artefact-items
+title: "getAllArtefactItems"
+description: "getAllArtefactItems"
+sidebar_label: "getAllArtefactItems"
+hide_title: true
+hide_table_of_contents: true
+api: eJzFVt9v2zYQ/lcIIg9tYcuK7Tqp3ox0G4KiSzCnGNAgD7R0ltlJpEpSdhxP//vuKNmSE88J9rIXS+L9+u7u4523XBdghJNaXSc84im4aZZNjYOFiN21g9zyHi+EETk4MJZH91uu8AN1C5ECCqXC958lmA1+JGBjIwvyh6ffwej+XFhIGCkzqRJ4ZO/CIPj9PSob+FlKAxh3ITILPW7jJeSCR1ueSyXzMudR2ONuU1A4qRykYHyQhSgzh8Kq6u3hWPn0Cpy7JTDSYnrBHL57TE6zOTADrjQKobwN1fkpVMNDWNq407BmqCFVyvAISywFlsnDW2iTCxexwlCP3OZdT9j4b7J9H7DPdTRG7pk2CRgmLUMFUAk6C9hXlMoig1pj71sYPCmLAg8hCU6n26QojBGEWno2tOfWGYzEq6p6IDe20MqCVxiGIT0O07z5gj5ijfVSjqQfBh/o8eZwev4DYiplUw9Zx5JJR6ftRl28+mgy5hXm5bQhxr5MgAjulkcFC5lB3cgjwiaZO39+RO60E9ktxrSvQhwNsY49/tiHR5Fj17xF894/3+XZ/zQcjkYXw3A0ufw4vriYhGHYSWwXepdP+92m0Z4doG+Pu6D7w/PxxfhyNBlfEjonXUa63fHw+e6GGFB5uUhpQOzllj885/rx+YKzZamb8dOiH4hCDkSj2peNrgWz2g2i0mSot3SusNFgIBK8n0GurQ1ykRiZBAmsgjXMz4O1LHSAZeZEVQtxiddhMyPm1ZWelgjAyCc/CK90qqTTXeoJlA+pjplek4FvlcjFk1Z9RJkKB2ux6YvGDba3Nf6xppzw90qrhUzLetr6llpb1qq/qiialfNOMnENoi+TIjjbTv+cRdEfkKJhFdRxxdoGsc4HZ9sG7zeszK3WWUXUE2UiQcXgy9R6f6F8laGaQ5MHNJIJvlNhdGnIlJ/RcADrgiUInDDBQZk8Ya1MV+Pu5S3kF6Db27Dt0KIZg7U3/u813Dlb25n3T5GkWtQtaUj41beY3fipwGb1HWCzjUWesOnt9Ysx2xgc1cwkzk3rb/FuuRm5QkRUS6Jb7SIMJkHo54W2Lheqo4/MZchstqM223H7AMS+Tg4e3aDIBNYD3Xkebxve31MR0fAZ85G4S4xK8u2Wduo3k1UVHddbhRqdSCvmWWeWPwu+n76vbeajKP/Cxu63/kpkJalwWnVvj/u2FXwifLPl/2P4/3fVnkqr/pfQpvVAH+hlTmS/p9vZ3Brqc20zjWMoula0UclwP05/++UO784/LhxhFA==
+sidebar_class_name: "get api-method"
+info_path: docs/Awsapi/madrid-object-storage-system-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>getAllArtefactItems</h1>
+
+<MethodEndpoint method={"get"} path={"/api/artefact-items"}></MethodEndpoint>
+
+
+
+getAllArtefactItems
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"page","in":"query","description":"Zero-based page index (0..N)","required":false,"schema":{"minimum":0,"type":"integer","default":0}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"size","in":"query","description":"The size of the page to be returned","required":false,"schema":{"minimum":1,"type":"integer","default":20}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"sort","in":"query","description":"Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.","required":false,"schema":{"type":"array","items":{"type":"string"}}}}></ParamsItem></ul></div></details><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"*/*"} value={"*/*"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}>Array [</div></li><SchemaItem collapsible={false} name={"id"} required={false} schemaName={"int64"} qualifierMessage={undefined} schema={{"type":"integer","format":"int64"}}></SchemaItem><SchemaItem collapsible={false} name={"storage"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"path"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"filename"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"contentType"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"totalPages"} required={false} schemaName={"int32"} qualifierMessage={undefined} schema={{"type":"integer","format":"int32"}}></SchemaItem><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}>]</div></li></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"[\n  {\n    \"id\": 0,\n    \"storage\": \"string\",\n    \"path\": \"string\",\n    \"filename\": \"string\",\n    \"contentType\": \"string\",\n    \"totalPages\": 0\n  }\n]"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

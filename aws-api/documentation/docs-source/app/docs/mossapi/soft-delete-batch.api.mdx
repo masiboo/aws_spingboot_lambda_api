@@ -1,0 +1,48 @@
+---
+id: soft-delete-batch
+title: "SoftDelete Batch"
+description: "PUT"
+sidebar_label: "SoftDelete Batch"
+hide_title: true
+hide_table_of_contents: true
+api: eJzFVcFOGzEQ/RXL4tBKyW5AqIe9pZBKiFYgAuoBcXDWk8R013Ztb0JY7b93xutAQqBXckic3Xnj955nxi0PYuF5cc+/i1Au2Q1407gS+MOAS/ClUzYoo3nBr+9u+YBb4UQNARxhWq7xD76bEXYKfxvQCB1wRQArwhLXDh8rB5IXwTUw4L5cQi140fKwsQT2wSm94F2HWxoLTtCGFxjPp2YezqHC7VhkF7N5a7QHTwlORiP62ed5dYlhpdEBdKC3wtpKlTFp/ugppD3kYGaPUAbS54hCUP0GNXgvFnBI9q05Y+abssRotoUMODyJ2lYE6q3tlcht5Lypqg2qps+An74n5UKvRKUkkyKITxA1cc64F0GRZtIU86T18Jj+INEG9rIn1cozUTkQcsOUZueTn5PbyfmO7NND2T1Qm8DmptHy05XvHuXtMtUiCXuhyNYq4BPJ2m0ndEkiasR2WRoqZ9tEStQWBc+FVXmMBp/LWBp5u9dHHQZ7cKttrzWuQtwyBOuLPBeyVjqrjfdZLaRTMpOwytYwO87WyppMoV3UUR7KxqmwmZJHvQ3jBgk59RxNPDMLrYLZNU/g+xPcfF6ZNQFQw9NQ1OLZ6CGyXogAa7EZipQG3A74cU0a8fvM6LlaNH03U4DyvulDf+iimDazHTFlT2KopM2O2vHvaVHcwAKBXdbvK9Y+K02dH7WJ7x06c21MhT4PuGikipOHbHrNfhB8VmFYQMgDgpTENRnTzzsMp0kFPmRLrFZw2Z5NnE7Sq8XqdEcsmnEJG9SbxuA+Io3BPhv/2MNtsrWfxvy0k9Lz/khUiGX3Kx4xu4p1zabBOCxMNt34ADUbX18cVHACvBuJ/QM4Qil/Im6dWiEj8pLKrU8xyr5lI3pkjQ+10DvxNJjZm8m8t3/72rLp4kgqAzyF3FYCrcHMsaTb1BL35CdGpqaIKWkHXBT7FwyW9RI5EaTFnvFw56quo8cY4Db4HJcr4ZSYVX1RSOVpjV04F5WH/7D9cpPuq6/sI9bbA9N09GnwcVz+wVp4exfGUkslQET6mDHeADbsoA+mGrXuy+AgB7vuHwPip5E=
+sidebar_class_name: "put api-method"
+info_path: docs/Awsapi/madrid-object-storage-system-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>SoftDelete Batch</h1>
+
+<MethodEndpoint method={"put"} path={"/api/batches/delete/{batchSequence}"}></MethodEndpoint>
+
+
+
+PUT
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"batchSequence","in":"path","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"A success message","example":"Batch Deleted successfully"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"Batch Deleted successfully\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Invalid data
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"Error message"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"example-1"} value={"example-1"}><ResponseSamples responseExample={"{\n  \"message\": \"Batch is already in DELETED\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Batch not found
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","description":"Error message","example":"The Batch is not found with id {batchSeq}"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"The Batch is not found with id {batchSeq}\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

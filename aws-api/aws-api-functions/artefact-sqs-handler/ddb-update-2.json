@@ -1,0 +1,32 @@
+[
+  {
+    "eventID":"0e26b8b8c3d646df51aaa7b8d804b5e5",
+    "eventName":"INSERT",
+    "eventVersion":"1.1",
+    "eventSource":"aws:dynamodb",
+    "awsRegion":"eu-central-1",
+    "dynamodb":{
+      "ApproximateCreationDateTime":1693963204,
+      "Keys":{
+        "SK":{
+          "S":"2023-09-06"
+        },
+        "PK":{
+          "S":"artefactdate"
+        }
+      },
+      "NewImage":{
+        "SK":{
+          "S":"2023-09-06"
+        },
+        "PK":{
+          "S":"artefactdate"
+        }
+      },
+      "SequenceNumber":"264048500000000043503731620",
+      "SizeBytes":52,
+      "StreamViewType":"NEW_AND_OLD_IMAGES"
+    },
+    "eventSourceARN":"arn:aws:dynamodb:eu-central-1:551493771163:table/Aws-registry-table-dev-eu-central-1-551493771163/stream/2023-07-12T10:59:38.905"
+  }
+]

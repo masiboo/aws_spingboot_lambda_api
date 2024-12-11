@@ -1,0 +1,52 @@
+---
+id: lock-batch
+title: "Lock Batch"
+description: "Locks a batch by its sequence number if it is not already locked."
+sidebar_label: "Lock Batch"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9Vk1v2zgQ/SsEUaAt4EjZIu1BtzTYBYK2aBA36KHogZbGFlOJ5PLDiiv4v3eGlG3Jdg4LLOKDJVHz8d7jzFA992LlePGDfxS+rNk9OB1sCfznjFfgSiuNl1rxgn/W5S/HBFtEu8WGSe+Yg38DqBKYCu0CLJNLXGbSMaU9E40FUW1Yg55QZXzGjbCiBQ+WMvZcUlwjfI2vFL7Apxh9PkTFZYu30kLFC28DHGP6VsMJBL1kHpcTTK9jdsrtyhpawYue+42hVM5bqVZ8u531z2UfAzxG8nw8lE4bsIJA3qI9JwhR3hjGGa0cOPJ8d3lJlympeShLcG4Zmman3YERMSm18qA8eQpjGlnGTPmjI/f+FJhePELpSX5LuLxMyVtMIlZwymDG4Um0pqGlVBUDCjdChjzpN+NX5zh8FBUjwcD5GWulcxiXaawPtRaNrNjridKv2b4wyCht3Wn1vCTvLwPmPdAxRqkYFQVhTfpgwe/g4rvPEfFIoKtzApEfdclSB1WxTmI82mXEupYViT2t65cWgFprT+4I52TzWD953O55vz9XGLfIwCrRID27RinBWlSxq2UDLJgKCaHoh/51XvjgXpr73xHUs3AGhkgRy6HW1OEmxFQ0KQqeCyPz6AAup/LNjyXC6RHppzEYbINetffGFXkuqlaqrNXOZa2orKyyCtZZB4u/sk4anUkUgUaMgzJY6TdzYp7IXQeEY+XvKM2NXinp9VgSge/fYfJloztyQAZPF6IVv7W6QMwr4aETmwsxhAE7cn7siCH+32i1lKuQxhsZYKeEZPqPKop5WIzIlAnEhaxM9qq//j4vintYoeM2S3lF57JSt/mrfsD7gMrcad1gHc24CJWMo5hkOkQ/Mb5p0Myjy090wu5RnoRJBxmaD5Moq7FDsZMmMtH8506u1lcjsijGJ9gcTqWpx3AupGj8eQ13wTo3j/Epk1TLtCXSpzkTt5h9jdXK5l5brE423zgPLbu+u+XHR97gcNYSuwLwaKH4A3Bj5RoRkZZUbinEZfYhu6Qlo51vhRrZ0+hiu6Nqkrg/dOD/8ikwiOPhyeemEagoAoqd0A999IO2AS2HTiJ+6I2XYnpMYy/USIQcemw0Bw+22W5pGQ3sBtfxdi2sFIsmVVIlHd1j4y5F446/KsZM39wPp/5b9l++Nc6S25WDosLCYzDQE97+wko7/vSIhTwUGCFONtd4/Bo/8j6ZhDQY9kPp7uEb1twfENd0BQ==
+sidebar_class_name: "put api-method"
+info_path: docs/Awsapi/madrid-object-storage-system-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Lock Batch</h1>
+
+<MethodEndpoint method={"put"} path={"/api/batches/lock/{batchSequence}"}></MethodEndpoint>
+
+
+
+Locks a batch by its sequence number if it is not already locked.
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"in":"path","name":"batchSequence","required":true,"description":"The sequence number of the batch to lock.","schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"batchSequence","in":"path","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+Successfully locked the batch.
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"Batch locked successfully"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"Batch locked successfully\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+Bad request, missing or invalid 'batchSequence' parameter or batch already locked.
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"Missing 'batchSeq' parameter in path or Batch is already in Locked"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"Missing 'batchSeq' parameter in path or Batch is already in Locked\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Batch not found with the provided sequence number.
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"The Batch is not found with batchSequence {batchSequence}"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"The Batch is not found with batchSequence {batchSequence}\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"500"} value={"500"}><div>
+
+Internal server error while updating the batch status.
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"message"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string","example":"Error updating the batch status"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"message\": \"Error updating the batch status\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

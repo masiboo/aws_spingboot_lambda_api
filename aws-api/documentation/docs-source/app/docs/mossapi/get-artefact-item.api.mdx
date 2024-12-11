@@ -1,0 +1,40 @@
+---
+id: get-artefact-item
+title: "getArtefactItem"
+description: "getArtefactItem"
+sidebar_label: "getArtefactItem"
+hide_title: true
+hide_table_of_contents: true
+api: eJyNVUtv2zAM/iuB0MNW1I8mWdL5FnQPFMPQommxQ9GDYjOOOlvyJDlpavi/j5Sd2FkybJdYEl8fyY9MxVQBmluh5E3CIpaCnWkLSx7bGws5u2AF1zwHC9qw6KliEi+oJxIUCYmngtsVnjX8KoUG9GF1CRfMxCvIOYsqZreFs5AWUtCoulQ657Z5moxZXT+TuSmUNGDIYhiG9EnAxFoUhA2Vb7+haazQi7QkPQ/O6XMURy1eILYEXFNqVjQ+EfD/YEHgVmmeQk/bWC1kSjKX6ynBUmTQVOaEsAX94N5PyK2yPLvDmOafEEdDLNcFe/XgledF1li0Z+9yl6f3cTgcjabDcDS5+jCeTidhGPYS24Xe5dPduzS6twP03XMftDe8HE/HV6PJ+IrQWWEz0u0T6dPDLSKvnZinRKW92DDs/2Gvj1mIDFyplqAd8IAXIuCtpidQ1QSVSGrUMKDXO86WOkPllbWFiYKAJ7mQfq6M8XOeaJH4Caz9DSwu/Y0olI9lZkRJA3Gphd3OiWFNpWclotDizc3LtUqlsKpPPY7yIdUxUxsycK3iOX9T0kOoKbew4VuPt26wvZ3xy4YSw99rJZciLZuhdC01pmxUv8gompeLXjJxA8ITSeGfVbMf8yi6hxQNa7+JyzfGj1UenFUt3keszJ1SWU3U42UiQMbgytR5P1K+zlDNoskzGokEz1QYVWoyZWc0/GCsvwKegPYPyuQIa0S6HveSxWJ8gy3m27Lt0KLdLI039vca7pxtzNz5p0hCLpuWtCT87lo8uHVbYTBvZmAw3xoky2B2d8P+5F5rcFIzEzHgkiL/LfBCizUioloS3RoXoT/xQ7cvlLE5lz19pO9gR+1By+2D+PsSWXi1QZFxLAV6chSuWt4/Uf3Q8JD5+BDh9CNzVxiWtKpqwQ086qyu6Rl7pLf4jsc114IvsqbviTB0xula8szAEaD90mXv7tst/35AK+AU0F1PJHV3zbOSbnj8ie12fxuOQm1rKXojmMUxFLZnQuudpnA/+F8/P2CDfwNxokRU
+sidebar_class_name: "get api-method"
+info_path: docs/Awsapi/madrid-object-storage-system-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>getArtefactItem</h1>
+
+<MethodEndpoint method={"get"} path={"/api/artefact-items/{id}"}></MethodEndpoint>
+
+
+
+getArtefactItem
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}}></ParamsItem></ul></div></details><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"*/*"} value={"*/*"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"id"} required={false} schemaName={"int64"} qualifierMessage={undefined} schema={{"type":"integer","format":"int64"}}></SchemaItem><SchemaItem collapsible={false} name={"storage"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"path"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"filename"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"contentType"} required={false} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem><SchemaItem collapsible={false} name={"totalPages"} required={false} schemaName={"int32"} qualifierMessage={undefined} schema={{"type":"integer","format":"int32"}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"id\": 0,\n  \"storage\": \"string\",\n  \"path\": \"string\",\n  \"filename\": \"string\",\n  \"contentType\": \"string\",\n  \"totalPages\": 0\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

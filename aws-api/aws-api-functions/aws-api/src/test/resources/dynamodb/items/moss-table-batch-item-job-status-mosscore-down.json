@@ -1,0 +1,78 @@
+{
+  "requestItems": {
+    "Aws-table": [
+      {
+        "putRequest": {
+          "item": {
+            "s3_signed_url": {
+              "s": "http://registry-bucket.localhost:4566/Aws-2023-07-07/4b917a69-c1e5-420e-8eb8-78195bdfa174/mov_bbb.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230707T130922Z&X-Amz-SignedHeaders=host%3Bx-amz-meta-artefact-id-key%3Bx-amz-meta-job-id-key%3Bx-amz-meta-miris-doc-id&X-Amz-Expires=172800&X-Amz-Credential=localstack%2F20230707%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=3bb02671ff3679cc4b77f6550f82ca84db011fef39879c742d0b30a3287c59f9"
+            },
+            "jobId": {
+              "s": "4d37ad36-883b-4c64-b17f-mpd688"
+            },
+            "jobStatus": {
+              "s": "INIT"
+            },
+            "artefactId": {
+              "s": "4b917a69-c1e5-420e-8eb8-78195bdmpd688"
+            },
+            "SK": {
+              "s": "job"
+            },
+            "PK": {
+              "s": "jobs#4d37ad36-883b-4c64-b17f-mpd688"
+            },
+            "type": {
+              "s": "job"
+            }
+          }
+        }
+      },
+      {
+        "putRequest": {
+          "item": {
+            "fileName": {
+              "s": "trademark_picture"
+            },
+            "type": {
+              "s": "ARTEFACT#SOUND"
+            },
+            "userId": {
+              "s": "Anonymous"
+            },
+            "BatchSequenceId": {
+              "s": "4354562353"
+            },
+            "s3Bucket": {
+              "s": "unit-test-bucket"
+            },
+            "s3Key": {
+              "s": "1003/verify_jobstatus_documents.pdf"
+            },
+            "GSI1PK": {
+              "s": "artefactts#2023-07-11"
+            },
+            "insertedDate": {
+              "s": "2023-07-11T12:23:39+0000"
+            },
+            "GSI1SK": {
+              "s": "2023-07-11T12:23:39+0000#null-trademark_picture"
+            },
+            "artefactId": {
+              "s": "4b917a69-c1e5-420e-8eb8-78195bdmpd688"
+            },
+            "SK": {
+              "s": "document"
+            },
+            "PK": {
+              "s": "artefacts#4b917a69-c1e5-420e-8eb8-78195bdmpd688"
+            },
+            "status": {
+              "s": "INIT"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

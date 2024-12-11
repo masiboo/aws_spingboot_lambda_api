@@ -1,0 +1,20 @@
+{
+  "Records": [
+    {
+      "messageId": "19dd0b57-b21e-4ac1-bd88-01bbb068cb78",
+      "receiptHandle": "MessageReceiptHandle",
+      "body": "{\"version\":\"0\",\"id\":\"c7c2401f-60c7-e6be-bd18-b7853d29d88a\",\"detail-type\":\"ArtefactUpdated\",\"source\":\"Aws.artefact.source\",\"account\":\"551493771163\",\"time\":\"2023-11-28T22:18:16Z\",\"region\":\"eu-central-1\",\"resources\":[],\"detail\":{\"batchSequence\":\"0221123.052\",\"batch\":{\"PK\":\"batch#0221123.052\",\"SK\":\"batch\",\"artefactId\":\"0221123.052-0000D-00000002.TIF\",\"batchStatus\":\"INSERTED\",\"batchSequence\":\"0221123.052\",\"requestId\":\"da560981-f261-4116-8b73-b2efb21d0bec\"},\"type\":\"batch\",\"eventType\":\"MODIFY\",\"eventId\":\"b1ba71eaa26e16707922373e8f6a6dd4\",\"status\":\"INSERTED\"}}",
+      "attributes": {
+        "ApproximateReceiveCount": "1",
+        "SentTimestamp": "1523232000000",
+        "SenderId": "123456789012",
+        "ApproximateFirstReceiveTimestamp": "1523232000001"
+      },
+      "messageAttributes": {},
+      "md5OfBody": "7b270e59b47ff90a553787216d55d91d",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:eu-central-1:123456789012:MyQueue",
+      "awsRegion": "eu-central-1"
+    }
+  ]
+}

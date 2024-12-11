@@ -1,0 +1,15 @@
+services:
+  web:
+    build:
+      context: .
+      target: development
+      tags:
+        - "docs:prod"
+    volumes:
+      - app:/home/node/app
+    ports:
+      - "3000:3000"
+
+
+volumes:
+  app:

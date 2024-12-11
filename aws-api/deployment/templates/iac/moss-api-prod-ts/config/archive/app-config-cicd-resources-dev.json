@@ -1,0 +1,26 @@
+{
+    "Project": {
+        "Name": "Aws",
+        "Stage": "cicd",
+        "Account": "551493771163",
+        "Region": "eu-central-1",
+        "Profile": "wipodevops",
+        "BusinessUnit": "madrid"
+    },
+
+    "Stack": {
+
+        "AwsInfraResource" : {
+            "Name" : "AwsInfraPipelineResourceStack",
+            "InfraBucketName" : "infraartifact",
+            "APIBucketName" : "apiartifact",
+            "FrontendBucketName" : "frontenddeploy"
+        },
+        "AwsECRRepository" : {
+            "Name": "AwsECRRepoStack"
+        },
+        "AwsVpcDnsSSMImport" : {
+            "Name" : "AwsVpcDnsSSMImportStack"
+        }
+    }
+}

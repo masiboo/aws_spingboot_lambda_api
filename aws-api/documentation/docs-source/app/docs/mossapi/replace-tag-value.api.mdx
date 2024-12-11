@@ -1,0 +1,40 @@
+---
+id: replace-tag-value
+title: "replaceTagValue"
+description: "Replace Tag value."
+sidebar_label: "replaceTagValue"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV1tv2zYU/isGUSDbYElOuu1Bb663YsFQxLWTtkAWBLREy8wkUSUp24qg/75zSOri2MmQPBcBHNk8N57vXD7VJGYqkrzQXOQkJAtWpDRio2uajLY0LZlPxkQUTFIUuIxBRFoRkPiCAnBeUEkzpplUJLytSQ5fQI5KzdY00qA0JhyNF1Rv4PnQ49SJjT6XTFajy5jlmq85k+hZsu8llwzcalmyMVHRhmWUhDXRVYFOlJY8T0jTjDu/miZ/s+pFn3g7kHmrB8U162/1HeM+crEEmWcvs6apetHXnZVmSn8QcYUST+OMRK7BOB7Rokh5ZAAKHhR6rweme8VbYhAlYNz5E6sHFmlEUCLGmjOFKlbsVArI3mN7mhWpEYTvmuuUDVC81CxrK8OE3jSoJpkqRK6s+YvJBP8d5uvKPKjRwkliwjaMxqaoajKNIqaUN4NbS5F60zQVO+9K8oQ/ue5xyCdVPzG9EbF6k+5ffVjP6zZDiMxXxaJScl2ZHpmW4F/yR4PaTCQ51wIO7hD5vUcz+ihyjxY8oZrtaOVxMJXYJkRvYAj/fczDcFmuTLPlId2psFcJ39XTr8swXLAElJowpdkqpiH2Q3AxOf/Nm7z33p8H6zKPTOYDkHcgqmnBF7b8lD+VeRPwfCtshSnyFM4YdMrUVKLSVJdqJmJMBcLci84HM6ImmUm/3x76Fmn/ZajI2S9nYPE1uh1U5Gxm0fCuAajxN2+aPXp/QKbGB0jgQcE9mA2v9dTWognS4F1QpfRGijLZfGAbuuVCwvFuw/L7XNxDn8AY1ZBCqHOtC3tLEJhfLa9J16GA6T00574yY7ZKBY0/CplR/QWuZTvn3J8gJjD2cPx2naiwz9ke7qwMbFh1/8JcDP+3vsb9APhRZz/q7KDOcD5lrYmiNLsDN2xIAiiJoN35Kqj79d8EWJtBbRdzQ3AUym3LFkqZgjaGpsIgoHHGcz8TSvkZjSWP/Zht/R1bnfs7Xggf6pRgDO0wXeIAtvVxeqR2k1lQOL8A52tIo9tepzqBOjNMDpQfdnhT+AQw1jwp+0nMlSqtaN8k7WUiG4TH48I/7BLf+oWs+5HIoCVcvDeQmbkQaYPVT8uYszxiJk299SPhWQpiGlTuQIkbygGJEaVEVfLOEYmuqoZpMktO8WT76+CykAxLoBzdOdRwrMdaI8/nsC+spbGPnpCdLHpe86elEgPK0e1P9LK28DmG8cmUw+jKUJbRUgtJEzZaVgoqfDSdXx4xMKdwUhL4EsxF49ldspB8C9Gj521X8hP/dztcC6F0RvOBvBwQ5ZYHH/iv+/1/mlW7BGmY0QEcQ1bBkemG2vXULUIBkl1XwXN4QKvN0IcfHeeFxthApKhZ1yuq2I1MmwZ/tiQVCynmiq7SAQt9NuoTFPZkzHardKS4hdL06ZZKju5e6fqnhWOtP49efD84GU9beXk1jKaNc5A/pPRvimnw/vCGCBxYpl1dG/XLebg+BspHHP9gEM9vcJSv3KtCZveipDvci/AZkn/gz7zI2dWKrwX4e01SmicltAfOOGO2MYMHq+94croHpKlN8x+iHPKK
+sidebar_class_name: "put api-method"
+info_path: docs/Awsapi/madrid-object-storage-system-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>replaceTagValue</h1>
+
+<MethodEndpoint method={"put"} path={"/api/artefacts/{artefactId}/tags/{tagKey}"}></MethodEndpoint>
+
+
+
+Replace Tag value.
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"artefactId","in":"path","description":"Artefact Query Identifier.","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"tagKey","in":"path","description":"Tag Key.","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Query Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"siteId","in":"query","description":"Site Identifier.","required":false,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><MimeTabs className={"openapi-tabs__mime"}><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} className={"openapi-markdown__details mime"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-mime"}><h3 className={"openapi-markdown__details-summary-header-body"}>Body</h3><strong className={"openapi-schema__required"}>required</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"value"} required={true} schemaName={"string"} qualifierMessage={undefined} schema={{"type":"string"}}></SchemaItem></ul></details></TabItem></MimeTabs><div><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+Options Response.
+
+</div><details style={{"textAlign":"left","marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collaposed={true} open={false}><summary style={{}}><strong>Response Headers</strong></summary><ul style={{"marginLeft":"1rem"}}><li className={"schemaItem"}><summary style={{}}><strong>Access-Control-Allow-Origin</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Access-Control-Allow-Methods</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li><li className={"schemaItem"}><summary style={{}}><strong>Access-Control-Allow-Headers</strong><span style={{"opacity":"0.6"}}> string</span></summary><div></div></li></ul></details><div></div></TabItem></ApiTabs></div></div>
+      

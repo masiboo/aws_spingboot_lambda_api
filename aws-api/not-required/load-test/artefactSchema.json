@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "artefactName": {
+      "type": "string"
+    },
+    "artefactClassType": {
+      "type": "string"
+    },
+    "artefactItemTags": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "value": {
+              "type": "string"
+            },
+            "key": {
+              "type": "string"
+            },
+            "insertedDate": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "value",
+            "key",
+            "insertedDate",
+            "type"
+          ]
+        }
+      ]
+    },
+    "items": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "storage": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string"
+            },
+            "filename": {
+              "type": "string"
+            },
+            "contentType": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "storage",
+            "path",
+            "filename",
+            "contentType"
+          ]
+        }
+      ]
+    },
+    "batch": {
+      "type": "object",
+      "properties": {
+        "batchSequence": {
+          "type": "string"
+        },
+        "creationDate": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "batchSequence",
+        "creationDate"
+      ]
+    }
+  },
+  "required": [
+    "artefactName",
+    "artefactClassType",
+    "artefactItemTags",
+    "items",
+    "batch"
+  ]
+}
